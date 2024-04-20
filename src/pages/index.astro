@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Comuna de Villa Ana">
+  <video
+    src="hero-video-phone.mp4"
+    autoplay
+    loop
+    muted
+    class="hero-video absolute top-0 -z-10 w-full h-dvh object-cover"></video>
+  <main class="min-h-dvh"></main>
+</Layout>
+
+<style>
+  .hero-video {
+    mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  }
+</style>
