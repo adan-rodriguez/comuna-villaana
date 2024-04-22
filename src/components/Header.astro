@@ -1,0 +1,58 @@
+---
+import Isologo from "./Isologo.astro";
+import MenuIcon from "./icons/MenuIcon.astro";
+import XIcon from "./icons/XIcon.astro";
+---
+
+<header
+  class="grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-12 text-white relative md:bg-transparent bg-opacity-90 transition-all md:h-auto overflow-y-auto"
+>
+  <a href="/" class="justify-self-start hover:scale-105 transition-all">
+    <Isologo />
+  </a>
+  <button
+    aria-label="Abrir menú"
+    class="open-menu-btn justify-self-end md:hidden hover:scale-105 transition-all"
+  >
+    <MenuIcon />
+  </button>
+  <button
+    aria-label="Cerrar menú"
+    class="close-menu-btn hidden justify-self-end md:hidden hover:scale-105 transition-all"
+  >
+    <XIcon />
+  </button>
+  <nav
+    class="col-span-2 flex max-md:hidden gap-6 flex-col items-center md:flex-row py-4 md:py-0"
+  >
+    <a href="#" class="hover:underline hover:underline-offset-8 transition-all">
+      Gobierno
+    </a>
+    <a href="#" class="hover:underline hover:underline-offset-8 transition-all">
+      Mi Pueblo
+    </a>
+    <a href="#" class="hover:underline hover:underline-offset-8 transition-all">
+      Noticias
+    </a>
+  </nav>
+</header>
+
+<script>
+  const $body = document.querySelector("body");
+  const $header = document.querySelector("header");
+  const $openMenuBtn = document.querySelector(".open-menu-btn");
+  const $closeMenuBtn = document.querySelector(".close-menu-btn");
+  const $menu = document.querySelector("nav");
+
+  function handleClick() {
+    $openMenuBtn.classList.toggle("hidden");
+    $closeMenuBtn.classList.toggle("hidden");
+    $menu.classList.toggle("max-md:hidden");
+    $header.classList.toggle("bg-slate-950");
+    $header.classList.toggle("h-dvh");
+    $body.classList.toggle("overflow-y-hidden");
+  }
+
+  $openMenuBtn.addEventListener("click", handleClick);
+  $closeMenuBtn.addEventListener("click", handleClick);
+</script>
