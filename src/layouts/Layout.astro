@@ -35,11 +35,21 @@ const { title } = Astro.props;
       <address class="flex flex-col gap-y-2">
         <div class="flex gap-2">
           <MailIcon />
-          <a href="mailto:comunavillaana@gmail.com">comunavillaana@gmail.com</a>
+          <a
+            href="mailto:comunavillaana@gmail.com"
+            title="Enviar un email a la Comuna de Villa Ana"
+            class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-all hover:after:w-full"
+            >comunavillaana@gmail.com</a
+          >
         </div>
         <div class="flex gap-2">
           <PhoneIcon />
-          <a href="tel:+5493482524950">+54 9 3482 524950</a>
+          <a
+            href="tel:+5493482524950"
+            title="Llamar a la Comuna de Villa Ana"
+            class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-all hover:after:w-full"
+            >+54 9 3482 524950</a
+          >
         </div>
         <div class="flex gap-2">
           <MapPinIcon />
@@ -47,6 +57,8 @@ const { title } = Astro.props;
             href="https://www.google.com/maps/place/COMUNA+DE+VILLA+ANA/@-28.4931731,-59.6129274,19z/data=!4m6!3m5!1s0x944f2557ade437cb:0xbb58e41395fcdc2a!8m2!3d-28.4930172!4d-59.6129197!16s%2Fg%2F11gszqv0mf?authuser=0&entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
+            title="Ver a la Comuna de Villa Ana en Google Maps"
+            class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-all hover:after:w-full"
           >
             25 de mayo esquina Uruguay, Villa Ana, Santa Fe, Argentina
           </a>
