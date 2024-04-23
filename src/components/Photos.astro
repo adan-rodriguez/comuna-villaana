@@ -19,11 +19,39 @@ const photos = [
           <figure class="rounded overflow-hidden">
             <img
               src={photo.url}
-              class="aspect-[3/4] object-cover hover:scale-105 transition-all"
+              class="photo w-full aspect-[3/4] object-cover hover:scale-105 transition-all sm:cursor-zoom-in max-sm:pointer-events-none"
             />
           </figure>
         );
       })
     }
   </div>
+  <dialog
+    class="photo-dialog overflow-x-hidden backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
+  >
+    <img
+      class="photo-zoom w-screen max-w-screen-lg aspect-video object-cover cursor-zoom-out"
+    />
+  </dialog>
 </section>
+
+<script>
+  const photos = document.querySelectorAll(".photo");
+  const photoDialog = document.querySelector(
+    ".photo-dialog"
+  ) as HTMLDialogElement;
+  const photoZoom = document.querySelector(".photo-zoom") as HTMLImageElement;
+
+  function handleClickPhoto(e) {
+    photoZoom.src = e.target.src;
+    photoDialog.showModal();
+  }
+
+  function handleClickInModal() {
+    photoZoom.src = "";
+    photoDialog.close();
+  }
+
+  photos.forEach((photo) => photo.addEventListener("click", handleClickPhoto));
+  photoDialog.addEventListener("click", handleClickInModal);
+</script>
