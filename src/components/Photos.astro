@@ -1,0 +1,29 @@
+---
+const photos = [
+  { url: "photos/photo1.webp" },
+  { url: "photos/photo2.webp" },
+  { url: "photos/photo3.jpg" },
+  { url: "photos/photo4.webp" },
+  { url: "photos/photo5.jpg" },
+  { url: "photos/photo6.jpg" },
+  { url: "photos/photo7.jpg" },
+];
+---
+
+<section class="pt-8">
+  <h2 class="text-white mb-4 text-2xl">Fotos</h2>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(208px,1fr))] gap-4">
+    {
+      photos.map((photo) => {
+        return (
+          <figure class="rounded overflow-hidden">
+            <img
+              src={photo.url}
+              class="aspect-[3/4] object-cover hover:scale-105 transition-all"
+            />
+          </figure>
+        );
+      })
+    }
+  </div>
+</section>

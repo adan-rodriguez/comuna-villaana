@@ -23,11 +23,11 @@ const { title } = Astro.props;
     <link rel="icon" type="image/webp" href="logo.webp" />
     <title>{title}</title>
   </head>
-  <body class="relative -z-20 bg-slate-950 md:overflow-y-auto">
+  <body class="relative -z-20 bg-slate-950 text-white md:overflow-y-auto">
     <Header />
     <slot />
     <footer
-      class="p-4 flex flex-col flex-wrap md:flex-row gap-6 justify-center items-center bg-white"
+      class="text-black p-4 flex flex-col flex-wrap md:flex-row gap-6 justify-center items-center bg-white"
     >
       <a href="/" class="hover:scale-105 transition-all">
         <Isologo />
@@ -67,7 +67,7 @@ const { title } = Astro.props;
       </address>
       <div class="flex gap-2">
         <a
-          href="http://facebook.com/comuna.villaana.50"
+          href="https://facebook.com/comuna.villaana.50"
           target="_blank"
           rel="noopener noreferrer"
           title="Ir a la página de Facebook de la Comuna de Villa Ana"
@@ -98,7 +98,6 @@ const { title } = Astro.props;
 
 <style is:global>
   html {
-    font-family: system-ui, sans-serif;
     background: #13151a;
     background-size: 224px;
   }
