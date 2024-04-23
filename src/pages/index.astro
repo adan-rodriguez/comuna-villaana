@@ -12,18 +12,41 @@ import Layout from "../layouts/Layout.astro";
     class="hero-video absolute top-0 -z-10 w-full h-dvh object-cover"></video>
   <main class="max-w-screen-lg mx-auto px-4 md:px-8 pb-4">
     <section
-      class="flex justify-center items-center h-[calc(100dvh-96px)] md:h-[calc(100dvh-128px)]"
+      class="flex flex-col gap-y-6 items-center h-[calc(100dvh-96px)] md:h-[calc(100dvh-128px)]"
     >
-      <h1 class="max-w-96 text-5xl text-center size text-balance underline">
-        Bienvenidos a la página de la Comuna de Villa Ana
-      </h1>
+      <a
+        href="#"
+        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >Noticias</a
+      >
+      <a
+        href="#"
+        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >Comunicados</a
+      >
+      <a
+        href="#"
+        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >Eventos</a
+      >
+      <a
+        href="#fotos"
+        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >Fotos</a
+      >
+      <a
+        href="#contacto"
+        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >Contacto</a
+      >
     </section>
     <Photos />
   </main>
 </Layout>
 
 <style>
-  h1 {
+  h1,
+  a {
     font-family: "Alex Brush", cursive;
   }
 
