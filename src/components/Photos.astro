@@ -10,16 +10,18 @@ const photos = [
 ];
 ---
 
-<section id="fotos" class="pt-8">
-  <h2 class="text-white mb-4 text-2xl">Fotos</h2>
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(208px,1fr))] gap-4">
+<section class="pt-8">
+  <h2 class="mb-4 text-2xl">Fotos</h2>
+  <div
+    class="photo-list grid grid-cols-[repeat(auto-fit,minmax(208px,1fr))] gap-4"
+  >
     {
       photos.map((photo) => {
         return (
-          <figure class="rounded overflow-hidden">
+          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:hover:after:content-[url('click.svg')_'_Haz_click_para_expandir_la_imagen']  after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs cursor-zoom-in group">
             <img
               src={photo.url}
-              class="photo w-full aspect-[3/4] object-cover hover:scale-105 transition-all sm:cursor-zoom-in max-sm:pointer-events-none"
+              class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform"
             />
           </figure>
         );
@@ -27,31 +29,57 @@ const photos = [
     }
   </div>
   <dialog
-    class="photo-dialog overflow-x-hidden backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
+    class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
   >
-    <img
-      class="photo-zoom w-screen max-w-screen-lg aspect-video object-cover cursor-zoom-out"
-    />
+    <img class="photo-zoom w-full aspect-video object-cover cursor-zoom-out" />
   </dialog>
 </section>
 
+<style is:global>
+  body:has(.photo-dialog[open]) {
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+  .photo {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+
+  @media (width >= 640px) {
+    .photo {
+      mask-image: none;
+    }
+
+    figure {
+      &:hover {
+        .photo {
+          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+      }
+    }
+  }
+</style>
+
 <script>
-  const photos = document.querySelectorAll(".photo");
-  const photoDialog = document.querySelector(
+  const $photoList = document.querySelector(".photo-list");
+  const $photoModal = document.querySelector(
     ".photo-dialog"
   ) as HTMLDialogElement;
-  const photoZoom = document.querySelector(".photo-zoom") as HTMLImageElement;
+  const $photoZoom = document.querySelector(".photo-zoom") as HTMLImageElement;
 
   function handleClickPhoto(e) {
-    photoZoom.src = e.target.src;
-    photoDialog.showModal();
+    if (e.target.matches(".photo")) {
+      $photoZoom.src = e.target.src;
+      $photoModal.showModal();
+    }
   }
 
-  function handleClickInModal() {
-    photoZoom.src = "";
-    photoDialog.close();
+  function handleClickInPhotoModal() {
+    $photoModal.close();
+    $photoZoom.src = "";
   }
 
-  photos.forEach((photo) => photo.addEventListener("click", handleClickPhoto));
-  photoDialog.addEventListener("click", handleClickInModal);
+  $photoList.addEventListener("click", handleClickPhoto);
+  $photoModal.addEventListener("click", handleClickInPhotoModal);
 </script>
