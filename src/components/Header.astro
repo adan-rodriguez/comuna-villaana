@@ -15,7 +15,7 @@ import XIcon from "./icons/XIcon.astro";
     </a>
     <button
       aria-label="Abrir menú"
-      class="open-menu-btn justify-self-end md:hidden hover:scale-105 transition-all"
+      class="open-menu-btn z-10 justify-self-end md:hidden hover:scale-105 transition-all"
     >
       <MenuIcon />
     </button>
@@ -25,15 +25,57 @@ import XIcon from "./icons/XIcon.astro";
     >
       <XIcon />
     </button>
-    <nav
-      class="z-10 col-span-2 flex max-md:hidden gap-6 flex-col items-center md:flex-row py-4 md:py-0 *:relative *:after:absolute *:after:w-0 *:after:h-[2px] *:after:-bottom-1 *:after:left-0 *:after:transition-[width] *:after:bg-white"
-    >
-      <a href="#" class="hover:after:w-full"> Gobierno </a>
-      <a href="#" class="hover:after:w-full"> Mi Pueblo </a>
-      <a href="#" class="hover:after:w-full"> Noticias </a>
+    <nav class="py-4 md:py-0 z-10 max-md:hidden col-span-2">
+      <ul class="flex gap-6 flex-col md:flex-row">
+        <li>
+          <a
+            href="#"
+            class="nav-link block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('chevron-up.svg')] after:absolute after:right-0 after:scale-75 md:hover:after:content-[url('chevron-down.svg')] peer"
+          >
+            Gobierno
+          </a>
+          <ul
+            class="flex max-md:hidden md:hidden md:peer-hover:flex flex-col gap-6 pl-4 pt-6 md:absolute md:backdrop-blur-xl md:border md:border-gray-400 md:rounded"
+          >
+            <li>
+              <a
+                href="#"
+                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                >Trámites</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                >Noticias</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                >Comunicados</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('chevron-up.svg')] after:absolute after:right-0 after:scale-75"
+          >
+            Mi Pueblo
+          </a>
+        </li>
+      </ul>
     </nav>
   </div>
 </header>
+
+<!--
+class="after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:transition-[width] after:bg-white hover:after:w-full"
+-->
 
 <script>
   const $body = document.querySelector("body");
@@ -43,7 +85,7 @@ import XIcon from "./icons/XIcon.astro";
   const $closeMenuBtn = document.querySelector(".close-menu-btn");
   const $menu = document.querySelector("nav");
 
-  function handleClick() {
+  function handleClickMenuBtn() {
     $openMenuBtn.classList.toggle("hidden");
     $closeMenuBtn.classList.toggle("hidden");
     $menu.classList.toggle("max-md:hidden");
@@ -52,6 +94,22 @@ import XIcon from "./icons/XIcon.astro";
     $body.classList.toggle("overflow-y-hidden");
   }
 
-  $openMenuBtn.addEventListener("click", handleClick);
-  $closeMenuBtn.addEventListener("click", handleClick);
+  function handleClick(e) {
+    const $clickedElement = e.target;
+    if ($clickedElement.matches(".nav-link")) {
+      $clickedElement.nextElementSibling.classList.toggle("max-md:hidden");
+    }
+  }
+
+  $openMenuBtn.addEventListener("click", handleClickMenuBtn);
+  $closeMenuBtn.addEventListener("click", handleClickMenuBtn);
+  $menu.addEventListener("click", handleClick);
 </script>
+
+<style>
+  @media (width <= 768px) {
+    li:not(:has(.max-md\:hidden)) .nav-link::after {
+      content: url("chevron-down.svg");
+    }
+  }
+</style>
