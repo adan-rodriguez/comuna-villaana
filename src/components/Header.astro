@@ -5,7 +5,7 @@ import XIcon from "./icons/XIcon.astro";
 ---
 
 <header
-  class="text-white md:bg-transparent bg-opacity-90 transition-all overflow-y-auto"
+  class="md:bg-transparent bg-opacity-90 transition-all overflow-y-auto md:overflow-visible"
 >
   <div
     class="header max-w-screen-lg mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 transition-all md:h-auto"
@@ -27,34 +27,34 @@ import XIcon from "./icons/XIcon.astro";
     </button>
     <nav class="py-4 md:py-0 z-10 max-md:hidden col-span-2">
       <ul class="flex gap-6 flex-col md:flex-row">
-        <li>
+        <li class="relative group">
           <a
             href="#"
-            class="nav-link block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('chevron-up.svg')] after:absolute after:right-0 after:scale-75 md:hover:after:content-[url('chevron-down.svg')] peer"
+            class="nav-link block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 after:scale-75 peer md:group-has-[:hover]:after:content-[url('/chevron-down.svg')]"
           >
             Gobierno
           </a>
           <ul
-            class="flex max-md:hidden md:hidden md:peer-hover:flex flex-col gap-6 pl-4 pt-6 md:absolute md:backdrop-blur-xl md:border md:border-gray-400 md:rounded"
+            class="flex max-md:hidden md:hidden md:peer-hover:flex hover:flex flex-col gap-6 py-6 pl-4 md:absolute md:backdrop-blur-xl md:border md:border-gray-400 md:rounded md:min-w-40 md:max-w-80 right-0"
           >
             <li>
               <a
                 href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
                 >Trámites</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
                 >Noticias</a
               >
             </li>
             <li>
               <a
                 href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 pr-6"
+                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
                 >Comunicados</a
               >
             </li>
@@ -63,7 +63,7 @@ import XIcon from "./icons/XIcon.astro";
         <li>
           <a
             href="#"
-            class="block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('chevron-up.svg')] after:absolute after:right-0 after:scale-75"
+            class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 after:scale-75"
           >
             Mi Pueblo
           </a>
@@ -109,7 +109,7 @@ class="after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after
 <style>
   @media (width <= 768px) {
     li:not(:has(.max-md\:hidden)) .nav-link::after {
-      content: url("chevron-down.svg");
+      content: url("/chevron-down.svg");
     }
   }
 </style>
