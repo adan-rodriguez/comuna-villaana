@@ -2,102 +2,58 @@
 import Isologo from "./Isologo.astro";
 import MenuIcon from "./icons/MenuIcon.astro";
 import XIcon from "./icons/XIcon.astro";
+import MenuList from "./MenuList.astro";
+
+const menu = [
+  { text: "Gobierno", links: [{ text: "Trámites" }, { text: "Comunicados" }] },
+  {
+    text: "Mi Pueblo",
+    links: [
+      { text: "Galería", links: [{ text: "Fotos" }, { text: "Videos" }] },
+    ],
+  },
+  { text: "Pagos" },
+];
 ---
 
-<header
-  class="md:bg-transparent bg-opacity-90 transition-all overflow-y-auto md:overflow-visible"
->
+<header class="relative z-10 overflow-y-auto md:overflow-visible">
   <div
-    class="header max-w-screen-lg mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 transition-all md:h-auto"
+    class="header container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
-    <a href="/" class="justify-self-start hover:scale-105 transition-all">
+    <a href="/" class="justify-self-start hover:scale-105 transition-transform">
       <Isologo />
     </a>
     <button
       aria-label="Abrir menú"
-      class="open-menu-btn z-10 justify-self-end md:hidden hover:scale-105 transition-all"
+      class="open-menu justify-self-end md:hidden hover:scale-105 transition-transform"
     >
       <MenuIcon />
     </button>
     <button
       aria-label="Cerrar menú"
-      class="close-menu-btn hidden justify-self-end md:hidden hover:scale-105 transition-all"
+      class="close-menu hidden justify-self-end hover:scale-105 transition-transform"
     >
       <XIcon />
     </button>
-    <nav class="py-4 md:py-0 z-10 max-md:hidden col-span-2">
-      <ul class="flex gap-6 flex-col md:flex-row">
-        <li class="relative group">
-          <a
-            href="#"
-            class="nav-link block relative border-b border-gray-400 md:border-none pb-2 pr-6 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 after:scale-75 peer md:group-has-[:hover]:after:content-[url('/chevron-down.svg')]"
-          >
-            Gobierno
-          </a>
-          <ul
-            class="flex max-md:hidden md:hidden md:peer-hover:flex hover:flex flex-col gap-6 py-6 pl-4 md:absolute md:backdrop-blur-xl md:border md:border-gray-400 md:rounded md:min-w-40 md:max-w-80 right-0"
-          >
-            <li>
-              <a
-                href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
-                >Trámites</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
-                >Noticias</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6"
-                >Comunicados</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a
-            href="#"
-            class="block relative border-b border-gray-400 md:border-none pb-2 md:pb-0 pr-6 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 after:scale-75"
-          >
-            Mi Pueblo
-          </a>
-        </li>
-      </ul>
+    <nav class="menu py-4 md:py-0 z-10 hidden md:block col-span-2 max-w">
+      <MenuList items={menu} />
     </nav>
   </div>
 </header>
 
-<!--
-class="after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:transition-[width] after:bg-white hover:after:w-full"
--->
-
 <script>
-  const $body = document.querySelector("body");
-  const $container = document.querySelector("header");
-  const $header = document.querySelector(".header");
-  const $openMenuBtn = document.querySelector(".open-menu-btn");
-  const $closeMenuBtn = document.querySelector(".close-menu-btn");
-  const $menu = document.querySelector("nav");
+  const $openMenuBtn = document.querySelector("button.open-menu");
+  const $closeMenuBtn = document.querySelector("button.close-menu");
+  const $menu = document.querySelector(".menu");
 
   function handleClickMenuBtn() {
-    $openMenuBtn.classList.toggle("hidden");
-    $closeMenuBtn.classList.toggle("hidden");
-    $menu.classList.toggle("max-md:hidden");
-    $container.classList.toggle("bg-slate-950");
-    $header.classList.toggle("h-dvh");
-    $body.classList.toggle("overflow-y-hidden");
+    $menu.classList.toggle("open");
   }
 
   function handleClick(e) {
     const $clickedElement = e.target;
-    if ($clickedElement.matches(".nav-link")) {
-      $clickedElement.nextElementSibling.classList.toggle("max-md:hidden");
+    if ($clickedElement.matches(".dropdown")) {
+      $clickedElement.nextElementSibling.classList.toggle("open");
     }
   }
 
@@ -106,10 +62,95 @@ class="after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after
   $menu.addEventListener("click", handleClick);
 </script>
 
+<style is:global>
+  body:has(.menu.open) {
+    overflow: hidden;
+  }
+
+  .menu > ul {
+    @media (width >= 768px) {
+      display: flex;
+      gap: 1.5rem;
+      flex-direction: row;
+    }
+  }
+
+  .menu > ul > li > .dropdown {
+    @media (width >= 768px) {
+      padding-top: 0;
+      padding-left: 0;
+      border: none;
+    }
+  }
+
+  .menu > ul > li > a {
+    @media (width >= 768px) {
+      padding-top: 0;
+      padding-inline: 0;
+      border: none;
+    }
+  }
+
+  .menu > ul > li li a:hover {
+    @media (width >= 768px) {
+      background-color: #9ca3af;
+    }
+  }
+
+  .menu > ul > li ul {
+    padding-left: 1rem;
+    @media (width >= 768px) {
+      padding-left: 0;
+      background-color: #020617e6;
+    }
+  }
+
+  .menu > ul > li > ul {
+    @media (width >= 768px) {
+      position: absolute;
+      /* backdrop-filter: blur(24px); */
+      border: 1px solid #9ca3af;
+      border-bottom: none;
+      min-width: 16rem;
+      max-width: 24rem;
+      right: 0;
+    }
+  }
+
+  .menu > ul > li > ul ul {
+    @media (width >= 768px) {
+      position: absolute;
+      /* backdrop-filter: blur(24px); */
+      border: 1px solid #9ca3af;
+      border-bottom: none;
+      min-width: 16rem;
+      max-width: 24rem;
+      top: -1px;
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
 <style>
-  @media (width <= 768px) {
-    li:not(:has(.max-md\:hidden)) .nav-link::after {
-      content: url("/chevron-down.svg");
+  @media (width < 768px) {
+    header:has(.menu.open) {
+      background-color: #020617e6;
+
+      > div {
+        height: 100dvh;
+
+        button.open-menu {
+          display: none;
+        }
+
+        button.close-menu {
+          display: block;
+        }
+
+        .menu {
+          display: block;
+        }
+      }
     }
   }
 </style>

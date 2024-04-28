@@ -1,0 +1,47 @@
+---
+const { items } = Astro.props;
+---
+
+<ul>
+  {
+    items.map((item) => (
+      <li class="md:relative group">
+        {item.links ? (       
+            <span class="dropdown block relative cursor-pointer border-b border-gray-400 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 after:scale-75 md:group-hover:after:content-[url('/chevron-down.svg')] text-gray-300 pt-5 pb-1 pr-6 md:pl-6 md:py-3">
+              {item.text}
+            </span>
+            <Astro.self items={item.links} />
+        ) : (
+          <a href="#" class="block border-b border-gray-400 pt-5 pb-1 md:px-6 md:py-3 transition-colors">
+            {item.text}
+          </a>
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  li > ul {
+    display: none;
+
+    &.open {
+      @media (width < 768px) {
+      display: block;
+    }
+  }
+
+  }
+  
+  li:hover > ul {
+    @media (width >= 768px) {
+        display: block;
+    }
+  }
+
+  @media (width < 768px) {
+    li:has(ul.open) > .dropdown::after {
+      content: url("/chevron-down.svg");
+    }
+  }
+</style>
