@@ -16,7 +16,7 @@ const menu = [
 ];
 ---
 
-<header class="relative z-10 overflow-y-auto md:overflow-visible">
+<header class="relative overflow-y-auto md:overflow-visible z-10">
   <div
     class="header container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
@@ -108,7 +108,6 @@ const menu = [
   .menu > ul > li > ul {
     @media (width >= 768px) {
       position: absolute;
-      /* backdrop-filter: blur(24px); */
       border: 1px solid #9ca3af;
       border-bottom: none;
       min-width: 16rem;
@@ -120,7 +119,6 @@ const menu = [
   .menu > ul > li > ul ul {
     @media (width >= 768px) {
       position: absolute;
-      /* backdrop-filter: blur(24px); */
       border: 1px solid #9ca3af;
       border-bottom: none;
       min-width: 16rem;

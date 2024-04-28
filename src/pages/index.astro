@@ -1,5 +1,6 @@
 ---
 import Photos from "../components/Photos.astro";
+import Tramites from "../components/Tramites.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -9,7 +10,7 @@ import Layout from "../layouts/Layout.astro";
     autoplay
     loop
     muted
-    class="hero-video absolute top-0 w-full h-dvh max-h-[1080px] object-cover"
+    class="hero-video absolute top-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
   ></video>
   <main class="container mx-auto px-4 md:px-8 pb-4">
     <section
@@ -31,7 +32,7 @@ import Layout from "../layouts/Layout.astro";
         >Eventos</a
       >
       <a
-        href="#"
+        href="#tramites"
         class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
         >Trámites</a
       >
@@ -41,6 +42,7 @@ import Layout from "../layouts/Layout.astro";
         >Contacto</a
       >
     </section>
+    <Tramites />
     <Photos />
   </main>
   <!-- <iframe
