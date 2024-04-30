@@ -1,25 +1,26 @@
 ---
 import CarIcon from "./icons/CarIcon.astro";
+import FileCertificationIcon from "./icons/FileCertificationIcon.astro";
 import FocoIcon from "./icons/FocoIcon.astro";
 import HomeIcon from "./icons/HomeIcon.astro";
 ---
 
 <section id="tramites" class="pt-8">
   <h2 class="mb-4 text-2xl">Trámites</h2>
-  <div class="flex flex-wrap gap-6">
+  <div class="flex flex-col sm:flex-row flex-wrap gap-6">
     <a
       href="https://www.santafe.gov.ar/e-pt-boletas"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center hover:scale-105 transition-transform"
-      ><CarIcon class="text-[#35B700] size-40" /><h3>Patente</h3></a
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
+      ><CarIcon class="text-[#35B700] size-20" /><h3>Patente</h3></a
     >
     <a
       href="https://www.santafe.gov.ar/e-in-boletas/"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center hover:scale-105 transition-transform"
-      ><HomeIcon class="text-[#35B700] size-40" /><h3>
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
+      ><HomeIcon class="text-[#35B700] size-20" /><h3>
         Impuesto inmobiliario
       </h3></a
     >
@@ -27,9 +28,18 @@ import HomeIcon from "./icons/HomeIcon.astro";
       href="https://www.santafe.gov.ar/e-in-boletas/"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center hover:scale-105 transition-transform"
-      ><FocoIcon class="text-[#35B700] size-40" /><h3>
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
+      ><FocoIcon class="text-[#35B700] size-20" /><h3>
         EPE - Oficina Virtual
+      </h3></a
+    >
+    <a
+      href="https://www.santafe.gov.ar/e-in-boletas/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
+      ><FileCertificationIcon class="text-[#35B700] size-20" /><h3>
+        Partida de nacimiento
       </h3></a
     >
   </div>

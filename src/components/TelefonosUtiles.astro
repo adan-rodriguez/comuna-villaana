@@ -1,0 +1,35 @@
+---
+import HospitalIcon from "./icons/HospitalIcon.astro";
+import MailIcon from "./icons/MailIcon.astro";
+import ComisariaIcon from "./icons/ComisariaIcon.astro";
+---
+
+<section class="pt-8">
+  <h2 class="mb-4 text-2xl">Teléfonos útiles</h2>
+  <address class="not-italic">
+    <div>
+      <HospitalIcon class="inline align-sub" />
+      <span>Hospital: </span><a
+        href="tel:+5493482524950"
+        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >+54 9 3482 524950</a
+      >
+    </div>
+    <div>
+      <MailIcon class="inline align-sub" />
+      <span>Correo: </span><a
+        href="tel:+5493482524950"
+        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >+54 9 3482 524950</a
+      >
+    </div>
+    <div>
+      <ComisariaIcon class="inline align-sub" />
+      <span>Policia: </span><a
+        href="tel:+5493482524950"
+        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        >+54 9 3482 524950</a
+      >
+    </div>
+  </address>
+</section>
