@@ -6,6 +6,12 @@ export default {
       fontFamily: {
         brush: "Alex Brush, cursive",
       },
+      colors: {
+        "custom-red": "#f12b42",
+        "custom-green": "#3fae07",
+        "custom-blue": "#112886",
+        "custom-skyblue": "#45cede",
+      },
     },
   },
   plugins: [],

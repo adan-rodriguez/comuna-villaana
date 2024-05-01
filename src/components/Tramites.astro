@@ -6,21 +6,25 @@ import HomeIcon from "./icons/HomeIcon.astro";
 ---
 
 <section id="tramites" class="pt-8">
-  <h2 class="mb-4 text-2xl">Trámites</h2>
+  <h2
+    class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+  >
+    Trámites
+  </h2>
   <div class="flex flex-col sm:flex-row flex-wrap gap-6">
     <a
       href="https://www.santafe.gov.ar/e-pt-boletas"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
-      ><CarIcon class="text-[#35B700] size-20" /><h3>Patente</h3></a
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
+      ><CarIcon class="text-custom-green size-20" /><h3>Patente</h3></a
     >
     <a
       href="https://www.santafe.gov.ar/e-in-boletas/"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
-      ><HomeIcon class="text-[#35B700] size-20" /><h3>
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
+      ><HomeIcon class="text-custom-green size-20" /><h3>
         Impuesto inmobiliario
       </h3></a
     >
@@ -28,8 +32,8 @@ import HomeIcon from "./icons/HomeIcon.astro";
       href="https://www.santafe.gov.ar/e-in-boletas/"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
-      ><FocoIcon class="text-[#35B700] size-20" /><h3>
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
+      ><FocoIcon class="text-custom-green size-20" /><h3>
         EPE - Oficina Virtual
       </h3></a
     >
@@ -37,10 +41,16 @@ import HomeIcon from "./icons/HomeIcon.astro";
       href="https://www.santafe.gov.ar/e-in-boletas/"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform px-4 py-2 border rounded"
-      ><FileCertificationIcon class="text-[#35B700] size-20" /><h3>
+      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
+      ><FileCertificationIcon class="text-custom-green size-20" /><h3>
         Partida de nacimiento
       </h3></a
     >
   </div>
 </section>
+
+<style>
+  a {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>

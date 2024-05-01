@@ -11,14 +11,18 @@ const photos = [
 ---
 
 <section class="pt-8">
-  <h2 class="mb-4 text-2xl">Fotos</h2>
+  <h2
+    class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat w-fit pr-16"
+  >
+    Fotos
+  </h2>
   <div
     class="photo-list grid grid-cols-[repeat(auto-fit,minmax(208px,1fr))] gap-4"
   >
     {
       photos.map((photo) => {
         return (
-          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:hover:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen']  after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs cursor-zoom-in group">
+          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:hover:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs cursor-zoom-in group bg-black">
             <img
               src={photo.url}
               class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform"
@@ -54,7 +58,7 @@ const photos = [
     figure {
       &:hover {
         .photo {
-          mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black, transparent 100%);
         }
       }
     }

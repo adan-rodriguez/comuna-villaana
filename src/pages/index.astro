@@ -8,40 +8,44 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Comuna de Villa Ana">
-  <video
-    src="hero-video-phone.mp4"
-    autoplay
-    loop
-    muted
-    class="hero-video absolute top-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
-  ></video>
+  <div
+    class="absolute bg-black top-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
+  >
+    <video
+      src="hero-video-phone.mp4"
+      autoplay
+      loop
+      muted
+      class="w-full h-full object-cover [mask-image:linear-gradient(to_top,black_0%,transparent_100%)]"
+    ></video>
+  </div>
   <main class="container mx-auto px-4 md:px-8 pb-4">
     <section
-      class="flex flex-col gap-y-6 justify-center items-center h-[calc(100dvh-96px)] md:h-[calc(100dvh-128px)] max-h-[1080px] -translate-y-[48px] md:-translate-y-[64px]"
+      class="flex flex-col gap-y-6 justify-center items-center h-[calc(100dvh-96px)] md:h-[calc(100dvh-128px)] max-h-[1080px] -translate-y-[48px] md:-translate-y-[64px] text-white"
     >
       <a
         href="#"
-        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
         >Noticias</a
       >
       <a
         href="#"
-        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
         >Comunicados</a
       >
       <a
         href="#"
-        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
         >Eventos</a
       >
       <a
         href="#tramites"
-        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
         >Trámites</a
       >
       <a
         href="#contacto"
-        class="text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-white after:transition-all hover:after:w-full"
+        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
         >Contacto</a
       >
     </section>
@@ -52,14 +56,3 @@ import Layout from "../layouts/Layout.astro";
     <SitiosDeInteres />
   </main>
 </Layout>
-
-<style>
-  h1,
-  a {
-    font-family: "Alex Brush", cursive;
-  }
-
-  .hero-video {
-    mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  }
-</style>

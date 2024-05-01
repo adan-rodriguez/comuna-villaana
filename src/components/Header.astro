@@ -16,7 +16,7 @@ const menu = [
 ];
 ---
 
-<header class="relative overflow-y-auto md:overflow-visible z-10">
+<header class="relative overflow-y-auto md:overflow-visible z-10 text-white">
   <div
     class="header container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
@@ -50,7 +50,7 @@ const menu = [
     $menu.classList.toggle("open");
   }
 
-  function handleClick(e) {
+  function handleClickDropdown(e) {
     const $clickedElement = e.target;
     if ($clickedElement.matches(".dropdown")) {
       $clickedElement.nextElementSibling.classList.toggle("open");
@@ -59,7 +59,7 @@ const menu = [
 
   $openMenuBtn.addEventListener("click", handleClickMenuBtn);
   $closeMenuBtn.addEventListener("click", handleClickMenuBtn);
-  $menu.addEventListener("click", handleClick);
+  $menu.addEventListener("click", handleClickDropdown);
 </script>
 
 <style is:global>
@@ -93,7 +93,7 @@ const menu = [
 
   .menu > ul > li li a:hover {
     @media (width >= 768px) {
-      background-color: #9ca3af;
+      background-color: color-mix(in srgb, var(--skyblue), transparent 80%);
     }
   }
 
@@ -101,7 +101,7 @@ const menu = [
     padding-left: 1rem;
     @media (width >= 768px) {
       padding-left: 0;
-      background-color: #020617e6;
+      background-color: color-mix(in srgb, var(--blue), transparent 40%);
     }
   }
 
@@ -132,7 +132,7 @@ const menu = [
 <style>
   @media (width < 768px) {
     header:has(.menu.open) {
-      background-color: #020617e6;
+      background-color: color-mix(in srgb, var(--blue), transparent 20%);
 
       > div {
         height: 100dvh;

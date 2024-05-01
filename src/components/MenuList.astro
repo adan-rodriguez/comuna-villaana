@@ -24,10 +24,11 @@ const { items } = Astro.props;
 <style>
   li > ul {
     display: none;
-  
-  &.open {
-    @media (width < 768px) {
-      display: block;
+    
+    &.open {
+      @media (width < 768px) {
+        display: block;
+        
     }
   }
 

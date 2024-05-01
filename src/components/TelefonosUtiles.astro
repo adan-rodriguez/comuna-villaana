@@ -5,31 +5,44 @@ import ComisariaIcon from "./icons/ComisariaIcon.astro";
 ---
 
 <section class="pt-8">
-  <h2 class="mb-4 text-2xl">Teléfonos útiles</h2>
-  <address class="not-italic">
-    <div>
-      <HospitalIcon class="inline align-sub" />
-      <span>Hospital: </span><a
+  <h2
+    class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
+  >
+    Teléfonos útiles
+  </h2>
+  <address class="not-italic flex flex-col sm:flex-row sm:flex-wrap gap-6">
+    <div
+      class="flex flex-col justify-center items-center gap-1 px-4 py-2 border-2 border-custom-green rounded-lg bg-white sm:min-w-60 sm:aspect-square sm:h-40"
+    >
+      <a
         href="tel:+5493482524950"
-        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
-        >+54 9 3482 524950</a
+        class="block font-bold text-lg relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-[width] hover:after:w-full"
+        title="Llamar al hospital de Villa Ana">+54 9 3482 524950</a
       >
+      <HospitalIcon class="text-custom-red" />
+      <span>Hospital</span>
     </div>
-    <div>
-      <MailIcon class="inline align-sub" />
-      <span>Correo: </span><a
+    <div
+      class="flex flex-col justify-center items-center gap-1 px-4 py-2 border-2 border-custom-green rounded-lg bg-white sm:min-w-60 sm:aspect-square sm:h-40"
+    >
+      <a
         href="tel:+5493482524950"
-        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
-        >+54 9 3482 524950</a
+        class="block font-bold text-lg relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-[width] hover:after:w-full"
+        title="Llamar al correo de Villa Ana">+54 9 3482 524950</a
       >
+      <MailIcon class="text-yellow-500" />
+      <span>Correo</span>
     </div>
-    <div>
-      <ComisariaIcon class="inline align-sub" />
-      <span>Policia: </span><a
+    <div
+      class="flex flex-col justify-center items-center gap-1 px-4 py-2 border-2 border-custom-green rounded-lg bg-white sm:min-w-60 sm:aspect-square sm:h-40"
+    >
+      <a
         href="tel:+5493482524950"
-        class="transition-all relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-all hover:after:w-full"
-        >+54 9 3482 524950</a
+        class="block font-bold text-lg relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-black after:transition-[width] hover:after:w-full"
+        title="Llamar a la policia de Villa Ana">+54 9 3482 524950</a
       >
+      <ComisariaIcon class="text-custom-blue" />
+      <span>Policia</span>
     </div>
   </address>
 </section>
