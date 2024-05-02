@@ -1,0 +1,212 @@
+---
+const images = [
+  {
+    src: "https://img.freepik.com/foto-gratis/colores-arremolinados-interactuan-danza-fluida-sobre-lienzo-que-muestra-tonos-vibrantes-patrones-dinamicos-que-capturan-caos-belleza-arte-abstracto_157027-2892.jpg",
+    alt: "",
+  },
+  {
+    src: "https://img.freepik.com/foto-gratis/papel-pintado-gatito-lindo-fantasia_1409-6188.jpg",
+    alt: "",
+  },
+  {
+    src: "https://www.educaciontrespuntocero.com/wp-content/uploads/2020/04/mejores-bancos-de-imagenes-gratis.jpg",
+    alt: "",
+  },
+];
+---
+
+<section>
+  <div class="slider-container">
+    <div class="slider">
+      {
+        images.map((image) => (
+          <div class="slide">
+            <img src={image.src} alt={image.alt} />
+          </div>
+        ))
+      }
+    </div>
+    <button class="prev-btn"><img src="/chevron-up.svg" /></button>
+    <button class="next-btn"><img src="/chevron-up.svg" /></button>
+    <div class="slider-indicators">
+      {
+        images.map((image, index) => (
+          <button class="indicator" data-slide={index} />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const $slider = document.querySelector(".slider");
+  const $prevBtn = document.querySelector(".prev-btn");
+  const $nextBtn = document.querySelector(".next-btn");
+  const $sliderIndicators = document.querySelector(".slider-indicators");
+  const $indicators = [...$sliderIndicators.querySelectorAll(".indicator")];
+
+  let slideIndex = 0;
+  const $slides = [...document.querySelectorAll(".slide")];
+  const totalSlides = $slides.length;
+  let intervalId;
+
+  // Función para mostrar la diapositiva actual
+  function showSlide() {
+    $slides.forEach(($slide) => ($slide.style.zIndex = "0"));
+    $slides[slideIndex].style.zIndex = "1";
+    $indicators.forEach(
+      ($indicator) => ($indicator.style.backgroundColor = "white")
+    );
+    $indicators[slideIndex].style.backgroundColor = "#333";
+  }
+
+  // Función para avanzar a la siguiente diapositiva
+  function nextSlide() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, 5000);
+    if (slideIndex < totalSlides - 1) {
+      slideIndex++;
+    } else {
+      slideIndex = 0;
+    }
+    showSlide();
+  }
+
+  // Función para retroceder a la diapositiva anterior
+  function prevSlide() {
+    if (slideIndex > 0) {
+      slideIndex--;
+    } else {
+      slideIndex = totalSlides - 1;
+    }
+    showSlide();
+  }
+
+  function goToSlide(e) {
+    const $elemClicked = e.target;
+    if ($elemClicked.matches(".indicator")) {
+      slideIndex = +$elemClicked.dataset.slide;
+    }
+    showSlide();
+  }
+
+  $nextBtn.addEventListener("click", nextSlide);
+
+  $prevBtn.addEventListener("click", prevSlide);
+
+  $sliderIndicators.addEventListener("click", goToSlide);
+
+  $slider.addEventListener("mouseover", () => clearInterval(intervalId));
+  $slider.addEventListener(
+    "mouseleave",
+    () => (intervalId = setInterval(nextSlide, 5000))
+  );
+
+  intervalId = setInterval(nextSlide, 5000);
+</script>
+
+<style>
+  section {
+    margin-top: 1.5rem;
+  }
+
+  .slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 0.25rem;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    isolation: isolate;
+  }
+
+  .slide {
+    position: absolute;
+    transition: z-index 0.5s ease;
+    height: 100%;
+    width: 100%;
+    background: #000;
+  }
+
+  .slide img {
+    display: block;
+    height: 100%;
+    margin-inline: auto;
+    object-fit: cover;
+  }
+
+  .slide:first-child {
+    z-index: 1;
+  }
+
+  .prev-btn,
+  .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: scale 0.3s;
+    opacity: 0.8;
+
+    &:hover {
+      scale: 1.05;
+      opacity: 1;
+    }
+  }
+
+  .prev-btn {
+    left: 10px;
+
+    img {
+      rotate: -90deg;
+      translate: -5px 0;
+    }
+  }
+
+  .next-btn {
+    right: 10px;
+    img {
+      rotate: 90deg;
+      translate: 5px 0;
+    }
+  }
+
+  .slider-indicators {
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+  }
+
+  button.indicator {
+    padding: 0.5rem;
+    border: 1px solid #333;
+    border-radius: 100%;
+    transition:
+      background-color 0.15s,
+      scale 0.3s;
+    background-color: white;
+    opacity: 0.8;
+
+    &:hover {
+      scale: 1.05;
+      opacity: 1;
+    }
+  }
+
+  button.indicator:first-child {
+    background-color: #333;
+  }
+</style>

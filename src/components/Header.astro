@@ -35,7 +35,7 @@ const menu = [
     >
       <XIcon />
     </button>
-    <nav class="menu py-4 md:py-0 z-10 hidden md:block col-span-2 max-w">
+    <nav class="menu py-4 md:py-0 z-10 hidden md:block col-span-2">
       <MenuList items={menu} />
     </nav>
   </div>
@@ -53,7 +53,8 @@ const menu = [
   function handleClickDropdown(e) {
     const $clickedElement = e.target;
     if ($clickedElement.matches(".dropdown")) {
-      $clickedElement.nextElementSibling.classList.toggle("open");
+      const dropdown = $clickedElement.nextElementSibling;
+      dropdown.classList.toggle("open");
     }
   }
 
@@ -70,8 +71,8 @@ const menu = [
   .menu > ul {
     @media (width >= 768px) {
       display: flex;
-      gap: 1.5rem;
       flex-direction: row;
+      gap: 1.5rem;
     }
   }
 

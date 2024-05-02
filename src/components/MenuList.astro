@@ -5,9 +5,9 @@ const { items } = Astro.props;
 <ul>
   {
     items.map((item) => (
-      <li class="md:relative group">
+      <li class="md:relative">
         {item.links ? (       
-            <span class="dropdown block relative cursor-pointer border-b border-gray-400 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 md:after:top-[-3px] after:scale-75 after:transition-[rotate] md:hover:after:[rotate:180deg] md:has-[:hover]:after:[rotate:180deg] text-gray-300 pt-5 pb-1 pr-6 md:pl-6 md:py-3">
+            <span class="dropdown block relative cursor-pointer border-b border-gray-400 after:content-[url('/chevron-up.svg')] after:absolute after:right-0 md:after:top-[-3px] after:scale-75 after:transition-[rotate] md:hover:after:[rotate:180deg] text-gray-300 pt-5 pb-1 pr-6 md:pl-6 md:py-3">
               {item.text}
             </span>
             <Astro.self items={item.links} />
