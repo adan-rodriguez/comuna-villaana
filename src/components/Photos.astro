@@ -17,12 +17,12 @@ const photos = [
     Fotos
   </h2>
   <div
-    class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(208px,100%),1fr))] gap-4"
+    class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
   >
     {
       photos.map((photo) => {
         return (
-          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:hover:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs cursor-zoom-in group bg-black">
+          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:hover:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance cursor-zoom-in group bg-black">
             <img
               src={photo.url}
               class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform"
