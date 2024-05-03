@@ -63,17 +63,22 @@ const menu = [
     $menu.classList.toggle("open");
   }
 
-  function handleClickDropdown(e) {
+  function handleClickMenu(e) {
     const $clickedElement = e.target;
     if ($clickedElement.matches(".dropdown")) {
       const dropdown = $clickedElement.nextElementSibling;
       dropdown.classList.toggle("open");
+      return;
+    }
+
+    if ($clickedElement.matches(".link")) {
+      $menu.classList.remove("open");
     }
   }
 
   $openMenuBtn.addEventListener("click", handleClickMenuBtn);
   $closeMenuBtn.addEventListener("click", handleClickMenuBtn);
-  $menu.addEventListener("click", handleClickDropdown);
+  $menu.addEventListener("click", handleClickMenu);
 </script>
 
 <style is:global>
