@@ -27,8 +27,8 @@ const images = [
   <div class="slider-container">
     <div class="slider">
       {
-        images.map((image) => (
-          <div class="slide">
+        images.map((image, index) => (
+          <div class={`slide ${index === 0 ? "active" : ""}`}>
             <img src={image.src} alt={image.alt} />
           </div>
         ))
@@ -39,7 +39,10 @@ const images = [
     <div class="slider-indicators">
       {
         images.map((image, index) => (
-          <button class="indicator" data-slide={index} />
+          <button
+            class={`indicator ${index === 0 ? "active" : ""}`}
+            data-slide={index}
+          />
         ))
       }
     </div>
@@ -59,12 +62,10 @@ const images = [
   let intervalId;
 
   function showSlide() {
-    $slides.forEach(($slide) => ($slide.style.zIndex = "0"));
-    $slides[slideIndex].style.zIndex = "1";
-    $indicators.forEach(
-      ($indicator) => ($indicator.style.backgroundColor = "white")
-    );
-    $indicators[slideIndex].style.backgroundColor = "#333";
+    $slides.forEach(($slide) => $slide.classList.remove("active"));
+    $slides[slideIndex].classList.add("active");
+    $indicators.forEach(($indicator) => $indicator.classList.remove("active"));
+    $indicators[slideIndex].classList.add("active");
   }
 
   function nextAutomaticSlide() {
@@ -152,6 +153,14 @@ const images = [
     height: 100%;
     width: 100%;
     background: #000;
+    transition: 0.01s clip-path 0.6s;
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  }
+
+  .slide.active {
+    z-index: 1;
+    transition: 0.6s clip-path;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .slide img {
@@ -159,10 +168,6 @@ const images = [
     height: 100%;
     margin-inline: auto;
     object-fit: cover;
-  }
-
-  .slide:first-child {
-    z-index: 1;
   }
 
   .prev-btn,
@@ -228,7 +233,11 @@ const images = [
     }
   }
 
-  button.indicator:first-child {
+  button.indicator.active {
     background-color: #333;
+  }
+
+  button.indicator:not(.active) {
+    background-color: white;
   }
 </style>
