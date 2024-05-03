@@ -5,14 +5,27 @@ import XIcon from "./icons/XIcon.astro";
 import MenuList from "./MenuList.astro";
 
 const menu = [
-  { text: "Gobierno", links: [{ text: "Trámites" }, { text: "Comunicados" }] },
+  { text: "Gobierno", links: [{ text: "Trámites", href: "#tramites" }] },
   {
     text: "Mi Pueblo",
     links: [
-      { text: "Galería", links: [{ text: "Fotos" }, { text: "Videos" }] },
+      {
+        text: "Galería",
+        links: [
+          { text: "Fotos", href: "#fotos" },
+          { text: "Videos", href: "#videos" },
+        ],
+      },
+      { text: "Historia", href: "#historia" },
     ],
   },
-  { text: "Pagos" },
+  {
+    text: "Ciudadanía",
+    links: [
+      { text: "Teléfonos Útiles", href: "#telefonosutiles" },
+      { text: "Sitios de interés", href: "#sitiosdeinteres" },
+    ],
+  },
 ];
 ---
 

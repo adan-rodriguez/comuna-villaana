@@ -1,4 +1,5 @@
 ---
+import HeroLinks from "../components/HeroLinks.astro";
 import Photos from "../components/Photos.astro";
 import SitiosDeInteres from "../components/SitiosDeInteres.astro";
 import Slider from "../components/Slider.astro";
@@ -21,35 +22,7 @@ import Layout from "../layouts/Layout.astro";
     ></video>
   </div>
   <main class="container mx-auto px-4 md:px-8 pb-4">
-    <section
-      class="flex flex-col gap-y-6 justify-center items-center h-[calc(100dvh-96px)] md:h-[calc(100dvh-128px)] max-h-[1080px] -translate-y-[48px] md:-translate-y-[64px] text-white"
-    >
-      <a
-        href="#"
-        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
-        >Noticias</a
-      >
-      <a
-        href="#"
-        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
-        >Comunicados</a
-      >
-      <a
-        href="#"
-        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
-        >Eventos</a
-      >
-      <a
-        href="#tramites"
-        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
-        >Trámites</a
-      >
-      <a
-        href="#contacto"
-        class="font-brush text-4xl transition-all relative after:absolute after:w-0 after:h-[2px] after:-bottom-1 after:left-0 after:bg-custom-skyblue after:transition-all hover:after:w-full"
-        >Contacto</a
-      >
-    </section>
+    <HeroLinks />
     <Slider />
     <Tramites />
     <TelefonosUtiles />

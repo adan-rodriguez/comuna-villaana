@@ -12,7 +12,7 @@ const { items } = Astro.props;
             </span>
             <Astro.self items={item.links} />
         ) : (
-          <a href="#" class="block border-b border-gray-400 pt-5 pb-1 md:px-6 md:py-3 transition-colors">
+          <a href={item.href} class="block border-b border-gray-400 pt-5 pb-1 md:px-6 md:py-3 transition-colors">
             {item.text}
           </a>
         )}

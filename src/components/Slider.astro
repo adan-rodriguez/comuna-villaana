@@ -1,15 +1,23 @@
 ---
 const images = [
   {
-    src: "https://img.freepik.com/foto-gratis/colores-arremolinados-interactuan-danza-fluida-sobre-lienzo-que-muestra-tonos-vibrantes-patrones-dinamicos-que-capturan-caos-belleza-arte-abstracto_157027-2892.jpg",
+    src: "https://scontent.fcnq4-1.fna.fbcdn.net/v/t39.30808-6/409476477_1535621933923466_2752113715745145730_n.jpg?stp=dst-jpg_s600x600&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeExvwWBWW6C4meWEiDOoQah8ZOJixY7KCPxk4mLFjsoI-ZEfZk4MXQBweXO1XyHQV6PDwSwVda2jJ1y4JBw62NC&_nc_ohc=UoUYUrli3lAQ7kNvgH4XJnE&_nc_ht=scontent.fcnq4-1.fna&oh=00_AfDLxUbxQ_yXlu3mJA8Ry7YyDvWobZ7Exz2qD5X8_u-LkA&oe=663A1463",
     alt: "",
   },
   {
-    src: "https://img.freepik.com/foto-gratis/papel-pintado-gatito-lindo-fantasia_1409-6188.jpg",
+    src: "https://scontent.fcnq4-1.fna.fbcdn.net/v/t39.30808-6/402601750_1521373878681605_2801537300827082102_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFe0yK4oygGqqfE3JwrIFZvNcbDOcUPfpM1xsM5xQ9-k3KUUVRCfKF1dLLkTwQWq2ST_TBH5qvZFM74XVQVyh2l&_nc_ohc=L8BBLhkauPkQ7kNvgFF0rtz&_nc_ht=scontent.fcnq4-1.fna&oh=00_AfCJlBJxsROjKZ5RJkenlnmAnt-FquxGTBYJIfT608WHDw&oe=6639F6EF",
     alt: "",
   },
   {
-    src: "https://www.educaciontrespuntocero.com/wp-content/uploads/2020/04/mejores-bancos-de-imagenes-gratis.jpg",
+    src: "https://scontent.fcnq4-1.fna.fbcdn.net/v/t39.30808-6/401711614_1520625098756483_6524858912651244788_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF0lFfR3-JfvfxerBGX-I3_r-2tcp7mcymv7a1ynuZzKalSHF0lRWrQJQDuBFeJU8n40vTWJv95sfhgaPJPuGAc&_nc_ohc=BKU-MFgqjmwQ7kNvgFlFfJy&_nc_oc=AdigRzpqstNSME3q_lm675gHkfoqkk63idpnsK2T9yYpoQHKM2f-66L7FmWgfATpPKg&_nc_ht=scontent.fcnq4-1.fna&oh=00_AfDjmdnHy4jkNa-FxD8KPQFCkPPZevSftT4ikzJPfflQLg&oe=6639F5DB",
+    alt: "",
+  },
+  {
+    src: "https://scontent.fcnq4-1.fna.fbcdn.net/v/t39.30808-6/399293557_1518743208944672_4309661506128305612_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeG6yGvOp3qEQH7nhSiWobCiS0CksfRGmmpLQKSx9EaaahwzxlKqllxDHxFZ__K5ABGvWLe4DAesg3REj0d1ds_A&_nc_ohc=wdaf84DVjGwQ7kNvgFu8LtS&_nc_ht=scontent.fcnq4-1.fna&oh=00_AfA4mzIfBLqvijDLfkzIp0mKZ3InLZXuHxiLMhBVsEszEg&oe=663A0937",
+    alt: "",
+  },
+  {
+    src: "https://scontent.fcnq4-1.fna.fbcdn.net/v/t39.30808-6/393355255_1506354953516831_6721373852856324739_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH4Q1vF3dDaITf3Cp1LHmo12Z2xdIAO7KLZnbF0gA7somEtYbxM8ENQuOanXLmwGS_nOVosTPAX-r8h5rJOons2&_nc_ohc=aaBJPPybxXkQ7kNvgGWbAco&_nc_ht=scontent.fcnq4-1.fna&oh=00_AfADc5wlfzbCb264q8h4F3U5tWrWZB-ZzwbymNAMR-_utQ&oe=6639FD89",
     alt: "",
   },
 ];
@@ -40,17 +48,16 @@ const images = [
 
 <script>
   const $slider = document.querySelector(".slider");
+  const $slides = [...document.querySelectorAll(".slide")];
   const $prevBtn = document.querySelector(".prev-btn");
   const $nextBtn = document.querySelector(".next-btn");
   const $sliderIndicators = document.querySelector(".slider-indicators");
   const $indicators = [...$sliderIndicators.querySelectorAll(".indicator")];
 
   let slideIndex = 0;
-  const $slides = [...document.querySelectorAll(".slide")];
   const totalSlides = $slides.length;
   let intervalId;
 
-  // Función para mostrar la diapositiva actual
   function showSlide() {
     $slides.forEach(($slide) => ($slide.style.zIndex = "0"));
     $slides[slideIndex].style.zIndex = "1";
@@ -60,10 +67,7 @@ const images = [
     $indicators[slideIndex].style.backgroundColor = "#333";
   }
 
-  // Función para avanzar a la siguiente diapositiva
-  function nextSlide() {
-    clearInterval(intervalId);
-    intervalId = setInterval(nextSlide, 5000);
+  function nextAutomaticSlide() {
     if (slideIndex < totalSlides - 1) {
       slideIndex++;
     } else {
@@ -72,7 +76,16 @@ const images = [
     showSlide();
   }
 
-  // Función para retroceder a la diapositiva anterior
+  function resetInterval() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextAutomaticSlide, 5000);
+  }
+
+  function nextSlide() {
+    nextAutomaticSlide();
+    resetInterval();
+  }
+
   function prevSlide() {
     if (slideIndex > 0) {
       slideIndex--;
@@ -80,14 +93,16 @@ const images = [
       slideIndex = totalSlides - 1;
     }
     showSlide();
+    resetInterval();
   }
 
   function goToSlide(e) {
     const $elemClicked = e.target;
-    if ($elemClicked.matches(".indicator")) {
+    if ($elemClicked.matches("button.indicator")) {
       slideIndex = +$elemClicked.dataset.slide;
     }
     showSlide();
+    resetInterval();
   }
 
   $nextBtn.addEventListener("click", nextSlide);
@@ -97,23 +112,26 @@ const images = [
   $sliderIndicators.addEventListener("click", goToSlide);
 
   $slider.addEventListener("mouseover", () => clearInterval(intervalId));
+
   $slider.addEventListener(
     "mouseleave",
     () => (intervalId = setInterval(nextSlide, 5000))
   );
 
-  intervalId = setInterval(nextSlide, 5000);
+  intervalId = setInterval(nextAutomaticSlide, 5000);
 </script>
 
 <style>
   section {
-    margin-top: 1.5rem;
+    padding-top: 2rem;
   }
 
   .slider-container {
     position: relative;
     overflow: hidden;
     width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
     border-radius: 0.25rem;
   }
 
