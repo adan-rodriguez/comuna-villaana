@@ -152,6 +152,7 @@ const menu = [
   @media (width < 768px) {
     header:has(.menu.open) {
       background-color: color-mix(in srgb, var(--blue), transparent 20%);
+      backdrop-filter: blur(4px);
 
       > div {
         height: 100dvh;

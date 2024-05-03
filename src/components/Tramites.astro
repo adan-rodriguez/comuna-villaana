@@ -1,50 +1,37 @@
----
-import CarIcon from "./icons/CarIcon.astro";
-import FileCertificationIcon from "./icons/FileCertificationIcon.astro";
-import FocoIcon from "./icons/FocoIcon.astro";
-import HomeIcon from "./icons/HomeIcon.astro";
----
-
 <section id="tramites" class="pt-8">
   <h2
     class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
   >
     Trámites
   </h2>
-  <div class="flex flex-col sm:flex-row flex-wrap gap-6">
+  <div class="flex flex-col md:flex-row md:flex-wrap gap-6 text-white">
     <a
       href="https://www.santafe.gov.ar/e-pt-boletas"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
-      ><CarIcon class="text-custom-green size-20" /><h3>Patente</h3></a
+      class="flex justify-center items-center min-h-32 grow hover:scale-105 transition-transform duration-300 px-4 py-2 border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/patente.jpg)] bg-cover bg-center"
+      ><h3 class="font-bold text-lg">Patente</h3></a
     >
     <a
       href="https://www.santafe.gov.ar/e-in-boletas"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
-      ><HomeIcon class="text-custom-green size-20" /><h3>
-        Impuesto inmobiliario
-      </h3></a
+      class="flex justify-center items-center min-h-32 grow hover:scale-105 transition-transform duration-300 px-4 py-2 border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/inmobiliario.webp)] bg-cover bg-center"
+      ><h3 class="font-bold text-lg">Impuesto inmobiliario</h3></a
     >
     <a
       href="https://www.epe.santafe.gov.ar/oficina-virtual"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
-      ><FocoIcon class="text-custom-green size-20" /><h3>
-        EPE - Oficina Virtual
-      </h3></a
+      class="flex justify-center items-center min-h-32 grow hover:scale-105 transition-transform duration-300 px-4 py-2 border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/epeoficinavirtual.webp)] bg-cover bg-center"
+      ><h3 class="font-bold text-lg">EPE - Oficina Virtual</h3></a
     >
     <a
       href="https://www.santafe.gov.ar/rcdigital"
       target="_blank"
       rel="noopener noreferrer"
-      class="flex items-center gap-x-2 hover:scale-105 transition-transform duration-300 px-4 py-2 border-2 border-custom-green rounded-lg bg-white"
-      ><FileCertificationIcon class="text-custom-green size-20" /><h3>
-        Partida de nacimiento
-      </h3></a
+      class="flex justify-center items-center min-h-32 grow hover:scale-105 transition-transform duration-300 px-4 py-2 border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/partidadenacimiento.jpg)] bg-cover bg-center"
+      ><h3 class="font-bold text-lg">Partida de nacimiento</h3></a
     >
   </div>
 </section>
