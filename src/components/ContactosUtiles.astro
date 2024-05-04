@@ -4,7 +4,7 @@ import PhoneIcon from "./icons/PhoneIcon.astro";
 import MapPinIcon from "./icons/MapPinIcon.astro";
 ---
 
-<section id="telefonosutiles" class="pt-8">
+<section id="contactossutiles" class="pt-8">
   <h2
     class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
   >
@@ -13,6 +13,37 @@ import MapPinIcon from "./icons/MapPinIcon.astro";
   <address
     class="text-white not-italic flex flex-col md:flex-row md:flex-wrap gap-6"
   >
+    <div
+      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,black,transparent),url(/comuna.webp)] bg-cover bg-center"
+    >
+      <div class="flex gap-2">
+        <PhoneIcon />
+        <a
+          href="tel:+5493482524950"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          title="Llamar al hospital de Villa Ana">+54 9 3482 524950</a
+        >
+      </div>
+      <div class="flex gap-2">
+        <MailIcon />
+        <a
+          href="mailto:hospitalvillaana@gamil.com"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          >hospitalvillaana@gmail.com</a
+        >
+      </div>
+      <div class="flex gap-2">
+        <MapPinIcon />
+        <a
+          href="https://www.google.com/maps/place/SAMCo+Villa+Ana/@-28.4974687,-59.6158574,17z/data=!4m10!1m2!2m1!1shospital+villa+ana+santa+fe!3m6!1s0x944f25ba8b46dda9:0xa1ee916429435dec!8m2!3d-28.4974687!4d-59.6120682!15sChtob3NwaXRhbCB2aWxsYSBhbmEgc2FudGEgZmWSAQhob3NwaXRhbOABAA!16s%2Fg%2F11j8pddtj3?entry=ttu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          >Buenos Aires s/n</a
+        >
+      </div>
+      <span class="text-4xl mt-auto pt-4 font-brush">Comuna</span>
+    </div>
     <div
       class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,black,transparent),url(/hospital.jpg)] bg-cover bg-center"
     >
@@ -105,6 +136,37 @@ import MapPinIcon from "./icons/MapPinIcon.astro";
         >
       </div>
       <span class="text-4xl mt-auto pt-4 font-brush">Policía</span>
+    </div>
+    <div
+      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,black,transparent),url(/juzgado.jpg)] bg-cover bg-center"
+    >
+      <div class="flex gap-2">
+        <PhoneIcon />
+        <a
+          href="tel:+5493482524950"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          title="Llamar a la policia de Villa Ana">+54 9 3482 524950</a
+        >
+      </div>
+      <div class="flex gap-2">
+        <MailIcon />
+        <a
+          href="mailto:hospitalvillaana@gamil.com"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          >hospitalvillaana@gmail.com</a
+        >
+      </div>
+      <div class="flex gap-2">
+        <MapPinIcon />
+        <a
+          href="https://www.google.com/maps/place/SAMCo+Villa+Ana/@-28.4974687,-59.6158574,17z/data=!4m10!1m2!2m1!1shospital+villa+ana+santa+fe!3m6!1s0x944f25ba8b46dda9:0xa1ee916429435dec!8m2!3d-28.4974687!4d-59.6120682!15sChtob3NwaXRhbCB2aWxsYSBhbmEgc2FudGEgZmWSAQhob3NwaXRhbOABAA!16s%2Fg%2F11j8pddtj3?entry=ttu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
+          >Buenos Aires s/n</a
+        >
+      </div>
+      <span class="text-4xl mt-auto pt-4 font-brush">Juzgado de Paz</span>
     </div>
   </address>
 </section>
