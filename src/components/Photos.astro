@@ -22,15 +22,22 @@ const photos = [
     {
       photos.map((photo) => {
         return (
-          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 cursor-zoom-in group bg-black">
+          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black">
             <img
               src={photo.url}
               class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 sm:grayscale sm:group-hover:grayscale-0"
+              loading="lazy"
             />
           </figure>
         );
       })
     }
+    <a
+      href="#fotos"
+      class="flex justify-center items-center cursor-pointer border rounded hover:scale-105 transition-transform duration-300 [background-image:linear-gradient(to_right,black,transparent),linear-gradient(to_left,black,transparent),url(/collage-villaana.avif)] bg-center bg-cover text-white font-bold [text-shadow:0px_0px_4px_black]"
+    >
+      Ver más fotos
+    </a>
   </div>
   <dialog
     class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
