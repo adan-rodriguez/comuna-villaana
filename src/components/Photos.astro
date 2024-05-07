@@ -47,11 +47,11 @@ const photos = [
   <dialog
     class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
   >
-    <button
-      class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70"
-      title="Salir"><XIcon /></button
-    >
     <div class="photo_slider-container">
+      <button
+        class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70"
+        title="Salir"><XIcon /></button
+      >
       <div class="photo_slider">
         {
           photos.map((photo) => (
@@ -105,7 +105,6 @@ const photos = [
   .photo_slider-container {
     position: relative;
     width: 100%;
-    max-width: 56rem;
     margin-inline: auto;
     border-radius: 0.25rem;
     overflow: hidden;
