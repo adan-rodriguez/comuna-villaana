@@ -1,12 +1,14 @@
 ---
+import XIcon from "./icons/XIcon.astro";
+
 const photos = [
-  { url: "photos/photo1.webp" },
-  { url: "photos/photo2.webp" },
-  { url: "photos/photo3.jpg" },
-  { url: "photos/photo4.webp" },
-  { url: "photos/photo5.jpg" },
-  { url: "photos/photo6.jpg" },
-  { url: "photos/photo7.jpg" },
+  { src: "photos/photo1.webp" },
+  { src: "photos/photo2.webp" },
+  { src: "photos/photo3.jpg" },
+  { src: "photos/photo4.webp" },
+  { src: "photos/photo5.jpg" },
+  { src: "photos/photo6.jpg" },
+  { src: "photos/photo7.jpg" },
 ];
 ---
 
@@ -20,11 +22,14 @@ const photos = [
     class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
   >
     {
-      photos.map((photo) => {
+      photos.map((photo, index) => {
         return (
-          <figure class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black">
+          <figure
+            data-index={index}
+            class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black"
+          >
             <img
-              src={photo.url}
+              src={photo.src}
               class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 sm:grayscale sm:group-hover:grayscale-0"
               loading="lazy"
             />
@@ -42,7 +47,32 @@ const photos = [
   <dialog
     class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
   >
-    <img class="photo-zoom w-full aspect-video object-cover cursor-zoom-out" />
+    <button
+      class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70"
+      title="Salir"><XIcon /></button
+    >
+    <div class="photo_slider-container">
+      <div class="photo_slider">
+        {
+          photos.map((photo) => (
+            <div class="photo_slide">
+              <img src={photo.src} />
+            </div>
+          ))
+        }
+        <div
+          class="absolute opacity-70 bottom-1 left-0 right-0 mx-auto w-fit z-10 px-2 py-1 bg-black text-white border rounded-md"
+        >
+          <span class="photo_counter">1</span>/{photos.length}
+        </div>
+      </div>
+      <button class="prev-btn_photo_slider"
+        ><img src="/chevron-up.svg" /></button
+      >
+      <button class="next-btn_photo_slider"
+        ><img src="/chevron-up.svg" /></button
+      >
+    </div>
   </dialog>
 </section>
 
@@ -71,6 +101,81 @@ const photos = [
       }
     }
   }
+
+  .photo_slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+
+  .photo_slider {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    isolation: isolate;
+    background-color: #000;
+  }
+
+  .photo_slide {
+    position: absolute;
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    transition: 0.01s clip-path 0.6s;
+    clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+  }
+
+  .photo_slide.active {
+    z-index: 1;
+    transition: 0.6s clip-path;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .photo_slide img {
+    height: 100%;
+    margin-inline: auto;
+    object-fit: cover;
+  }
+
+  .prev-btn_photo_slider,
+  .next-btn_photo_slider {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: scale 0.3s;
+    opacity: 0.8;
+
+    &:hover {
+      scale: 1.05;
+      opacity: 1;
+    }
+  }
+
+  .prev-btn_photo_slider {
+    left: 10px;
+
+    img {
+      rotate: -90deg;
+      translate: -5px 0;
+    }
+  }
+
+  .next-btn_photo_slider {
+    right: 10px;
+    img {
+      rotate: 90deg;
+      translate: 5px 0;
+    }
+  }
 </style>
 
 <script>
@@ -78,21 +183,57 @@ const photos = [
   const $photoModal = document.querySelector(
     ".photo-dialog"
   ) as HTMLDialogElement;
-  const $photoZoom = document.querySelector(".photo-zoom") as HTMLImageElement;
+  const $slides = [...document.querySelectorAll(".photo_slide")];
+  const $prevBtn = document.querySelector(".prev-btn_photo_slider");
+  const $nextBtn = document.querySelector(".next-btn_photo_slider");
+  const $closeDialogBtn = document.querySelector(".close_dialog-btn");
+  const $counter = document.querySelector(".photo_counter");
+
+  let slideIndex = 0;
+  const totalSlides = $slides.length;
+
+  function showSlide() {
+    $counter.textContent = slideIndex + 1 + "";
+    $slides.forEach(($slide) => $slide.classList.remove("active"));
+    $slides[slideIndex].classList.add("active");
+  }
 
   function handleClickPhoto(e) {
     const $figure = e.target.closest("figure");
     if ($figure) {
-      $photoZoom.src = $figure.firstElementChild.src;
+      slideIndex = +$figure.dataset.index;
+      showSlide();
       $photoModal.showModal();
     }
   }
 
-  function handleClickInPhotoModal() {
-    $photoModal.close();
-    $photoZoom.src = "";
+  function handleClickInPhotoModal(e) {
+    if (e.target.matches(".photo-dialog")) {
+      $photoModal.close();
+    }
+  }
+
+  function nextSlide() {
+    if (slideIndex < totalSlides - 1) {
+      slideIndex++;
+    } else {
+      slideIndex = 0;
+    }
+    showSlide();
+  }
+
+  function prevSlide() {
+    if (slideIndex > 0) {
+      slideIndex--;
+    } else {
+      slideIndex = totalSlides - 1;
+    }
+    showSlide();
   }
 
   $photoList.addEventListener("click", handleClickPhoto);
   $photoModal.addEventListener("click", handleClickInPhotoModal);
+  $nextBtn.addEventListener("click", nextSlide);
+  $prevBtn.addEventListener("click", prevSlide);
+  $closeDialogBtn.addEventListener("click", () => $photoModal.close());
 </script>
