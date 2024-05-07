@@ -174,14 +174,17 @@ const images = [
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: #333;
+    background-color: black;
     color: #fff;
     border: none;
     padding: 0.5rem;
     border-radius: 100%;
+    border: 1px solid white;
     cursor: pointer;
-    transition: scale 0.3s;
-    opacity: 0.8;
+    transition:
+      scale 0.3s,
+      opacity 0.3s;
+    opacity: 0.7;
 
     &:hover {
       scale: 1.05;
@@ -218,11 +221,12 @@ const images = [
 
   button.indicator {
     padding: 0.5rem;
-    border: 1px solid #333;
+    border: 1px solid black;
     border-radius: 100%;
     transition:
-      background-color 0.15s,
-      scale 0.3s;
+      background-color 0.3s,
+      scale 0.3s,
+      opacity 0.3s;
     background-color: white;
     opacity: 0.8;
 
@@ -233,10 +237,6 @@ const images = [
   }
 
   button.indicator.active {
-    background-color: #333;
-  }
-
-  button.indicator:not(.active) {
-    background-color: white;
+    background-color: black;
   }
 </style>
