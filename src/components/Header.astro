@@ -5,31 +5,34 @@ import XIcon from "./icons/XIcon.astro";
 import MenuList from "./MenuList.astro";
 
 const menu = [
-  { text: "Gobierno", links: [{ text: "Trámites", href: "#tramites" }] },
+  { text: "Gobierno", links: [{ text: "Trámites", href: "/tramites" }] },
   {
     text: "Mi Pueblo",
     links: [
       {
         text: "Galería",
         links: [
-          { text: "Fotos", href: "#fotos" },
-          { text: "Videos", href: "#videos" },
+          { text: "Fotos", href: "/fotos" },
+          { text: "Videos", href: "/videos" },
         ],
       },
-      { text: "Historia", href: "#historia" },
+      { text: "Historia", href: "/historia" },
     ],
   },
   {
     text: "Ciudadanía",
     links: [
-      { text: "Contactos Útiles", href: "#contactosutiles" },
-      { text: "Sitios de interés", href: "#sitiosdeinteres" },
+      { text: "Contactos Útiles", href: "/contactosutiles" },
+      { text: "Sitios de interés", href: "/sitiosdeinteres" },
     ],
   },
 ];
 ---
 
-<header class="relative overflow-y-auto md:overflow-visible z-10 text-white">
+<header
+  style={`${Astro.url.pathname === "/" ? "animation: sticky-header linear both; animation-range: 0 100dvh; animation-timeline: scroll(root block)" : ""}`}
+  class={`sticky top-0 z-10 overflow-y-auto md:overflow-visible text-white ${Astro.url.pathname !== "/" ? "bg-[color-mix(in_srgb,#020617,transparent_10%)] backdrop-blur-[2px]" : ""}`}
+>
   <div
     class="header container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
@@ -48,7 +51,9 @@ const menu = [
     >
       <XIcon />
     </button>
-    <nav class="menu py-4 md:py-0 z-10 hidden md:block col-span-2">
+    <nav
+      class="menu py-4 md:py-0 z-10 hidden md:block md:translate-y-[6px] col-span-2"
+    >
       <MenuList items={menu} />
     </nav>
   </div>
@@ -120,7 +125,7 @@ const menu = [
     padding-left: 1rem;
     @media (width >= 768px) {
       padding-left: 0;
-      background-color: color-mix(in srgb, var(--blue), transparent 40%);
+      background-color: color-mix(in srgb, var(--blue), transparent 10%);
       backdrop-filter: blur(4px);
     }
   }
@@ -152,8 +157,8 @@ const menu = [
 <style>
   @media (width < 768px) {
     header:has(.menu.open) {
-      background-color: color-mix(in srgb, var(--blue), transparent 20%);
-      backdrop-filter: blur(4px);
+      background-color: color-mix(in srgb, #020617, transparent 10%) !important;
+      backdrop-filter: blur(2px) !important;
 
       > div {
         height: 100dvh;
@@ -170,6 +175,18 @@ const menu = [
           display: block;
         }
       }
+    }
+  }
+
+  @keyframes sticky-header {
+    0% {
+      background-color: transparent;
+      backdrop-filter: blur(0px);
+    }
+
+    100% {
+      background-color: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(2px);
     }
   }
 </style>

@@ -2,79 +2,74 @@
 import XIcon from "./icons/XIcon.astro";
 
 const photos = [
-  { src: "photos/photo1.webp" },
-  { src: "photos/photo2.webp" },
-  { src: "photos/photo3.jpg" },
-  { src: "photos/photo4.webp" },
-  { src: "photos/photo5.jpg" },
-  { src: "photos/photo6.jpg" },
-  { src: "photos/photo7.jpg" },
+  { src: "photos/photo1.avif" },
+  { src: "photos/photo2.avif" },
+  { src: "photos/photo3.avif" },
+  { src: "photos/photo4.avif" },
+  { src: "photos/photo5.avif" },
+  { src: "photos/photo6.avif" },
+  { src: "photos/photo7.avif" },
 ];
+
+const { slice } = Astro.props;
 ---
 
-<section id="fotos" class="pt-8">
-  <h2
-    class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
-  >
-    Fotos
-  </h2>
-  <div
-    class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
-  >
-    {
-      photos.map((photo, index) => {
-        return (
-          <figure
-            data-index={index}
-            class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black"
-          >
-            <img
-              src={photo.src}
-              class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 sm:grayscale sm:group-hover:grayscale-0"
-              loading="lazy"
-            />
-          </figure>
-        );
-      })
-    }
-    <a
-      href="#fotos"
-      class="flex justify-center items-center aspect-[3/4] cursor-pointer border rounded hover:scale-105 transition-transform duration-300 [background-image:linear-gradient(to_right,black,transparent),linear-gradient(to_left,black,transparent),url(/collage-fotos.avif)] bg-center bg-cover text-white font-bold [text-shadow:0px_0px_4px_black]"
-    >
-      Ver más fotos
-    </a>
-  </div>
-  <dialog
-    class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
-  >
-    <div class="photo_slider-container">
-      <button
-        class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70 hover:scale-105 hover:opacity-100 transition-all duration-300"
-        title="Salir"><XIcon /></button
-      >
-      <div class="photo_slider">
-        {
-          photos.map((photo) => (
-            <div class="photo_slide">
-              <img src={photo.src} />
-            </div>
-          ))
-        }
-        <div
-          class="absolute opacity-70 bottom-1 left-0 right-0 mx-auto w-fit z-10 px-2 py-1 bg-black text-white border rounded-md"
+<div
+  class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
+>
+  {
+    photos.slice(0, slice).map((photo, index) => {
+      return (
+        <figure
+          data-index={index}
+          class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black"
         >
-          <span class="photo_counter">1</span>/{photos.length}
-        </div>
+          <img
+            src={photo.src}
+            class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 sm:grayscale sm:group-hover:grayscale-0"
+            loading="lazy"
+          />
+        </figure>
+      );
+    })
+  }
+  {
+    Astro.url.pathname === "/" && (
+      <a
+        href="/fotos"
+        class="flex justify-center items-center aspect-[3/4] cursor-pointer border rounded hover:scale-105 transition-[transform_0.3s,filter_0.3s] [background-image:linear-gradient(to_right,black,transparent),linear-gradient(to_left,black,transparent),url(/collage-fotos.avif)] bg-center bg-cover text-white font-bold [text-shadow:0px_0px_4px_black] hover:brightness-150"
+      >
+        Ver más fotos
+      </a>
+    )
+  }
+</div>
+<dialog
+  class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
+>
+  <div class="photo_slider-container">
+    <button
+      class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70 hover:scale-105 hover:opacity-100 transition-all duration-300"
+      title="Salir"><XIcon /></button
+    >
+    <div class="photo_slider">
+      {
+        photos.map((photo) => (
+          <div class="photo_slide">
+            <img src={photo.src} />
+          </div>
+        ))
+      }
+      <div
+        class="absolute opacity-70 bottom-1 left-0 right-0 mx-auto w-fit z-10 px-2 py-1 bg-black text-white border rounded-md"
+      >
+        <span class="photo_counter">1</span>/{photos.length}
       </div>
-      <button class="prev-btn_photo_slider"
-        ><img src="/chevron-up.svg" /></button
-      >
-      <button class="next-btn_photo_slider"
-        ><img src="/chevron-up.svg" /></button
-      >
     </div>
-  </dialog>
-</section>
+    <button class="prev-btn_photo_slider"><img src="/chevron-up.svg" /></button>
+    <button class="next-btn_photo_slider"><img src="/chevron-up.svg" /></button>
+  </div>
+</dialog>
 
 <style is:global>
   body:has(.photo-dialog[open]) {

@@ -1,18 +1,18 @@
 ---
 import HeroLinks from "../components/HeroLinks.astro";
-import Photos from "../components/Photos.astro";
+import PhotoList from "../components/PhotoList.astro";
 import SitiosDeInteres from "../components/SitiosDeInteres.astro";
 import Slider from "../components/Slider.astro";
 import ContactosUtiles from "../components/ContactosUtiles.astro";
 import Tramites from "../components/Tramites.astro";
-import Videos from "../components/Videos.astro";
+import VideoList from "../components/VideoList.astro";
 import Layout from "../layouts/Layout.astro";
 import OtrasSecciones from "../components/OtrasSecciones.astro";
 ---
 
 <Layout title="Comuna de Villa Ana">
   <div
-    class="absolute bg-black top-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
+    class="absolute bg-black top-0 left-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
   >
     <video
       src="hero-video-phone.mp4"
@@ -21,15 +21,48 @@ import OtrasSecciones from "../components/OtrasSecciones.astro";
       muted
       class="w-full h-full object-cover [mask-image:linear-gradient(to_top,black_0%,transparent_100%)]"
     ></video>
-  </div>
-  <main class="container mx-auto px-4 md:px-8 pb-4">
     <HeroLinks />
-    <Slider />
+  </div>
+  <Slider />
+  <section id="tramites" class="pt-8">
+    <h2
+      class="font-brush mb-12 text-4xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+    >
+      Trámites
+    </h2>
     <Tramites />
+  </section>
+  <section id="contactosutiles" class="pt-8">
+    <h2
+      class="font-brush mb-12 text-4xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
+    >
+      Contactos útiles
+    </h2>
     <ContactosUtiles />
-    <Photos />
-    <Videos />
+  </section>
+  <section id="fotos" class="pt-8">
+    <h2
+      class="mb-12 text-4xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat font-brush"
+    >
+      Fotos
+    </h2>
+    <PhotoList slice={5} />
+  </section>
+  <section id="videos" class="pt-8">
+    <h2
+      class="font-brush mb-12 text-4xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
+    >
+      Videos
+    </h2>
+    <VideoList slice={3} />
+  </section>
+  <section id="sitiosdeinteres" class="pt-8">
+    <h2
+      class="font-brush mb-12 text-4xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
+    >
+      Sitios de interés
+    </h2>
     <SitiosDeInteres />
-    <OtrasSecciones />
-  </main>
+  </section>
+  <OtrasSecciones />
 </Layout>

@@ -1,0 +1,47 @@
+---
+import "../utils/lite-yt-embed.css";
+
+const videos = [
+  { id: "ztxziJF9TkU", title: "Villa Ana, Santa Fe" },
+  { id: "5JcrDPhzaIM", title: "Muerte y resurrección de Villa Ana" },
+  { id: "jKuHptCvilQ", title: "VILLA ANA ★ 108 AÑOS 🎬" },
+  {
+    id: "uPjWgSfuDWI",
+    title: "Comuna de Villa Ana - Punto HD",
+  },
+  {
+    id: "oOq4QdsspSY",
+    title: "🔴⚪🔵 #DePuebloEnPueblo - Villa Ana – Dpto. Gral. Obligado",
+  },
+  { id: "QTMusu5WmhY", title: "VISITÁ VILLA ANA - Spot Turismo Villa Ana" },
+];
+
+const { slice } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-[repeat(auto-fit,minmax(min(384px,100%),1fr))] gap-4"
+>
+  {
+    videos
+      .slice(0, slice)
+      .map((video) => (
+        <lite-youtube
+          videoid={video.id}
+          title={video.title}
+          class="rounded-sm"
+        />
+      ))
+  }
+  {
+    Astro.url.pathname === "/" && (
+      <a
+        href="/videos"
+        class="flex justify-center items-center aspect-video cursor-pointer border rounded hover:scale-105 transition-[transform_0.3s,filter_0.3s] [background-image:linear-gradient(to_right,black,transparent),linear-gradient(to_left,black,transparent),url(/collage-videos.avif)] bg-center bg-cover text-white font-bold [text-shadow:0px_0px_4px_black] hover:brightness-150"
+      >
+        Ver más videos
+      </a>
+    )
+  }
+</div>
+<script src="../utils/lite-yt-embed.js"></script>

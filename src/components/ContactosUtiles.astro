@@ -4,173 +4,168 @@ import PhoneIcon from "./icons/PhoneIcon.astro";
 import MapPinIcon from "./icons/MapPinIcon.astro";
 ---
 
-<section id="contactosutiles" class="pt-8">
-  <h2
-    class="mb-12 text-2xl font-bold bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
+<address
+  class="text-gray-200 not-italic flex flex-col md:flex-row md:flex-wrap gap-6 [text-shadow:0px_0px_4px_black]"
+>
+  <div
+    class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/comuna.avif)] bg-cover bg-center"
   >
-    Contactos útiles
-  </h2>
-  <address
-    class="text-white not-italic flex flex-col md:flex-row md:flex-wrap gap-6 [text-shadow:0px_0px_4px_black]"
+    <div class="flex gap-2">
+      <PhoneIcon />
+      <a
+        href="tel:+543482465004"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 3482 465004 de la Comuna de Villa Ana"
+        >+54 3482 465004</a
+      >
+      <span aria-hidden="true">|</span>
+      <a
+        href="tel:+543482465005"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 3482 465005 de la Comuna de Villa Ana"
+        >+54 3482 465005</a
+      >
+    </div>
+    <div class="flex gap-2">
+      <MailIcon />
+      <a
+        href="mailto:comunavillaanastafe@hotmail.com"
+        title="Enviar un email a la Comuna de Villa Ana"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >comunavillaanastafe@hotmail.com</a
+      >
+    </div>
+    <div class="flex gap-2">
+      <MapPinIcon />
+      <a
+        href="https://www.google.com/maps/place/COMUNA+DE+VILLA+ANA/@-28.4931731,-59.6129274,19z/data=!4m6!3m5!1s0x944f2557ade437cb:0xbb58e41395fcdc2a!8m2!3d-28.4930172!4d-59.6129197!16s%2Fg%2F11gszqv0mf?authuser=0&entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver a la Comuna de Villa Ana en Google Maps"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >25 de mayo esquina Uruguay</a
+      >
+    </div>
+    <span class="text-white text-4xl mt-auto pt-4 font-brush">Comuna</span>
+  </div>
+  <div
+    class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/hospital.avif)] bg-cover bg-center"
   >
-    <div
-      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/comuna.webp)] bg-cover bg-center"
-    >
-      <div class="flex gap-2">
-        <PhoneIcon />
-        <a
-          href="tel:+543482465004"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 3482 465004 de la Comuna de Villa Ana"
-          >+54 3482 465004</a
-        >
-        <span aria-hidden="true">|</span>
-        <a
-          href="tel:+543482465005"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 3482 465005 de la Comuna de Villa Ana"
-          >+54 3482 465005</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MailIcon />
-        <a
-          href="mailto:comunavillaanastafe@hotmail.com"
-          title="Enviar un email a la Comuna de Villa Ana"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >comunavillaanastafe@hotmail.com</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MapPinIcon />
-        <a
-          href="https://www.google.com/maps/place/COMUNA+DE+VILLA+ANA/@-28.4931731,-59.6129274,19z/data=!4m6!3m5!1s0x944f2557ade437cb:0xbb58e41395fcdc2a!8m2!3d-28.4930172!4d-59.6129197!16s%2Fg%2F11gszqv0mf?authuser=0&entry=ttu"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ver a la Comuna de Villa Ana en Google Maps"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >25 de mayo esquina Uruguay</a
-        >
-      </div>
-      <span class="text-4xl mt-auto pt-4 font-brush">Comuna</span>
+    <div class="flex gap-2">
+      <PhoneIcon />
+      <a
+        href="tel:+543482494033"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 3482 494033 del Hospital de Villa Ana"
+        >+54 3482 494033</a
+      >
     </div>
-    <div
-      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/hospital.jpg)] bg-cover bg-center"
-    >
-      <div class="flex gap-2">
-        <PhoneIcon />
-        <a
-          href="tel:+543482494033"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 3482 494033 del Hospital de Villa Ana"
-          >+54 3482 494033</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MailIcon />
-        <a
-          href="mailto:samcovillaana@gmail.com"
-          title="Enviar un email al Hospital de Villa Ana"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >samcovillaana@gmail.com</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MapPinIcon />
-        <a
-          href="https://www.google.com/maps/place/SAMCo+Villa+Ana/@-28.4974687,-59.6158574,17z/data=!4m10!1m2!2m1!1shospital+villa+ana+santa+fe!3m6!1s0x944f25ba8b46dda9:0xa1ee916429435dec!8m2!3d-28.4974687!4d-59.6120682!15sChtob3NwaXRhbCB2aWxsYSBhbmEgc2FudGEgZmWSAQhob3NwaXRhbOABAA!16s%2Fg%2F11j8pddtj3?entry=ttu"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ver al Hospital de Villa Ana en Google Maps"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >Buenos Aires s/n</a
-        >
-      </div>
-      <span class="text-4xl mt-auto pt-4 font-brush">Hospital</span>
+    <div class="flex gap-2">
+      <MailIcon />
+      <a
+        href="mailto:samcovillaana@gmail.com"
+        title="Enviar un email al Hospital de Villa Ana"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >samcovillaana@gmail.com</a
+      >
     </div>
-    <div
-      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/correo.webp)] bg-cover bg-center"
-    >
-      <div class="flex gap-2">
-        <PhoneIcon />
-        <a
-          href="tel:+543482494001"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 3482 494001 del Correo de Villa Ana"
-          >+54 3482 494001</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MapPinIcon />
-        <a
-          href="https://www.google.com/maps/place/Correo+Argentino+-+Sucursal+Villa+Ana/@-28.4941077,-59.6131527,19.25z/data=!4m14!1m7!3m6!1s0x944f257b8c59561b:0x90a45966575b2e9c!2sCorreo+Argentino+-+Sucursal+Villa+Ana!8m2!3d-28.4940958!4d-59.6126303!16s%2Fg%2F11g1nrlcwm!3m5!1s0x944f257b8c59561b:0x90a45966575b2e9c!8m2!3d-28.4940958!4d-59.6126303!16s%2Fg%2F11g1nrlcwm?entry=ttu"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ver la Sucursal de Villa Ana del Correo Argentino en Google Maps"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >25 de mayo esquina 9 de julio</a
-        >
-      </div>
-      <span class="text-4xl mt-auto pt-4 font-brush">Correo</span>
+    <div class="flex gap-2">
+      <MapPinIcon />
+      <a
+        href="https://www.google.com/maps/place/SAMCo+Villa+Ana/@-28.4974687,-59.6158574,17z/data=!4m10!1m2!2m1!1shospital+villa+ana+santa+fe!3m6!1s0x944f25ba8b46dda9:0xa1ee916429435dec!8m2!3d-28.4974687!4d-59.6120682!15sChtob3NwaXRhbCB2aWxsYSBhbmEgc2FudGEgZmWSAQhob3NwaXRhbOABAA!16s%2Fg%2F11j8pddtj3?entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver al Hospital de Villa Ana en Google Maps"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >Buenos Aires s/n</a
+      >
     </div>
-    <div
-      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/comisaria.jpeg)] bg-cover bg-center"
-    >
-      <div class="flex gap-2">
-        <PhoneIcon />
-        <a
-          href="tel:+543482494022"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 3482 494022 de la Policía de Villa Ana"
-          >+54 3482 494022</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MailIcon />
-        <a
-          href="mailto:comisaria7@hotmail.com"
-          title="Enviar un email a la Policía de Villa Ana"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >comisaria7@hotmail.com</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MapPinIcon />
-        <a
-          href="https://www.google.com/maps/place/Comisar%C3%ADa+7ma/@-28.4918519,-59.6150655,17z/data=!4m14!1m7!3m6!1s0x944f252a4600132f:0xa669754bc1596924!2sComisar%C3%ADa+7ma!8m2!3d-28.4918519!4d-59.6124906!16s%2Fg%2F11c1r600l6!3m5!1s0x944f252a4600132f:0xa669754bc1596924!8m2!3d-28.4918519!4d-59.6124906!16s%2Fg%2F11c1r600l6?entry=ttu"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ver a la Comisaría 7ma. de Villa Ana en Google Maps"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >25 de mayo esquina Chile</a
-        >
-      </div>
-      <span class="text-4xl mt-auto pt-4 font-brush">Policía</span>
+    <span class="text-white text-4xl mt-auto pt-4 font-brush">Hospital</span>
+  </div>
+  <div
+    class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/correo.avif)] bg-cover bg-center"
+  >
+    <div class="flex gap-2">
+      <PhoneIcon />
+      <a
+        href="tel:+543482494001"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 3482 494001 del Correo de Villa Ana"
+        >+54 3482 494001</a
+      >
     </div>
-    <div
-      class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/juzgado.jpg)] bg-cover bg-center"
-    >
-      <div class="flex gap-2">
-        <PhoneIcon />
-        <a
-          href="tel:+5493482548212"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          title="Llamar al teléfono +54 9 3482 548212 del Juzgado de Paz de Villa Ana"
-          >+54 9 3482 548212</a
-        >
-      </div>
-      <div class="flex gap-2">
-        <MapPinIcon />
-        <a
-          href="https://www.google.com/maps/place/Juzgado+De+Paz/@-28.4914326,-59.6151011,17z/data=!4m14!1m7!3m6!1s0x944f252a5073a4f7:0xa1d30cb3cf306c41!2sJuzgado+De+Paz!8m2!3d-28.4914326!4d-59.6125262!16s%2Fg%2F11c1nw50ws!3m5!1s0x944f252a5073a4f7:0xa1d30cb3cf306c41!8m2!3d-28.4914326!4d-59.6125262!16s%2Fg%2F11c1nw50ws?entry=ttu"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Ver al Juzgado de Paz de Villa Ana en Google Maps"
-          class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-white after:transition-[width] hover:after:w-full w-fit"
-          >25 de Mayo s/n</a
-        >
-      </div>
-      <span class="text-4xl mt-auto pt-4 font-brush">Juzgado de Paz</span>
+    <div class="flex gap-2">
+      <MapPinIcon />
+      <a
+        href="https://www.google.com/maps/place/Correo+Argentino+-+Sucursal+Villa+Ana/@-28.4941077,-59.6131527,19.25z/data=!4m14!1m7!3m6!1s0x944f257b8c59561b:0x90a45966575b2e9c!2sCorreo+Argentino+-+Sucursal+Villa+Ana!8m2!3d-28.4940958!4d-59.6126303!16s%2Fg%2F11g1nrlcwm!3m5!1s0x944f257b8c59561b:0x90a45966575b2e9c!8m2!3d-28.4940958!4d-59.6126303!16s%2Fg%2F11g1nrlcwm?entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver la Sucursal de Villa Ana del Correo Argentino en Google Maps"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >25 de mayo esquina 9 de julio</a
+      >
     </div>
-  </address>
-</section>
+    <span class="text-white text-4xl mt-auto pt-4 font-brush">Correo</span>
+  </div>
+  <div
+    class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/comisaria.avif)] bg-cover bg-center"
+  >
+    <div class="flex gap-2">
+      <PhoneIcon />
+      <a
+        href="tel:+543482494022"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 3482 494022 de la Policía de Villa Ana"
+        >+54 3482 494022</a
+      >
+    </div>
+    <div class="flex gap-2">
+      <MailIcon />
+      <a
+        href="mailto:comisaria7@hotmail.com"
+        title="Enviar un email a la Policía de Villa Ana"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >comisaria7@hotmail.com</a
+      >
+    </div>
+    <div class="flex gap-2">
+      <MapPinIcon />
+      <a
+        href="https://www.google.com/maps/place/Comisar%C3%ADa+7ma/@-28.4918519,-59.6150655,17z/data=!4m14!1m7!3m6!1s0x944f252a4600132f:0xa669754bc1596924!2sComisar%C3%ADa+7ma!8m2!3d-28.4918519!4d-59.6124906!16s%2Fg%2F11c1r600l6!3m5!1s0x944f252a4600132f:0xa669754bc1596924!8m2!3d-28.4918519!4d-59.6124906!16s%2Fg%2F11c1r600l6?entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver a la Comisaría 7ma. de Villa Ana en Google Maps"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >25 de mayo esquina Chile</a
+      >
+    </div>
+    <span class="text-white text-4xl mt-auto pt-4 font-brush">Policía</span>
+  </div>
+  <div
+    class="flex flex-col gap-1 p-4 grow border border-[#333] rounded-lg [background-image:linear-gradient(to_right,#000000f2_25%,transparent),url(/juzgado.avif)] bg-cover bg-center"
+  >
+    <div class="flex gap-2">
+      <PhoneIcon />
+      <a
+        href="tel:+5493482548212"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        title="Llamar al teléfono +54 9 3482 548212 del Juzgado de Paz de Villa Ana"
+        >+54 9 3482 548212</a
+      >
+    </div>
+    <div class="flex gap-2">
+      <MapPinIcon />
+      <a
+        href="https://www.google.com/maps/place/Juzgado+De+Paz/@-28.4914326,-59.6151011,17z/data=!4m14!1m7!3m6!1s0x944f252a5073a4f7:0xa1d30cb3cf306c41!2sJuzgado+De+Paz!8m2!3d-28.4914326!4d-59.6125262!16s%2Fg%2F11c1nw50ws!3m5!1s0x944f252a5073a4f7:0xa1d30cb3cf306c41!8m2!3d-28.4914326!4d-59.6125262!16s%2Fg%2F11c1nw50ws?entry=ttu"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Ver al Juzgado de Paz de Villa Ana en Google Maps"
+        class="block relative after:absolute after:w-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-gray-200 after:transition-[width] hover:after:w-full w-fit"
+        >25 de Mayo s/n</a
+      >
+    </div>
+    <span class="text-white text-4xl mt-auto pt-4 font-brush"
+      >Juzgado de Paz</span
+    >
+  </div>
+</address>
