@@ -2,16 +2,18 @@
 import Logo from "./Logo.astro";
 ---
 
-<div class="flex items-center gap-1">
+<div class="flex items-center gap-2">
   <Logo />
-  <h1 class="text-xs md:text-base">
-    Comuna de
-    <span class="block text-2xl md:text-4xl text-nowrap"> Villa Ana </span>
+  <h1 class="flex flex-col">
+    <span class="uppercase text-[8px] md:text-[10px]">Comuna de</span>
+    <span class="text-2xl spa md:text-4xl text-nowrap leading-none"
+      >Villa Ana</span
+    >
   </h1>
 </div>
 
 <style>
-  h1 {
-    font-family: "Alex Brush", cursive;
+  span:last-child {
+    font-family: "Lush", cursive;
   }
 </style>
