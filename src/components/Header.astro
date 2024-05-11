@@ -85,7 +85,9 @@ const menu = [
 
 <style is:global>
   body:has(.menu.open) {
-    overflow: hidden;
+    @media (width < 768px) {
+      overflow: hidden;
+    }
   }
 
   .menu > ul {

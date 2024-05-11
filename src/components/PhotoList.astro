@@ -6,42 +6,68 @@ const photos = [
   { src: "photos/photo2.avif" },
   { src: "photos/photo3.avif" },
   { src: "photos/photo4.avif" },
-  { src: "photos/photo5.avif" },
-  { src: "photos/photo6.avif" },
-  { src: "photos/photo7.avif" },
+  { src: "photos/photo8.avif" },
+  { src: "photos/photo9.avif" },
+  { src: "photos/photo10.avif" },
+  { src: "photos/photo11.avif" },
+  { src: "photos/photo12.avif" },
+  { src: "photos/photo13.avif" },
+  { src: "photos/photo14.avif" },
+  { src: "photos/photo15.avif" },
+  { src: "photos/photo16.avif" },
+  { src: "photos/photo17.avif" },
+  { src: "photos/photo18.avif" },
+  { src: "photos/photo19.avif" },
+  { src: "photos/photo20.avif" },
+  { src: "photos/photo21.avif" },
+  { src: "photos/photo22.avif" },
+  { src: "photos/photo23.avif" },
+  { src: "photos/photo24.avif" },
+  { src: "photos/photo25.avif" },
+  { src: "photos/photo26.avif" },
+  { src: "photos/photo27.avif" },
+  { src: "photos/photo28.avif" },
+  { src: "photos/photo29.avif" },
+  { src: "photos/photo30.avif" },
+  { src: "photos/photo31.avif" },
+  { src: "photos/photo32.avif" },
+  { src: "photos/photo33.avif" },
+  { src: "photos/photo34.avif" },
+  { src: "photos/photo35.avif" },
+  { src: "photos/photo36.avif" },
+  { src: "photos/photo37.avif" },
+  { src: "photos/photo38.avif" },
+  { src: "photos/photo39.avif" },
+  { src: "photos/photo40.avif" },
+  { src: "photos/photo41.avif" },
+  { src: "photos/photo42.avif" },
+  { src: "photos/photo43.avif" },
+  { src: "photos/photo44.avif" },
+  { src: "photos/photo45.avif" },
+  { src: "photos/photo46.avif" },
+  { src: "photos/photo47.avif" },
+  { src: "photos/photo48.avif" },
 ];
-
-const { slice } = Astro.props;
 ---
 
 <div
   class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
 >
   {
-    photos.slice(0, slice).map((photo, index) => {
+    photos.map((photo, index) => {
       return (
-        <figure
+        <button
           data-index={index}
-          class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black"
+          class="rounded overflow-hidden relative max-sm:after:content-[url('/hand-click.svg')_'_Pulsa_para_expandir_la_imagen'] sm:after:content-[url('/click.svg')_'_Haz_click_para_expandir_la_imagen'] sm:after:opacity-0 sm:after:absolute sm:after:bottom-5 sm:hover:after:bottom-2 sm:hover:after:opacity-100 sm:focus:after:bottom-2 sm:focus:after:opacity-100 sm:after:transition-all sm:after:duration-500 after:text-white after:absolute after:bottom-2 after:right-0 after:left-0 after:text-center after:text-xs after:text-balance after:px-1 after:[text-shadow:0px_0px_4px_black] cursor-zoom-in group bg-black"
         >
           <img
             src={photo.src}
-            class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 sm:grayscale sm:group-hover:grayscale-0"
+            class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 group-focus:scale-105 sm:grayscale sm:group-hover:grayscale-0 sm:group-focus:grayscale-0"
             loading="lazy"
           />
-        </figure>
+        </button>
       );
     })
-  }
-  {
-    Astro.url.pathname === "/" && (
-      <a
-        href="/fotos"
-        class="flex justify-center items-center aspect-[3/4] cursor-pointer border rounded hover:scale-105 transition-[transform_0.3s,filter_0.3s] [background-image:linear-gradient(to_right,black,transparent),linear-gradient(to_left,black,transparent),url(/collage-fotos.avif)] bg-center bg-cover text-white font-bold [text-shadow:0px_0px_4px_black] hover:brightness-150"
-      >
-        Ver más fotos
-      </a>
-    )
   }
 </div>
 <dialog
@@ -92,8 +118,14 @@ const { slice } = Astro.props;
       mask-image: none;
     }
 
-    figure {
+    button {
       &:hover {
+        .photo {
+          mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+        }
+      }
+
+      &:focus {
         .photo {
           mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
         }
@@ -181,6 +213,7 @@ const { slice } = Astro.props;
 
 <script>
   const $photoList = document.querySelector(".photo-list");
+  const $photosButtons = $photoList.querySelectorAll("button");
   const $photoModal = document.querySelector(
     ".photo-dialog"
   ) as HTMLDialogElement;
@@ -200,12 +233,10 @@ const { slice } = Astro.props;
   }
 
   function handleClickPhoto(e) {
-    const $figure = e.target.closest("figure");
-    if ($figure) {
-      slideIndex = +$figure.dataset.index;
-      showSlide();
-      $photoModal.showModal();
-    }
+    const $photoButton = e.target.closest("button");
+    slideIndex = +$photoButton.dataset.index;
+    showSlide();
+    $photoModal.showModal();
   }
 
   function handleClickInPhotoModal(e) {
@@ -232,9 +263,25 @@ const { slice } = Astro.props;
     showSlide();
   }
 
-  $photoList.addEventListener("click", handleClickPhoto);
+  function slide(e) {
+    if ($photoModal.open) {
+      const keypress = e.key;
+      if (keypress === "ArrowLeft") {
+        prevSlide();
+        return;
+      }
+      if (keypress === "ArrowRight") {
+        nextSlide();
+      }
+    }
+  }
+
+  $photosButtons.forEach((photo) =>
+    photo.addEventListener("click", handleClickPhoto)
+  );
   $photoModal.addEventListener("click", handleClickInPhotoModal);
   $nextBtn.addEventListener("click", nextSlide);
   $prevBtn.addEventListener("click", prevSlide);
   $closeDialogBtn.addEventListener("click", () => $photoModal.close());
+  document.addEventListener("keydown", slide);
 </script>

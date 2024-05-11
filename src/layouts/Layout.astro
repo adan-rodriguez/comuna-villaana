@@ -41,17 +41,35 @@ const { title } = Astro.props;
         font-display: swap;
       }
 
-      @font-face {
+      /* @font-face {
         font-family: "Gilroy-Light";
-        src: url("/fonts/gilroy-light-300.woff2") format("woff2");
+        src: url("/fonts/gilroy-light.woff2") format("woff2");
+        font-display: swap;
+      } */
+
+      @font-face {
+        font-family: "Gilroy-Regular";
+        src: url("/fonts/gilroy-regular.woff2") format("woff2");
         font-display: swap;
       }
 
       @font-face {
-        font-family: "Gilroy-ExtraBold";
-        src: url("/fonts/gilroy-extrabold-800.woff2") format("woff2");
+        font-family: "Gilroy-Regular-Italic";
+        src: url("/fonts/gilroy-regular-italic.woff2") format("woff2");
         font-display: swap;
       }
+
+      @font-face {
+        font-family: "Gilroy-Bold";
+        src: url("/fonts/gilroy-bold.woff2") format("woff2");
+        font-display: swap;
+      }
+
+      /* @font-face {
+        font-family: "Gilroy-ExtraBold";
+        src: url("/fonts/gilroy-extrabold.woff2") format("woff2");
+        font-display: swap;
+      } */
 
       :root {
         --red: #f12b42;
@@ -61,7 +79,7 @@ const { title } = Astro.props;
       }
 
       body {
-        font-family: "Gilroy-Light", sans-serif;
+        font-family: "Gilroy-Regular", sans-serif;
       }
     </style>
   </body>
