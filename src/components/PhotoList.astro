@@ -51,7 +51,7 @@ const photos = [
 ---
 
 <div
-  class="photo-list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
+  class="photo_list grid grid-cols-[repeat(auto-fit,minmax(min(11rem,100%),1fr))] gap-4"
 >
   {
     photos.map((photo, index) => {
@@ -71,11 +71,11 @@ const photos = [
   }
 </div>
 <dialog
-  class="photo-dialog w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
+  class="photo_slider-modal w-11/12 max-w-screen-lg rounded outline-none backdrop:backdrop-blur-lg backdrop:cursor-zoom-out"
 >
   <div class="photo_slider-container">
     <button
-      class="close_dialog-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70 hover:scale-105 hover:opacity-100 transition-all duration-300"
+      class="close_modal-btn absolute top-1 right-1 z-10 bg-black text-white border rounded-md p-1 opacity-70 hover:scale-105 hover:opacity-100 transition-all duration-300"
       title="Salir"><XIcon /></button
     >
     <div class="photo_slider">
@@ -92,17 +92,17 @@ const photos = [
         <span class="photo_counter">1</span>/{photos.length}
       </div>
     </div>
-    <button class="prev-btn_photo_slider"
+    <button class="photo_slider-prev-btn"
       ><img src="/chevron-up-white.svg" /></button
     >
-    <button class="next-btn_photo_slider"
+    <button class="photo_slider-next-btn"
       ><img src="/chevron-up-white.svg" /></button
     >
   </div>
 </dialog>
 
 <style is:global>
-  body:has(.photo-dialog[open]) {
+  body:has(.photo_slider-modal[open]) {
     overflow-y: hidden;
   }
 </style>
@@ -111,25 +111,15 @@ const photos = [
   .photo {
     mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
     transition: all 0.5s;
-  }
 
-  @media (width >= 640px) {
-    .photo {
+    @media (width >= 640px) {
       mask-image: none;
     }
+  }
 
-    button {
-      &:hover {
-        .photo {
-          mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
-        }
-      }
-
-      &:focus {
-        .photo {
-          mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
-        }
-      }
+  .photo_list > button:is(:hover, :focus) .photo {
+    @media (width >= 640px) {
+      mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
     }
   }
 
@@ -156,22 +146,22 @@ const photos = [
     width: 100%;
     transition: 0.01s clip-path 0.6s;
     clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+
+    &.active {
+      z-index: 1;
+      transition: 0.6s clip-path;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
   }
 
-  .photo_slide.active {
-    z-index: 1;
-    transition: 0.6s clip-path;
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
-  }
-
-  .photo_slide img {
+  .photo_slide > img {
     height: 100%;
     margin-inline: auto;
     object-fit: cover;
   }
 
-  .prev-btn_photo_slider,
-  .next-btn_photo_slider {
+  .photo_slider-prev-btn,
+  .photo_slider-next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -193,7 +183,7 @@ const photos = [
     }
   }
 
-  .prev-btn_photo_slider {
+  .photo_slider-prev-btn {
     left: 10px;
 
     img {
@@ -202,8 +192,9 @@ const photos = [
     }
   }
 
-  .next-btn_photo_slider {
+  .photo_slider-next-btn {
     right: 10px;
+
     img {
       rotate: 90deg;
       translate: 5px 0;
@@ -212,16 +203,17 @@ const photos = [
 </style>
 
 <script>
-  const $photoList = document.querySelector(".photo-list");
+  const $photoList = document.querySelector(".photo_list");
   const $photosButtons = $photoList.querySelectorAll("button");
-  const $photoModal = document.querySelector(
-    ".photo-dialog"
+  const $photoSliderModal = document.querySelector(
+    ".photo_slider-modal"
   ) as HTMLDialogElement;
-  const $slides = [...document.querySelectorAll(".photo_slide")];
-  const $prevBtn = document.querySelector(".prev-btn_photo_slider");
-  const $nextBtn = document.querySelector(".next-btn_photo_slider");
-  const $closeDialogBtn = document.querySelector(".close_dialog-btn");
-  const $counter = document.querySelector(".photo_counter");
+  const $photoSlider = $photoSliderModal.querySelector(".photo_slider");
+  const $slides = [...$photoSliderModal.querySelectorAll(".photo_slide")];
+  const $prevBtn = $photoSliderModal.querySelector(".photo_slider-prev-btn");
+  const $nextBtn = $photoSliderModal.querySelector(".photo_slider-next-btn");
+  const $closeDialogBtn = $photoSliderModal.querySelector(".close_modal-btn");
+  const $counter = $photoSliderModal.querySelector(".photo_counter");
 
   let slideIndex = 0;
   const totalSlides = $slides.length;
@@ -236,12 +228,13 @@ const photos = [
     const $photoButton = e.target.closest("button");
     slideIndex = +$photoButton.dataset.index;
     showSlide();
-    $photoModal.showModal();
+    $photoSliderModal.showModal();
   }
 
   function handleClickInPhotoModal(e) {
-    if (e.target.matches(".photo-dialog")) {
-      $photoModal.close();
+    if (e.target.matches(".photo_slider-modal")) {
+      // click in backdrop
+      $photoSliderModal.close();
     }
   }
 
@@ -264,7 +257,7 @@ const photos = [
   }
 
   function slide(e) {
-    if ($photoModal.open) {
+    if ($photoSliderModal.open) {
       const keypress = e.key;
       if (keypress === "ArrowLeft") {
         prevSlide();
@@ -272,16 +265,42 @@ const photos = [
       }
       if (keypress === "ArrowRight") {
         nextSlide();
+        return;
       }
     }
+  }
+
+  let touchstartX = 0;
+  let touchendX = 0;
+
+  function handleGesture() {
+    if (touchendX < touchstartX) {
+      prevSlide();
+      return;
+    }
+    if (touchendX > touchstartX) {
+      nextSlide();
+      return;
+    }
+  }
+
+  function handleTouchStart(e) {
+    touchstartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e) {
+    touchendX = e.changedTouches[0].screenX;
+    handleGesture();
   }
 
   $photosButtons.forEach((photo) =>
     photo.addEventListener("click", handleClickPhoto)
   );
-  $photoModal.addEventListener("click", handleClickInPhotoModal);
+  $photoSlider.addEventListener("click", handleClickInPhotoModal);
+  $photoSlider.addEventListener("touchstart", handleTouchStart);
+  $photoSlider.addEventListener("touchend", handleTouchEnd);
   $nextBtn.addEventListener("click", nextSlide);
   $prevBtn.addEventListener("click", prevSlide);
-  $closeDialogBtn.addEventListener("click", () => $photoModal.close());
+  $closeDialogBtn.addEventListener("click", () => $photoSliderModal.close());
   document.addEventListener("keydown", slide);
 </script>
