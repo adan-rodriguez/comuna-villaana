@@ -5,10 +5,10 @@ import XIcon from "./icons/XIcon.astro";
 import MenuList from "./MenuList.astro";
 
 const menu = [
-  { text: "Gobierno", links: [{ text: "Trámites", href: "/tramites" }] },
   {
     text: "Mi Pueblo",
     links: [
+      { text: "Turismo", href: "#" },
       {
         text: "Galería",
         links: [
@@ -17,6 +17,15 @@ const menu = [
         ],
       },
       { text: "Historia", href: "/historia" },
+      { text: "La Forestal", href: "#" },
+    ],
+  },
+  {
+    text: "Gobierno",
+    links: [
+      { text: "Noticias", href: "#" },
+      { text: "Trámites", href: "/tramites" },
+      { text: "Contacto", href: "#contacto" },
     ],
   },
   {
@@ -33,18 +42,21 @@ const menu = [
   <div
     class="header container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
-    <a href="/" class="justify-self-start hover:scale-105 transition-transform">
+    <a
+      href="/"
+      class="justify-self-start hover:scale-105 focus-visible:scale-105 transition-transform"
+    >
       <Isologo />
     </a>
     <button
       aria-label="Abrir menú"
-      class="open-menu justify-self-end md:hidden hover:scale-105 transition-transform"
+      class="open-menu justify-self-end md:hidden hover:scale-105 focus-visible:scale-105 transition-transform"
     >
       <MenuIcon />
     </button>
     <button
       aria-label="Cerrar menú"
-      class="close-menu hidden justify-self-end hover:scale-105 transition-transform"
+      class="close-menu hidden justify-self-end hover:scale-105 focus-visible:scale-105 transition-transform"
     >
       <XIcon />
     </button>
