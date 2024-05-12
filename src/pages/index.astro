@@ -22,6 +22,35 @@ import OtrasSecciones from "../components/OtrasSecciones.astro";
     <!-- <HeroLinks /> -->
   </div>
   <Slider />
+  <!-- <img
+    srcset="
+    villaana-aerea-phone.avif 1134w,
+    villaana-aerea-desktop.avif 2016w
+    "
+    sizes="(max-width: 728px) 100%,
+    (max-width: 480px) 440px,
+    800px"
+    src="villaana-aerea-desktop.avif"
+    alt="Elva dressed as a fairy"
+    /> -->
+  <section class="bg-black mt-20 rounded">
+    <picture class="block h-[calc(100dvh-2rem)]">
+      <source media="(max-width: 767px)" srcset="villaana-aerea-phone.avif" />
+      <img
+        src="villaana-aerea-desktop.avif"
+        alt="Foto aerea de Villa Ana"
+        class="w-full h-full object-cover object-bottom [mask-image:linear-gradient(to_bottom,black,transparent_100%)]"
+      />
+    </picture>
+    <div
+      class="text-white p-4 *:max-w-prose *:text-pretty md:text-center flex flex-col items-center"
+    >
+      <p>
+        La comuna de Villa Ana se sitúa al nordeste de la provincia de Santa Fe,
+        en el departamento General Obligado, a 439 km de la capital provincial.
+      </p>
+    </div>
+  </section>
   <OtrasSecciones />
   <section id="tramites" class="pt-20">
     <h2
