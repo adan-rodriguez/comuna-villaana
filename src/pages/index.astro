@@ -3,9 +3,8 @@ import SitiosDeInteres from "../components/SitiosDeInteres.astro";
 import Slider from "../components/Slider.astro";
 import ContactosUtiles from "../components/ContactosUtiles.astro";
 import Tramites from "../components/Tramites.astro";
-import VideoList from "../components/VideoList.astro";
 import Layout from "../layouts/Layout.astro";
-import OtrasSecciones from "../components/OtrasSecciones.astro";
+import MiPueblo from "../components/MiPueblo.astro";
 ---
 
 <Layout title="Comuna de Villa Ana">
@@ -33,25 +32,34 @@ import OtrasSecciones from "../components/OtrasSecciones.astro";
     src="villaana-aerea-desktop.avif"
     alt="Elva dressed as a fairy"
     /> -->
-  <section class="bg-black mt-20 rounded">
-    <picture class="block h-[calc(100dvh-2rem)]">
-      <source media="(max-width: 767px)" srcset="villaana-aerea-phone.avif" />
-      <img
-        src="villaana-aerea-desktop.avif"
-        alt="Foto aerea de Villa Ana"
-        class="w-full h-full object-cover object-bottom [mask-image:linear-gradient(to_bottom,black,transparent_100%)]"
-      />
-    </picture>
-    <div
-      class="text-white p-4 *:max-w-prose *:text-pretty md:text-center flex flex-col items-center"
+
+  <section class="pt-20">
+    <h2
+      class="font-gilroyB mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
     >
-      <p>
-        La comuna de Villa Ana se sitúa al nordeste de la provincia de Santa Fe,
-        en el departamento General Obligado, a 439 km de la capital provincial.
-      </p>
+      Mi pueblo
+    </h2>
+    <MiPueblo />
+    <div class="flex flex-col bg-black mt-20 rounded h-[calc(100dvh-2rem)]">
+      <picture class="w-full h-0 grow">
+        <source media="(max-width: 767px)" srcset="villaana-aerea-phone.avif" />
+        <img
+          src="villaana-aerea-desktop.avif"
+          alt="Foto aerea de Villa Ana"
+          class="w-full h-full object-cover object-bottom [mask-image:linear-gradient(to_bottom,black,transparent_100%)]"
+        />
+      </picture>
+      <div
+        class="text-white p-4 *:max-w-prose *:text-pretty md:text-center flex flex-col items-center"
+      >
+        <p>
+          La comuna de Villa Ana se sitúa al nordeste de la provincia de Santa
+          Fe, en el departamento General Obligado, a 439 km de la capital
+          provincial.
+        </p>
+      </div>
     </div>
   </section>
-  <OtrasSecciones />
   <section id="tramites" class="pt-20">
     <h2
       class="font-gilroyB mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
