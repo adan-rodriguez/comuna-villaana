@@ -62,7 +62,7 @@ const photos = [
         >
           <img
             src={photo.src}
-            class="photo w-full aspect-[3/4] object-cover group-hover:scale-105 group-focus-visible:scale-105 sm:grayscale sm:group-hover:grayscale-0 sm:group-focus-visible:grayscale-0"
+            class="photo w-full aspect-[3/4] object-cover group-hover:scale-110 group-focus-visible:scale-105 sm:grayscale sm:group-hover:grayscale-0 sm:group-focus-visible:grayscale-0 group-hover:rotate-3 group-focus-visible:rotate-12"
             loading="lazy"
           />
         </button>
@@ -108,16 +108,16 @@ const photos = [
 <style>
   .photo {
     mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
-    transition: all 0.5s;
+    transition:
+      transform 0.5s,
+      filter 0.5s;
 
     @media (width >= 640px) {
       mask-image: none;
-    }
-  }
 
-  .photo_list > button:is(:hover, :focus) .photo {
-    @media (width >= 640px) {
-      mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+      .photo_list > button:is(:hover, :focus) & {
+        mask-image: linear-gradient(to bottom, black 50%, transparent 95%);
+      }
     }
   }
 
@@ -144,12 +144,12 @@ const photos = [
       transition: 0.6s clip-path;
       clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
     }
-  }
 
-  .photo_slide > img {
-    height: 100%;
-    margin-inline: auto;
-    object-fit: cover;
+    > img {
+      height: 100%;
+      margin-inline: auto;
+      object-fit: cover;
+    }
   }
 
   .photo_slider-prev-btn,
@@ -198,24 +198,24 @@ const photos = [
 
 <script>
   const $photoList = document.querySelector(".photo_list");
-  const $photosButtons = $photoList.querySelectorAll("button");
+  const $$photosButtons = $photoList.querySelectorAll("button");
   const $photoSliderModal = document.querySelector(
     ".photo_slider-modal"
   ) as HTMLDialogElement;
   const $photoSlider = $photoSliderModal.querySelector(".photo_slider");
-  const $slides = [...$photoSliderModal.querySelectorAll(".photo_slide")];
+  const $$slides = [...$photoSliderModal.querySelectorAll(".photo_slide")];
   const $prevBtn = $photoSliderModal.querySelector(".photo_slider-prev-btn");
   const $nextBtn = $photoSliderModal.querySelector(".photo_slider-next-btn");
   const $closeDialogBtn = $photoSliderModal.querySelector(".close_modal-btn");
   const $counter = $photoSliderModal.querySelector(".photo_counter");
 
   let slideIndex = 0;
-  const totalSlides = $slides.length;
+  const totalSlides = $$slides.length;
 
   function showSlide() {
     $counter.textContent = slideIndex + 1 + "";
-    $slides.forEach(($slide) => $slide.classList.remove("active"));
-    $slides[slideIndex].classList.add("active");
+    $$slides.forEach(($slide) => $slide.classList.remove("active"));
+    $$slides[slideIndex].classList.add("active");
   }
 
   function handleClickPhoto(e) {
@@ -287,7 +287,7 @@ const photos = [
     handleGesture();
   }
 
-  $photosButtons.forEach((photo) =>
+  $$photosButtons.forEach((photo) =>
     photo.addEventListener("click", handleClickPhoto)
   );
   $photoSliderModal.addEventListener("click", handleClickInPhotoModal);

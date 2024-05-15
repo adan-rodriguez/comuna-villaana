@@ -5,7 +5,9 @@ export default {
     extend: {
       fontFamily: {
         brush: "Alex Brush, cursive",
+        lush: "'Lush', cursive",
         gilroyRI: "'Gilroy-Regular-Italic', cursive",
+        gilroyR: "'Gilroy-Regular', sanf-serif",
         gilroyB: "'Gilroy-Bold', sanf-serif",
         gilroyEB: "'Gilroy-ExtraBold', sanf-serif",
       },

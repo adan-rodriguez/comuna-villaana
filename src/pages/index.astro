@@ -20,19 +20,32 @@ import MiPueblo from "../components/MiPueblo.astro";
     ></video>
     <!-- <HeroLinks /> -->
   </div>
-  <Slider />
-  <!-- <img
-    srcset="
-    villaana-aerea-phone.avif 1134w,
-    villaana-aerea-desktop.avif 2016w
-    "
-    sizes="(max-width: 728px) 100%,
-    (max-width: 480px) 440px,
-    800px"
-    src="villaana-aerea-desktop.avif"
-    alt="Elva dressed as a fairy"
-    /> -->
-
+  <!-- <Slider /> -->
+  <section>
+    <div
+      class="flex text-white relative overflow-hidden max-w-screen-md mx-auto aspect-video grow border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] group"
+    >
+      <img
+        src="/collage-turismo.avif"
+        alt="Collage de fotos de lugares turísticos de Villa Ana
+        "
+        loading="lazy"
+        class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
+      />
+      <a
+        href="/turismo"
+        class="self-stretch flex justify-center items-center w-full px-4 py-2"
+        ><h3
+          class="text-center text-balance font-gilroyEB text-3xl md:text-5xl [text-shadow:0px_0px_4px_black]"
+        >
+          Visitá Villa Ana
+          <span class="block font-gilroyR text-base"
+            >Mirá un poco de lo que vas a conocer</span
+          >
+        </h3></a
+      >
+    </div>
+  </section>
   <section class="pt-20">
     <h2
       class="font-gilroyB mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
