@@ -22,7 +22,11 @@ const videos = [
 >
   {
     videos.map((video) => (
-      <lite-youtube videoid={video.id} title={video.title} class="rounded-sm" />
+      <lite-youtube
+        videoid={video.id}
+        title={video.title}
+        class="rounded-sm shadow-xl shadow-black"
+      />
     ))
   }
 </div>

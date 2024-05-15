@@ -23,7 +23,7 @@ import MiPueblo from "../components/MiPueblo.astro";
   <!-- <Slider /> -->
   <section>
     <div
-      class="flex text-white relative overflow-hidden max-w-screen-md mx-auto aspect-video grow border border-gray-500 rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] group"
+      class="flex text-white relative overflow-hidden max-w-screen-md mx-auto aspect-video grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] group shadow-xl shadow-black active:translate-y-1"
     >
       <img
         src="/collage-turismo.avif"
@@ -53,7 +53,9 @@ import MiPueblo from "../components/MiPueblo.astro";
       Mi pueblo
     </h2>
     <MiPueblo />
-    <div class="flex flex-col bg-black mt-20 rounded h-[calc(100dvh-2rem)]">
+    <div
+      class="flex flex-col bg-black mt-20 rounded h-[calc(100dvh-2rem)] shadow-xl shadow-black"
+    >
       <picture class="w-full h-0 grow">
         <source media="(max-width: 767px)" srcset="villaana-aerea-phone.avif" />
         <img
