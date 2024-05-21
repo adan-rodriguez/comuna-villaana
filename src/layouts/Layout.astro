@@ -1,5 +1,5 @@
 ---
-// import { ViewTransitions } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 
 // import "@fontsource-variable/onest";
 // import "@fontsource/alex-brush";
@@ -21,7 +21,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/avif" href="logo.avif" />
     <title>{title}</title>
-    <!-- <ViewTransitions /> -->
+    <ViewTransitions />
   </head>
   <body
     class="relative -z-20 bg-[color-mix(in_srgb,var(--skyblue),transparent_95%)] text-black md:overflow-y-auto"

@@ -23,22 +23,15 @@ import MiPueblo from "../components/MiPueblo.astro";
   <!-- <Slider /> -->
   <section>
     <div
-      class="flex text-white relative overflow-hidden max-w-screen-md mx-auto aspect-video grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] group shadow-xl shadow-black active:translate-y-1"
+      class="flex text-white max-w-screen-md mx-auto aspect-video grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/collage-turismo.avif)] bg-cover bg-center bg-black hover:scale-[1.025] focus-within:scale-[1.025] transition-transform duration-300 shadow-xl shadow-black active:translate-y-1"
     >
-      <img
-        src="/collage-turismo.avif"
-        alt="Collage de fotos de lugares turísticos de Villa Ana
-        "
-        loading="lazy"
-        class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
-      />
       <a
         href="/turismo"
         class="self-stretch flex justify-center items-center w-full px-4 py-2"
         ><h3
-          class="text-center text-balance font-gilroyEB text-3xl md:text-5xl [text-shadow:0px_0px_4px_black]"
+          class="text-center text-balance font-gilroyEB text-3xl md:text-5xl [text-shadow:0px_0px_4px_#000000]"
         >
-          Visitá Villa Ana
+          <span class="uppercase">Visitá Villa Ana</span>
           <span class="block font-gilroyR text-base"
             >Mirá un poco de lo que vas a conocer</span
           >
@@ -82,6 +75,10 @@ import MiPueblo from "../components/MiPueblo.astro";
       Trámites
     </h2>
     <Tramites />
+    <a
+      href="/tramites"
+      class="block text-right underline underline-offset-8 mt-4">Más trámites</a
+    >
   </section>
   <section id="contactosutiles" class="pt-20">
     <h2
@@ -90,6 +87,11 @@ import MiPueblo from "../components/MiPueblo.astro";
       Contactos útiles
     </h2>
     <ContactosUtiles />
+    <a
+      href="/contactosutiles"
+      class="block text-right underline underline-offset-8 mt-4"
+      >Más contactos</a
+    >
   </section>
   <section id="sitiosdeinteres" class="pt-20">
     <h2
@@ -98,5 +100,10 @@ import MiPueblo from "../components/MiPueblo.astro";
       Sitios de interés
     </h2>
     <SitiosDeInteres />
+    <a
+      href="/sitiosdeinteres"
+      class="block text-right underline underline-offset-8 mt-4"
+      >Más sitios de interés</a
+    >
   </section>
 </Layout>

@@ -197,104 +197,106 @@ const photos = [
 </style>
 
 <script>
-  const $photoList = document.querySelector(".photo_list");
-  const $$photosButtons = $photoList.querySelectorAll("button");
-  const $photoSliderModal = document.querySelector(
-    ".photo_slider-modal"
-  ) as HTMLDialogElement;
-  const $photoSlider = $photoSliderModal.querySelector(".photo_slider");
-  const $$slides = [...$photoSliderModal.querySelectorAll(".photo_slide")];
-  const $prevBtn = $photoSliderModal.querySelector(".photo_slider-prev-btn");
-  const $nextBtn = $photoSliderModal.querySelector(".photo_slider-next-btn");
-  const $closeDialogBtn = $photoSliderModal.querySelector(".close_modal-btn");
-  const $counter = $photoSliderModal.querySelector(".photo_counter");
+  document.addEventListener("astro:page-load", () => {
+    const $photoList = document.querySelector(".photo_list");
+    const $$photosButtons = $photoList.querySelectorAll("button");
+    const $photoSliderModal = document.querySelector(
+      ".photo_slider-modal"
+    ) as HTMLDialogElement;
+    const $photoSlider = $photoSliderModal.querySelector(".photo_slider");
+    const $$slides = [...$photoSliderModal.querySelectorAll(".photo_slide")];
+    const $prevBtn = $photoSliderModal.querySelector(".photo_slider-prev-btn");
+    const $nextBtn = $photoSliderModal.querySelector(".photo_slider-next-btn");
+    const $closeDialogBtn = $photoSliderModal.querySelector(".close_modal-btn");
+    const $counter = $photoSliderModal.querySelector(".photo_counter");
 
-  let slideIndex = 0;
-  const totalSlides = $$slides.length;
+    let slideIndex = 0;
+    const totalSlides = $$slides.length;
 
-  function showSlide() {
-    $counter.textContent = slideIndex + 1 + "";
-    $$slides.forEach(($slide) => $slide.classList.remove("active"));
-    $$slides[slideIndex].classList.add("active");
-  }
-
-  function handleClickPhoto(e) {
-    const $photoButton = e.target.closest("button");
-    slideIndex = +$photoButton.dataset.index;
-    showSlide();
-    $photoSliderModal.showModal();
-  }
-
-  function handleClickInPhotoModal(e) {
-    if (e.target.matches(".photo_slider-modal")) {
-      // click in backdrop
-      $photoSliderModal.close();
+    function showSlide() {
+      $counter.textContent = slideIndex + 1 + "";
+      $$slides.forEach(($slide) => $slide.classList.remove("active"));
+      $$slides[slideIndex].classList.add("active");
     }
-  }
 
-  function nextSlide() {
-    if (slideIndex < totalSlides - 1) {
-      slideIndex++;
-    } else {
-      slideIndex = 0;
+    function handleClickPhoto(e) {
+      const $photoButton = e.target.closest("button");
+      slideIndex = +$photoButton.dataset.index;
+      showSlide();
+      $photoSliderModal.showModal();
     }
-    showSlide();
-  }
 
-  function prevSlide() {
-    if (slideIndex > 0) {
-      slideIndex--;
-    } else {
-      slideIndex = totalSlides - 1;
-    }
-    showSlide();
-  }
-
-  function slide(e) {
-    if ($photoSliderModal.open) {
-      const keypress = e.key;
-      if (keypress === "ArrowLeft") {
-        prevSlide();
-        return;
+    function handleClickInPhotoModal(e) {
+      if (e.target.matches(".photo_slider-modal")) {
+        // click in backdrop
+        $photoSliderModal.close();
       }
-      if (keypress === "ArrowRight") {
+    }
+
+    function nextSlide() {
+      if (slideIndex < totalSlides - 1) {
+        slideIndex++;
+      } else {
+        slideIndex = 0;
+      }
+      showSlide();
+    }
+
+    function prevSlide() {
+      if (slideIndex > 0) {
+        slideIndex--;
+      } else {
+        slideIndex = totalSlides - 1;
+      }
+      showSlide();
+    }
+
+    function slide(e) {
+      if ($photoSliderModal.open) {
+        const keypress = e.key;
+        if (keypress === "ArrowLeft") {
+          prevSlide();
+          return;
+        }
+        if (keypress === "ArrowRight") {
+          nextSlide();
+          return;
+        }
+      }
+    }
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    function handleGesture() {
+      if (touchendX < touchstartX) {
         nextSlide();
         return;
       }
+      if (touchendX > touchstartX) {
+        prevSlide();
+        return;
+      }
     }
-  }
 
-  let touchstartX = 0;
-  let touchendX = 0;
-
-  function handleGesture() {
-    if (touchendX < touchstartX) {
-      nextSlide();
-      return;
+    function handleTouchStart(e) {
+      touchstartX = e.changedTouches[0].screenX;
     }
-    if (touchendX > touchstartX) {
-      prevSlide();
-      return;
+
+    function handleTouchEnd(e) {
+      touchendX = e.changedTouches[0].screenX;
+      handleGesture();
     }
-  }
 
-  function handleTouchStart(e) {
-    touchstartX = e.changedTouches[0].screenX;
-  }
-
-  function handleTouchEnd(e) {
-    touchendX = e.changedTouches[0].screenX;
-    handleGesture();
-  }
-
-  $$photosButtons.forEach((photo) =>
-    photo.addEventListener("click", handleClickPhoto)
-  );
-  $photoSliderModal.addEventListener("click", handleClickInPhotoModal);
-  $photoSlider.addEventListener("touchstart", handleTouchStart);
-  $photoSlider.addEventListener("touchend", handleTouchEnd);
-  $nextBtn.addEventListener("click", nextSlide);
-  $prevBtn.addEventListener("click", prevSlide);
-  $closeDialogBtn.addEventListener("click", () => $photoSliderModal.close());
-  document.addEventListener("keydown", slide);
+    $$photosButtons.forEach((photo) =>
+      photo.addEventListener("click", handleClickPhoto)
+    );
+    $photoSliderModal.addEventListener("click", handleClickInPhotoModal);
+    $photoSlider.addEventListener("touchstart", handleTouchStart);
+    $photoSlider.addEventListener("touchend", handleTouchEnd);
+    $nextBtn.addEventListener("click", nextSlide);
+    $prevBtn.addEventListener("click", prevSlide);
+    $closeDialogBtn.addEventListener("click", () => $photoSliderModal.close());
+    document.addEventListener("keydown", slide);
+  });
 </script>

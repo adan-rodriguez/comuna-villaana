@@ -1,72 +1,95 @@
 <div class="flex flex-col md:flex-row md:flex-wrap gap-6 text-white">
   <div
-    class="flex relative overflow-hidden min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] min-w-96 shadow-xl shadow-black group active:translate-y-1"
+    class="flex min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/collage-turismo1.avif)] bg-cover bg-center bg-black min-w-96 shadow-xl shadow-black hover:scale-[1.025] focus-within:scale-[1.025] transition-transform active:translate-y-1"
   >
-    <img
-      src="/collage-historia.avif"
-      alt="Collage de fotos históricas de Villa Ana"
-      loading="lazy"
-      class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
-    />
     <a
-      href="/historia"
+      href="/turismo"
       class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        Historia
+      ><h3
+        class="text-center text-balance font-gilroyEB text-xl [text-shadow:0px_0px_4px_#000000]"
+      >
+        Turismo
+      </h3></a
+    >
+  </div>
+
+  <div
+    class="flex min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/collage-fotos.avif)] bg-cover bg-center bg-black min-w-96 shadow-xl shadow-black hover:scale-[1.025] focus-within:scale-[1.025] transition-transform active:translate-y-1"
+  >
+    <a
+      href="/fotos"
+      class="self-stretch flex justify-center items-center w-full px-4 py-2"
+      ><h3
+        class="text-center text-balance font-gilroyEB text-xl [text-shadow:0px_0px_4px_#000000]"
+      >
+        Fotos
       </h3></a
     >
   </div>
   <div
-    class="flex relative overflow-hidden min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] min-w-96 shadow-xl shadow-black group active:translate-y-1"
+    class="flex min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/collage-videos.avif)] bg-cover bg-center bg-black min-w-96 shadow-xl shadow-black hover:scale-[1.025] focus-within:scale-[1.025] transition-transform active:translate-y-1"
   >
-    <img
-      src="/collage-fotos.avif"
-      alt="Collage de fotos de Villa Ana"
-      loading="lazy"
-      class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
-    />
-    <a
-      href="/fotos"
-      class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">Fotos</h3></a
-    >
-  </div>
-  <div
-    class="flex relative overflow-hidden min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] min-w-96 shadow-xl shadow-black group active:translate-y-1"
-  >
-    <img
-      src="/collage-videos.avif"
-      alt="Collage de videos de Villa Ana"
-      loading="lazy"
-      class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
-    />
     <a
       href="/videos"
       class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">Videos</h3></a
+      ><h3
+        class="text-center text-balance font-gilroyEB text-xl [text-shadow:0px_0px_4px_#000000]"
+      >
+        Videos
+      </h3></a
     >
   </div>
   <div
-    class="flex relative overflow-hidden min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent)] min-w-96 shadow-xl shadow-black group active:translate-y-1"
+    class="flex min-h-32 grow rounded-lg [background-image:linear-gradient(to_right,transparent,#000000b3_50%,transparent),url(/collage-historia.avif)] bg-cover bg-center bg-black min-w-96 shadow-xl shadow-black hover:scale-[1.025] focus-within:scale-[1.025] transition-transform active:translate-y-1"
   >
-    <img
-      src="/collage-turismo1.avif"
-      alt="Collage de fotos de lugares turísticos de Villa Ana"
-      loading="lazy"
-      class="absolute w-full h-full object-cover object-center -z-10 group-hover:scale-110 group-focus-within:scale-110 transition-transform duration-300"
-    />
     <a
-      href="/turismo"
+      href="/historia"
       class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        Turismo
+      ><h3
+        class="text-center text-balance font-gilroyEB text-xl [text-shadow:0px_0px_4px_#000000]"
+      >
+        Historia
       </h3></a
     >
   </div>
 </div>
 
-<style>
-  h3 {
-    text-shadow: 0px 0px 4px #000000;
+<!-- <style>
+  div > div {
+    &:nth-child(even) {
+      animation: fadein-even linear;
+      animation-timeline: view();
+      animation-range: entry 0% entry-crossing 200%;
+    }
+
+    &:nth-child(odd) {
+      animation: fadein-odd linear;
+      animation-timeline: view();
+      animation-range: entry 0% entry-crossing 200%;
+    }
   }
-</style>
+
+  @keyframes fadein-even {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+
+  @keyframes fadein-odd {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+</style> -->

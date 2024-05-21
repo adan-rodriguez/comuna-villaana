@@ -50,76 +50,80 @@ const images = [
 </section>
 
 <script>
-  const $slider = document.querySelector(".slider");
-  const $slides = [...document.querySelectorAll(".slide")];
-  const $prevBtn = document.querySelector(".prev-btn");
-  const $nextBtn = document.querySelector(".next-btn");
-  const $sliderIndicators = document.querySelector(".slider-indicators");
-  const $indicators = [...$sliderIndicators.querySelectorAll(".indicator")];
+  document.addEventListener("astro:page-load", () => {
+    const $slider = document.querySelector(".slider");
+    const $slides = [...document.querySelectorAll(".slide")];
+    const $prevBtn = document.querySelector(".prev-btn");
+    const $nextBtn = document.querySelector(".next-btn");
+    const $sliderIndicators = document.querySelector(".slider-indicators");
+    const $indicators = [...$sliderIndicators.querySelectorAll(".indicator")];
 
-  let slideIndex = 0;
-  const totalSlides = $slides.length;
-  let intervalId;
+    let slideIndex = 0;
+    const totalSlides = $slides.length;
+    let intervalId;
 
-  function showSlide() {
-    $slides.forEach(($slide) => $slide.classList.remove("active"));
-    $slides[slideIndex].classList.add("active");
-    $indicators.forEach(($indicator) => $indicator.classList.remove("active"));
-    $indicators[slideIndex].classList.add("active");
-  }
-
-  function nextAutomaticSlide() {
-    if (slideIndex < totalSlides - 1) {
-      slideIndex++;
-    } else {
-      slideIndex = 0;
+    function showSlide() {
+      $slides.forEach(($slide) => $slide.classList.remove("active"));
+      $slides[slideIndex].classList.add("active");
+      $indicators.forEach(($indicator) =>
+        $indicator.classList.remove("active")
+      );
+      $indicators[slideIndex].classList.add("active");
     }
-    showSlide();
-  }
 
-  function resetInterval() {
-    clearInterval(intervalId);
+    function nextAutomaticSlide() {
+      if (slideIndex < totalSlides - 1) {
+        slideIndex++;
+      } else {
+        slideIndex = 0;
+      }
+      showSlide();
+    }
+
+    function resetInterval() {
+      clearInterval(intervalId);
+      intervalId = setInterval(nextAutomaticSlide, 5000);
+    }
+
+    function nextSlide() {
+      nextAutomaticSlide();
+      resetInterval();
+    }
+
+    function prevSlide() {
+      if (slideIndex > 0) {
+        slideIndex--;
+      } else {
+        slideIndex = totalSlides - 1;
+      }
+      showSlide();
+      resetInterval();
+    }
+
+    function goToSlide(e) {
+      const $elemClicked = e.target;
+      if ($elemClicked.matches("button.indicator")) {
+        slideIndex = +$elemClicked.dataset.slide;
+      }
+      showSlide();
+      resetInterval();
+    }
+
+    $nextBtn.addEventListener("click", nextSlide);
+
+    $prevBtn.addEventListener("click", prevSlide);
+
+    $sliderIndicators.addEventListener("click", goToSlide);
+
+    $slider.addEventListener("mouseover", () => clearInterval(intervalId));
+
+    $slider.addEventListener(
+      "mouseleave",
+      () => (intervalId = setInterval(nextSlide, 5000))
+    );
+
     intervalId = setInterval(nextAutomaticSlide, 5000);
-  }
-
-  function nextSlide() {
-    nextAutomaticSlide();
-    resetInterval();
-  }
-
-  function prevSlide() {
-    if (slideIndex > 0) {
-      slideIndex--;
-    } else {
-      slideIndex = totalSlides - 1;
-    }
-    showSlide();
-    resetInterval();
-  }
-
-  function goToSlide(e) {
-    const $elemClicked = e.target;
-    if ($elemClicked.matches("button.indicator")) {
-      slideIndex = +$elemClicked.dataset.slide;
-    }
-    showSlide();
-    resetInterval();
-  }
-
-  $nextBtn.addEventListener("click", nextSlide);
-
-  $prevBtn.addEventListener("click", prevSlide);
-
-  $sliderIndicators.addEventListener("click", goToSlide);
-
-  $slider.addEventListener("mouseover", () => clearInterval(intervalId));
-
-  $slider.addEventListener(
-    "mouseleave",
-    () => (intervalId = setInterval(nextSlide, 5000))
-  );
-
-  intervalId = setInterval(nextAutomaticSlide, 5000);
+  });
 </script>
 
 <style>
