@@ -1,10 +1,12 @@
 ---
 import SitiosDeInteres from "../components/SitiosDeInteres.astro";
-import Slider from "../components/Slider.astro";
+// import Slider from "../components/Slider.astro";
 import ContactosUtiles from "../components/ContactosUtiles.astro";
 import Tramites from "../components/Tramites.astro";
 import Layout from "../layouts/Layout.astro";
 import MiPueblo from "../components/MiPueblo.astro";
+import FormularioContacto from "../components/FormularioContacto.astro";
+import Heading2 from "../components/Heading2.astro";
 ---
 
 <Layout title="Comuna de Villa Ana">
@@ -105,5 +107,9 @@ import MiPueblo from "../components/MiPueblo.astro";
       class="block text-right underline underline-offset-8 mt-4"
       >Más sitios de interés</a
     >
+  </section>
+  <section class="pt-20">
+    <Heading2 text="Envíanos un correo" />
+    <FormularioContacto />
   </section>
 </Layout>

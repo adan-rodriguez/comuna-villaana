@@ -1,0 +1,39 @@
+---
+import SendIcon from "./icons/SendIcon.astro";
+---
+
+<form
+  class="flex flex-col gap-y-8 py-12 px-4 rounded shadow-xl shadow-black bg-[linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(/ruinas-fabrica-forestal.avif)] bg-cover text-white max-w-prose mx-auto"
+>
+  <label
+    ><span class="pl-1 [text-shadow:0px_0px_4px_black] font-gilroyB"
+      >Nombre completo</span
+    >
+    <input
+      type="text"
+      class="block border rounded w-full bg-[rgb(231,230,228)] hover:bg-white transition-colors focus-visible:bg-white outline-custom-blue p-1 text-black"
+    />
+  </label>
+  <label
+    ><span class="pl-1 [text-shadow:0px_0px_4px_black] font-gilroyB"
+      >Correo electrónico</span
+    >
+    <input
+      type="email"
+      class="block border rounded w-full bg-[rgb(231,230,228)] hover:bg-white transition-colors focus-visible:bg-white outline-custom-blue p-1 text-black"
+    />
+  </label>
+  <label>
+    <span class="pl-1 [text-shadow:0px_0px_4px_black] font-gilroyB"
+      >Mensaje</span
+    >
+    <textarea
+      class="block border rounded w-full bg-[rgb(231,230,228)] hover:bg-white transition-colors focus-visible:bg-white outline-custom-blue p-1 text-black resize-none min-h-32"
+    ></textarea>
+  </label>
+  <button
+    type="button"
+    class="flex items-center gap-x-2 rounded border bg-custom-blue self-center py-2 px-8 hover:scale-[1.025] focus-visible:scale-[1.025] transition-transform font-gilroyB active:translate-y-1"
+    >Enviar <SendIcon /></button
+  >
+</form>
