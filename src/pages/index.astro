@@ -77,10 +77,9 @@ import Heading2 from "../components/Heading2.astro";
       Trámites
     </h2>
     <Tramites />
-    <a
-      href="/tramites"
-      class="block text-right underline underline-offset-8 mt-4">Más trámites</a
-    >
+    <div class="flex justify-end mt-4">
+      <a href="/tramites" class="underline underline-offset-8">Más trámites</a>
+    </div>
   </section>
   <section id="contactosutiles" class="pt-20">
     <h2
@@ -89,11 +88,11 @@ import Heading2 from "../components/Heading2.astro";
       Contactos útiles
     </h2>
     <ContactosUtiles />
-    <a
-      href="/contactosutiles"
-      class="block text-right underline underline-offset-8 mt-4"
-      >Más contactos</a
-    >
+    <div class="flex justify-end mt-4">
+      <a href="/contactosutiles" class="underline underline-offset-8"
+        >Más contactos</a
+      >
+    </div>
   </section>
   <section id="sitiosdeinteres" class="pt-20">
     <h2
@@ -102,14 +101,14 @@ import Heading2 from "../components/Heading2.astro";
       Sitios de interés
     </h2>
     <SitiosDeInteres />
-    <a
-      href="/sitiosdeinteres"
-      class="block text-right underline underline-offset-8 mt-4"
-      >Más sitios de interés</a
-    >
-  </section>
-  <section class="pt-20">
-    <Heading2 text="Envíanos un correo" />
-    <FormularioContacto />
+    <div class="flex justify-end mt-4">
+      <a href="/sitiosdeinteres" class="underline underline-offset-8"
+        >Más sitios de interés</a
+      >
+    </div>
+    <section class="pt-20">
+      <Heading2 text="Envíanos un correo" />
+      <FormularioContacto />
+    </section>
   </section>
 </Layout>
