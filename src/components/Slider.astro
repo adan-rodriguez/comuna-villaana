@@ -38,7 +38,7 @@ const images = [
     <button class="next-btn"><img src="/chevron-up-white.svg" /></button>
     <div class="slider-indicators">
       {
-        images.map((image, index) => (
+        images.map((_, index) => (
           <button
             class={`indicator ${index === 0 ? "active" : ""}`}
             data-slide={index}
