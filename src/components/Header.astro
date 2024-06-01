@@ -40,7 +40,7 @@ const menu = [
 ];
 ---
 
-<header class={`overflow-y-auto md:overflow-visible bg-[rgb(231,230,228)]`}>
+<header class="overflow-y-auto md:overflow-visible bg-[rgb(231,230,228)]">
   <div
     class="container mx-auto grid grid-cols-2 content-start md:flex items-center justify-between p-4 md:px-8 md:h-auto"
   >
@@ -169,6 +169,10 @@ const menu = [
 </style>
 
 <style>
+  header {
+    scrollbar-width: thin;
+  }
+
   @media (width < 768px) {
     header:has(.menu.open) {
       > div {

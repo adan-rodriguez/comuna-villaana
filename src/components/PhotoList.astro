@@ -121,6 +121,23 @@ const photos = [
     }
   }
 
+  .photo_slider-modal {
+    opacity: 0;
+    transition:
+      display 0.3s,
+      overlay 0.3s,
+      opacity 0.3s;
+    transition-behavior: allow-discrete;
+
+    &[open] {
+      opacity: 1;
+
+      @starting-style {
+        opacity: 0;
+      }
+    }
+  }
+
   .photo_slider {
     position: relative;
     width: 100%;

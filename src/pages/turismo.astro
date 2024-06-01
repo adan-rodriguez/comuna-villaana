@@ -135,9 +135,6 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
   article {
-    animation: item-animation linear both;
-    animation-timeline: view(20%);
-
     &:nth-child(odd) {
       img {
         @media (width >= 768px) {
@@ -161,6 +158,13 @@ import Layout from "../layouts/Layout.astro";
       div {
         align-self: end;
       }
+    }
+  }
+
+  @supports (animation-timeline: view(20%)) {
+    article {
+      animation: item-animation linear both;
+      animation-timeline: view(20%);
     }
   }
 

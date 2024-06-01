@@ -277,14 +277,16 @@ import Layout from "../layouts/Layout.astro";
     }
   }
 
-  li {
-    transform-origin: left;
-    animation: item-animation linear both;
-    animation-timeline: view();
-
-    &::before {
-      animation: before-animation linear both;
+  @supports (animation-timeline: view()) {
+    li {
+      transform-origin: left;
+      animation: item-animation linear both;
       animation-timeline: view();
+
+      &::before {
+        animation: before-animation linear both;
+        animation-timeline: view();
+      }
     }
   }
 
