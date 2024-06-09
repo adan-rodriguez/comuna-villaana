@@ -3,16 +3,21 @@ const { items } = Astro.props;
 ---
 
 <ul>
+  <script is:inline>
+    if (document.currentScript.parentElement.previousElementSibling?.getAttribute("aria-controls")) {
+      document.currentScript.parentElement.setAttribute("id", document.currentScript.parentElement.previousElementSibling?.getAttribute("aria-controls"))
+      }
+    </script>
   {
     items.map((item) => (
-      <li class="md:relative">
+      <li>
         {item.links ? (       
-            <button class="dropdown block w-full text-left relative cursor-pointer border-b border-black after:content-[url('/chevron-down-black.svg')] after:absolute after:right-0 md:after:top-[-3px] after:scale-75 after:transition-[rotate] md:hover:after:[rotate:180deg] pt-5 pb-1 pr-6 md:pl-6 md:py-3">
+            <button class="dropdown-btn" aria-expanded="false" aria-controls={item.text.replace(/ /g, "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}>
               {item.text}
             </button>
             <Astro.self items={item.links} />
         ) : (
-          <a href={item.href} class="link block border-b border-black pt-5 pb-1 md:px-6 md:py-3 transition-colors duration-300">
+          <a href={item.href} class="link">
             {item.text}
           </a>
         )}
@@ -21,56 +26,94 @@ const { items } = Astro.props;
   }
 </ul>
 
+<script>
+  const $$dropdowns = document.querySelectorAll("li:has(.dropdown-btn)")
+  const mq = window.matchMedia("(width >= 768px)");
+
+  function handleMouseOver(dropdown) {
+    if (!mq.matches) return
+    const $btn = dropdown.firstElementChild
+    $btn.nextElementSibling.classList.add("open")
+    $btn.setAttribute("aria-expanded", "true")
+  }
+    
+  function handleMouseLeave(dropdown) {
+    if (!mq.matches) return
+    const $btn = dropdown.firstElementChild
+    $btn.nextElementSibling.classList.remove("open")
+    $btn.setAttribute("aria-expanded", "false")
+  }
+
+  $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseover", () => handleMouseOver(dropdown)))
+  $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseleave", () => handleMouseLeave(dropdown)))
+</script>
+
 <style>
-  li > ul {
+  li {
+    position: relative;
+
+    & > ul {
     display: none;
     opacity: 0;
     transition:
-      display 0.15s,
-      opacity 0.15s;
+      display 0.3s,
+      opacity 0.3s;
     transition-behavior: allow-discrete;
     
-    &.open {
-      @media (width < 768px) {
+      &.open {
         display: block;
         opacity: 1;
 
-      @starting-style {
+        @starting-style {
         opacity: 0;
-      }  
+        }  
+      }    
     }
+
+    &:has(ul.open) {
+      & > .dropdown-btn::after {
+        rotate: 180deg;
+      }
+    } 
   }
 
-  @media (width >= 768px) {
+  .dropdown-btn {
     display: block;
-    opacity: 0;
-    transition: opacity .3s;
-    pointer-events: none;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+    padding: 1.25rem 1.5rem 0.25rem 0;
 
-    .dropdown::after {
-        top: 10px;   
+    &::after{
+      content: url("/chevron-down-black.svg");
+      position: absolute;
+      right: 0;
+      scale: 0.75;
+      transition: rotate .3s;
+      top: 17px;     
+    }
+    
+    @media (width >= 768px) {
+      padding-block: 0.75rem;
+      padding-left: 1.5rem;
+
+      &::after {
+        top: 9px;
+      }
     }
   }
   
+  .link {
+    display: block;
+    border-bottom: 1px solid black;
+    padding: 1.25rem 1.5rem 0.25rem 0;
+    transition: background-color 0.3s;
   
-}
-
-li:hover > ul {
-  @media (width >= 768px) {
-    opacity: 1;
-    pointer-events: all;
-    }
-  }
-
-  @media (width < 768px) {
-    li:has(ul.open) > .dropdown::after {
-      rotate: 180deg;
-    }
-  }
-
-  @media (width >= 768px) {
-    li:has(ul:hover) > .dropdown::after {
-      rotate: 180deg;
+    @media (width >= 768px) {
+      padding-block: 0.75rem;
+      padding-left: 1.5rem;
     }
   }
 </style>
