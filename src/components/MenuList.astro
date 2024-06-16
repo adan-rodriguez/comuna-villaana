@@ -27,16 +27,17 @@ const { items } = Astro.props;
 </ul>
 
 <script>
-  const $$dropdowns = document.querySelectorAll("li:has(.dropdown-btn)")
-  const mq = window.matchMedia("(width >= 768px)");
-
-  function handleMouseOver(dropdown) {
+  document.addEventListener("astro:page-load", () => {
+    const $$dropdowns = document.querySelectorAll("li:has(.dropdown-btn)")
+    const mq = window.matchMedia("(width >= 768px)");
+    
+    function handleMouseOver(dropdown) {
     if (!mq.matches) return
     const $btn = dropdown.firstElementChild
     $btn.nextElementSibling.classList.add("open")
     $btn.setAttribute("aria-expanded", "true")
   }
-    
+  
   function handleMouseLeave(dropdown) {
     if (!mq.matches) return
     const $btn = dropdown.firstElementChild
@@ -46,20 +47,21 @@ const { items } = Astro.props;
 
   $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseover", () => handleMouseOver(dropdown)))
   $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseleave", () => handleMouseLeave(dropdown)))
+})
 </script>
 
 <style>
   li {
     position: relative;
-
+    
     & > ul {
-    display: none;
-    opacity: 0;
-    transition:
+      display: none;
+      opacity: 0;
+      transition:
       display 0.3s,
       opacity 0.3s;
-    transition-behavior: allow-discrete;
-    
+      transition-behavior: allow-discrete;
+      
       &.open {
         display: block;
         opacity: 1;
