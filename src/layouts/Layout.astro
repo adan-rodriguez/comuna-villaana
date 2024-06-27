@@ -23,20 +23,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/avif" href="logo.avif" />
     <title>{title}</title>
     <ViewTransitions />
-  </head>
-  <body
-    class="relative bg-[url(/noise.webp)] bg-[length:100px] text-black md:overflow-y-auto"
-  >
-    <Header />
-    <main
-      class={`container mx-auto px-4 md:px-8 pb-4 min-h-dvh ${Astro.url.pathname === "/" ? "mt-[100dvh]" : "mt-6"} `}
-    >
-      <slot />
-    </main>
-    <ButtonUp />
-    <Footer />
-
-    <style is:global>
+    <style>
       @font-face {
         font-family: "Lush";
         src: url("/fonts/lush.woff2") format("woff2");
@@ -79,7 +66,7 @@ const { title } = Astro.props;
         --blue: rgb(17, 40, 134);
         --skyblue: rgb(69, 206, 222);
 
-        scrollbar-gutter: stable;
+        /* scrollbar-gutter: stable; */
         scrollbar-color: rgb(55 65 81) rgb(231, 230, 228);
         scrollbar-width: thin;
       }
@@ -88,5 +75,17 @@ const { title } = Astro.props;
         font-family: "Gilroy-Regular", sans-serif;
       }
     </style>
+  </head>
+  <body
+    class="relative bg-[url(/noise.webp)] bg-[length:100px] text-black md:overflow-y-auto"
+  >
+    <Header />
+    <main
+      class={`container mx-auto px-4 md:px-8 pb-4 min-h-dvh ${Astro.url.pathname === "/" ? "mt-[100dvh]" : "mt-6"} `}
+    >
+      <slot />
+    </main>
+    <Footer />
+    <ButtonUp />
   </body>
 </html>
