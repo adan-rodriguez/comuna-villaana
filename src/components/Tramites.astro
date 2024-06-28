@@ -1,76 +1,31 @@
+---
+import { TRAMITES } from "@/utils/data.js";
+
+const { slice } = Astro.props;
+---
+
 <div class="flex flex-col md:flex-row md:flex-wrap gap-6 text-white">
-  <div
-    class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group"
-  >
-    <img
-      src="/patente.avif"
-      alt="Boleta de patente"
-      class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
-    />
-    <a
-      href="https://www.santafe.gov.ar/e-pt-boletas"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        Patente
-      </h3></a
-    >
-  </div>
-  <div
-    class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group"
-  >
-    <img
-      src="/inmobiliario.avif"
-      alt="Boleta de impuesto inmobiliario"
-      class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
-    />
-    <a
-      href="https://www.santafe.gov.ar/e-in-boletas"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        Impuesto inmobiliario
-      </h3></a
-    >
-  </div>
-  <div
-    class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group"
-  >
-    <img
-      src="/epeoficinavirtual.avif"
-      alt="Persona utlizando la Oficina Virtual de la EPE"
-      class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
-    />
-    <a
-      href="https://www.epe.santafe.gov.ar/oficina-virtual"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        EPE - Oficina Virtual
-      </h3></a
-    >
-  </div>
-  <div
-    class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group"
-  >
-    <img
-      src="/partidadenacimiento.avif"
-      alt="Una partida de nacimiento"
-      class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
-    />
-    <a
-      href="https://www.santafe.gov.ar/rcdigital"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="self-stretch flex justify-center items-center w-full px-4 py-2"
-      ><h3 class="text-center text-balance font-gilroyEB text-xl">
-        Partida de nacimiento
-      </h3></a
-    >
-  </div>
+  {
+    TRAMITES.slice(0, slice).map((tramite) => (
+      <div class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group">
+        <img
+          src={tramite.image.link}
+          alt={tramite.image.alt}
+          class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
+        />
+        <a
+          href={tramite.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="self-stretch flex justify-center items-center w-full px-4 py-2"
+        >
+          <h3 class="text-center text-balance font-gilroyEB text-xl">
+            {tramite.link.label}
+          </h3>
+        </a>
+      </div>
+    ))
+  }
 </div>
 
 <style>

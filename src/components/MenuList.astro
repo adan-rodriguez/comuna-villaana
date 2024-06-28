@@ -31,31 +31,40 @@ const { items } = Astro.props;
     const $$dropdowns = document.querySelectorAll("li:has(.dropdown-btn)")
     const mq = window.matchMedia("(width >= 768px)");
     
-    function handleMouseOver(dropdown) {
-    if (!mq.matches) return
-    const $btn = dropdown.firstElementChild
-    $btn.nextElementSibling.classList.add("open")
-    $btn.setAttribute("aria-expanded", "true")
-  }
+    function handleMouseOver(e) {
+      const $btn = e.target.firstElementChild
+      $btn.nextElementSibling.classList.add("open")
+      $btn.setAttribute("aria-expanded", "true")
+    }
 
-  function hideDropdown(dropdown) {
+    function hideDropdown(dropdown) {
     const $btn = dropdown.firstElementChild
     $btn.nextElementSibling.classList.remove("open")
     $btn.setAttribute("aria-expanded", "false")
   }
-  
-  function handleMouseLeave(dropdown) {
-    if (!mq.matches) return
-    hideDropdown(dropdown)
+    
+    function handleMouseLeave(e) {
+    hideDropdown(e.target)
   }
 
-  function hideDropdowns() {
+  function handleEvents(e) {
+    if(e.matches) {
+      $$dropdowns.forEach(dropdown => {
+        dropdown.addEventListener("mouseenter", handleMouseOver); 
+        dropdown.addEventListener("mouseleave", handleMouseLeave)})
+    } else {
+      $$dropdowns.forEach(dropdown => {
+        dropdown.removeEventListener("mouseenter", handleMouseOver);
+        dropdown.removeEventListener("mouseleave", handleMouseLeave)
+      })
+    }
+
     $$dropdowns.forEach(dropdown => hideDropdown(dropdown))
   }
 
-  $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseover", () => handleMouseOver(dropdown)))
-  $$dropdowns.forEach(dropdown => dropdown.addEventListener("mouseleave", () => handleMouseLeave(dropdown)))
-  mq.addEventListener("change", hideDropdowns)
+  mq.addEventListener("change", handleEvents)
+
+  handleEvents(mq)
 })
 </script>
 

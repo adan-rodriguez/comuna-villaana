@@ -1,45 +1,26 @@
-<div id="button-up" class="fixed bottom-2 right-2 opacity-0 transition-opacity">
-  <button
-    id="scroll-to-top"
-    title="Volver al inicio de la página"
-    aria-label="Volver al inicio de la página"
-    class="group flex size-12 cursor-default items-center justify-center rounded-lg border-2 bg-black/10 backdrop-blur text-black hover:text-custom-blue focus-visible:text-custom-blue hover:scale-105 focus-visible:scale-105 border-black hover:border-custom-blue focus-visible:border-custom-blue motion-safe:transition outline-none"
-  >
-    <svg
-      stroke-width="2"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      fill="none"
-      class="size-6 -rotate-90"
-    >
-      <path
-        d="M14 5l7 7m0 0l-7 7m7-7H3"
-        stroke-linejoin="round"
-        stroke-linecap="round"></path>
-    </svg>
-  </button>
-</div>
+---
+import ArrowUpIcon from "./icons/ArrowUpIcon.astro";
+---
+
+<button id="scroll-to-top" aria-label="Volver al inicio de la página">
+  <script is:inline>
+    if (document.body.scrollTop || document.documentElement.scrollTop > 20)
+      document.currentScript.parentElement.classList.add("show");
+  </script>
+  <ArrowUpIcon class="bounce" />
+</button>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     let timeout = 0; // Identificador para clearTimeout
-    const $button = document.getElementById(
-      "scroll-to-top"
-    ) as HTMLButtonElement;
-
-    const DISPLAY = { BLOCK: "block", NONE: "none" } as const;
+    const $button = document.getElementById("scroll-to-top");
 
     // Función para mostrar u ocultar el botón
     function toggleScrollToTop() {
       const scrollTop =
         document.body.scrollTop || document.documentElement.scrollTop;
-      const display = scrollTop > 20 ? DISPLAY.BLOCK : DISPLAY.NONE;
 
-      if ($button) {
-        const parent = $button.closest("#button-up");
-        parent?.classList.toggle("opacity-0", display === DISPLAY.NONE);
-        $button.classList.toggle("cursor-default", display === DISPLAY.NONE);
-      }
+      $button.classList.toggle("show", scrollTop > 20);
     }
 
     function throttledScrollHandler() {
@@ -58,3 +39,45 @@
     });
   });
 </script>
+
+<style>
+  #scroll-to-top {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    bottom: -42px;
+    right: 0.5rem;
+    color: var(--blue);
+    border: 2px solid var(--blue);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-black-lg);
+    cursor: pointer;
+    transition:
+      scale 0.3s,
+      display 0.3s,
+      opacity 0.3s,
+      bottom 0.3s;
+    transition-behavior: allow-discrete;
+
+    &.show {
+      display: block;
+      opacity: 1;
+      bottom: 0.5rem;
+
+      @starting-style {
+        opacity: 0;
+        bottom: -42px;
+      }
+    }
+
+    &:is(:hover, :focus-visible) {
+      scale: 1.05;
+    }
+
+    &:active {
+      translate: 0 0.125rem;
+    }
+  }
+</style>
