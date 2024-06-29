@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
     <Heading1 text="Turismo" />
     <div class="flex flex-col gap-8">
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/ruinas-fabrica-forestal.avif"
@@ -30,7 +30,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </article>
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/arroyo-el-rey.avif"
@@ -50,7 +50,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </article>
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/estero-el-trece.avif"
@@ -70,7 +70,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </article>
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/estacion-mocovi.avif"
@@ -90,7 +90,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </article>
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/estero-mocovi.avif"
@@ -110,7 +110,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </article>
       <article
-        class="flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video shadow-xl shadow-black"
+        class="card-turismo flex flex-col md:flex-row bg-black rounded h-[calc(100dvh-2rem)] md:h-auto md:aspect-video md:max-h-[calc(100dvh-2rem)] shadow-xl shadow-black"
       >
         <img
           src="/cilo-forestal.avif"
@@ -133,8 +133,43 @@ import Layout from "../layouts/Layout.astro";
   </section>
 </Layout>
 
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const $$cards = document.querySelectorAll(".card-turismo");
+
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      threshold: 0.2,
+    });
+
+    $$cards.forEach(($card) => observer.observe($card));
+  });
+</script>
+
 <style>
-  article {
+  .card-turismo {
+    transition:
+      opacity 1s,
+      translate 1s;
+
+    @media (scripting: enabled) {
+      opacity: 0;
+      translate: 0 100px;
+
+      &.animate {
+        opacity: 1;
+        translate: 0;
+      }
+    }
+
     &:nth-child(odd) {
       img {
         @media (width >= 768px) {
@@ -158,35 +193,6 @@ import Layout from "../layouts/Layout.astro";
       div {
         align-self: end;
       }
-    }
-  }
-
-  @supports (animation-timeline: view(20%)) {
-    article {
-      animation: item-animation linear both;
-      animation-timeline: view(20%);
-    }
-  }
-
-  @keyframes item-animation {
-    0% {
-      opacity: 0;
-      scale: 0.8;
-    }
-
-    25% {
-      opacity: 1;
-      scale: 1;
-    }
-
-    75% {
-      opacity: 1;
-      scale: 1;
-    }
-
-    100% {
-      opacity: 0;
-      scale: 0.8;
     }
   }
 </style>

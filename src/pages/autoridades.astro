@@ -9,7 +9,7 @@ import Layout from "../layouts/Layout.astro";
     >
       Autoridades
     </h1>
-    <ul>
+    <!-- <ul>
       <li>
         Presidente Catalino Comán <img
           src="/catalino-coman.avif"
@@ -32,6 +32,108 @@ import Layout from "../layouts/Layout.astro";
       <li>María Rosa Gomez</li>
       <li>Fernando Antonio Leiva</li>
       <li>Elida Beatriz Moreyra</li>
-    </ul>
+    </ul> -->
+    <div class="table-container">
+      <table>
+        <caption>Comisión comunal período 23/25</caption>
+        <thead>
+          <tr>
+            <th>POSICIÓN</th>
+            <th>APELLIDO Y NOMBRE</th>
+            <th>CARGO</th>
+            <th>PARTIDO/ALIANZA</th></tr
+          >
+        </thead>
+        <tbody>
+          <tr>
+            <td>T1</td>
+            <td>Comán, Catalino Carlos Adrián</td>
+            <td>M.Comunal</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr>
+            <td>T2</td>
+            <td>Maidana, Norma Beatriz</td>
+            <td>M.Comunal</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr>
+            <td>T3</td>
+            <td>Furlán, Pablo Mario</td>
+            <td>M.Comunal</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr>
+            <td>T4</td>
+            <td>Alderete Van Weele, Julieta</td>
+            <td>M.Comunal</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr class="ja">
+            <td>T5</td>
+            <td>Romano, Ramón Eduardo</td>
+            <td>M.Comunal</td>
+            <td>Juntos avancemos</td></tr
+          >
+          <tr>
+            <td>T1</td>
+            <td>Roura, Rubén</td>
+            <td>Contralor de cuenta</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr>
+            <td>T2</td>
+            <td>Piedrabuena, Nanci Marina</td>
+            <td>Contralor de cuenta</td>
+            <td>Unidos para cambiar Santa Fe</td></tr
+          >
+          <tr class="ja">
+            <td>T3</td>
+            <td>Romero, Edgardo Luis</td>
+            <td>Contralor de cuenta</td>
+            <td>Juntos avancemos</td></tr
+          >
+        </tbody>
+      </table>
+    </div>
   </section></Layout
 >
+
+<style>
+  .table-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  table {
+    margin-top: 1rem;
+    margin-inline: auto;
+    border: 1px solid black;
+    font-size: 0.75rem;
+
+    @media (width >= 640px) {
+      font-size: 1rem;
+    }
+
+    & th,
+    & td {
+      border: 1px solid black;
+      padding: 0.5rem;
+    }
+
+    thead {
+      background-color: gray;
+    }
+
+    tbody {
+      tr {
+        background-color: #ff6a0036;
+      }
+
+      tr.ja {
+        background-color: #0000ff26;
+        border-spacing: 5px;
+      }
+    }
+  }
+</style>

@@ -250,6 +250,150 @@ import Layout from "../layouts/Layout.astro";
       </li>
     </ol>
   </section>
+  <section class="table-container">
+    <table>
+      <caption>Gobiernos comunales</caption>
+      <thead>
+        <tr>
+          <th>MANDATARIO/A</th>
+          <th>PERIODO</th>
+          <th>CARÁCTER </th></tr
+        >
+      </thead>
+      <tbody>
+        <tr>
+          <td>Jorge R. Candiotti</td>
+          <td>30/10/45 – 05/12/45</td>
+          <td>Delegado Organizador Administrativo </td></tr
+        >
+        <tr>
+          <td>José D. Curi</td>
+          <td>05/12/45 – 11/04/48</td>
+          <td>Comisionado Comunal Interino </td></tr
+        >
+        <tr>
+          <td>Oscar Nésor Marote</td>
+          <td>11/04/48 – 22/03/50</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Agustín Rodríguez</td>
+          <td>22/03/50 – 04/06/52</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Alfredo Vera</td>
+          <td>04/06/52 – 07/03/55</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Alfredo Vera</td>
+          <td>07/03/55 – 03/10/55</td>
+          <td>Comisionado Interventor Interino </td></tr
+        >
+        <tr>
+          <td>Huberto Tulián</td>
+          <td>03/10/55 – 01/05/58</td>
+          <td>Comisionado Interventor </td></tr
+        >
+        <tr>
+          <td>Hugo Obregón</td>
+          <td>01/05/58 – 29/04/62</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Hugo Obregón</td>
+          <td>29/04/62 – 12/10/63</td>
+          <td>Comisionado Interventor Interino </td></tr
+        >
+        <tr>
+          <td>Eusebio Barrios</td>
+          <td>12/10/63 – 28/08/64</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Huberto Tulián</td>
+          <td>28/08/64 – 12/10/65</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Ernesto Juan Spessot</td>
+          <td>12/10/65 – 17/06/66</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Ernesto Juan Spessot</td>
+          <td>17/06/66 – 30/10/67</td>
+          <td>Comisionado Comunal Interino </td></tr
+        >
+        <tr>
+          <td>Ernesto Juan Spessot</td>
+          <td>30/10/67 – 12/01/73</td>
+          <td>Presidente de la Comuna </td></tr
+        >
+        <tr>
+          <td>Roberto Darío Manfredi</td>
+          <td>12/01/73 – 25/05/73</td>
+          <td>Comisionado Comunal Interino </td></tr
+        >
+        <tr>
+          <td>Ernesto Juan Spessot</td>
+          <td>25/05/73 – 25/03/76</td>
+          <td>Presidente Comisión de Fomento </td></tr
+        >
+        <tr>
+          <td>Ramón Benítez</td>
+          <td>25/03/76 – 26/05/76</td>
+          <td>Comisionado Comunal Interino </td></tr
+        >
+        <tr>
+          <td>Ernesto Juan Spessot</td>
+          <td>26/05/76 – 02/10/80</td>
+          <td>Presidente de la Comuna </td></tr
+        >
+        <tr>
+          <td>Dora C. de Barrías</td>
+          <td>02/10/80 – 22/10/80</td>
+          <td>A cargo del Despacho de la Comuna </td></tr
+        >
+        <tr>
+          <td>Gustavo José Steeman</td>
+          <td>22/10/80 – 04/08/81</td>
+          <td>A cargo del Despacho de la Comuna </td></tr
+        >
+        <tr>
+          <td>Ismael Euclides Rostán</td>
+          <td>04/08/81 – 11/03/83</td>
+          <td>Presidente de la Comuna </td></tr
+        >
+        <tr>
+          <td>Ramón Benítez</td>
+          <td>11/03/83 – 11/12/83</td>
+          <td>Secretario a cargo del Despacho </td></tr
+        >
+        <tr>
+          <td>Ramón Carlos Gómez</td>
+          <td>11/12/83 – 11/12/95</td>
+          <td>Presidente Comisión Comunal </td></tr
+        >
+        <tr>
+          <td>Daniel Alberto Rodríguez</td>
+          <td>11/12/95 – 11/12/2013</td>
+          <td>Presidente Comisión Comunal </td></tr
+        >
+        <tr>
+          <td>Ramón Eduardo Romano</td>
+          <td>11/12/2013 – 11/12/2017</td>
+          <td>Presidente Comisión Comunal </td></tr
+        >
+        <tr>
+          <td>Catalino Coman</td>
+          <td>11/12/2017 – actualidad</td>
+          <td>Presidente Comisión Comunal </td></tr
+        ></tbody
+      >
+    </table>
+  </section>
 </Layout>
 
 <style>
@@ -327,6 +471,42 @@ import Layout from "../layouts/Layout.astro";
 
     100% {
       scale: 1;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  table {
+    margin-top: 4rem;
+    margin-inline: auto;
+    border: 1px solid black;
+    font-size: 0.75rem;
+
+    @media (width >= 640px) {
+      font-size: 1rem;
+    }
+
+    & th,
+    & td {
+      border: 1px solid black;
+      padding: 0.5rem;
+    }
+
+    thead {
+      background-color: gray;
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background-color: rgb(235, 235, 235);
+      }
+
+      tr:nth-child(even) {
+        background-color: rgb(196, 196, 185);
+      }
     }
   }
 </style>

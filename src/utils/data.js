@@ -1,7 +1,7 @@
 export const TRAMITES = [
   {
     image: {
-      link: "patente.avif",
+      src: "patente.avif",
       alt: "Boleta de patente",
     },
     link: {
@@ -11,7 +11,7 @@ export const TRAMITES = [
   },
   {
     image: {
-      link: "inmobiliario.avif",
+      src: "inmobiliario.avif",
       alt: "Boleta de impuesto inmobiliario",
     },
     link: {
@@ -21,7 +21,7 @@ export const TRAMITES = [
   },
   {
     image: {
-      link: "epeoficinavirtual.avif",
+      src: "epeoficinavirtual.avif",
       alt: "Persona utlizando la Oficina Virtual de la EPE",
     },
     link: {
@@ -31,7 +31,7 @@ export const TRAMITES = [
   },
   {
     image: {
-      link: "partidadenacimiento.avif",
+      src: "partidadenacimiento.avif",
       alt: "Una partida de nacimiento",
     },
     link: {

@@ -9,7 +9,7 @@ const { slice } = Astro.props;
     TRAMITES.slice(0, slice).map((tramite) => (
       <div class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group">
         <img
-          src={tramite.image.link}
+          src={`/${tramite.image.src}`}
           alt={tramite.image.alt}
           class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
         />
