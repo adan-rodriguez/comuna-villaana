@@ -17,18 +17,31 @@ const videos = [
 ];
 ---
 
-<div
-  class="grid grid-cols-[repeat(auto-fit,minmax(min(384px,100%),1fr))] gap-4"
->
+<div>
   {
     videos.map((video) => (
-      <lite-youtube
-        videoid={video.id}
-        title={video.title}
-        class="rounded-sm shadow-xl shadow-black"
-      />
+      <lite-youtube videoid={video.id} title={video.title} />
     ))
   }
 </div>
+
+<style>
+  div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(384px, 100%), 1fr));
+    gap: 2rem;
+  }
+
+  lite-youtube {
+    border-radius: 0.125rem;
+    box-shadow: var(--shadow-black-lg);
+
+    /* @media (scripting: none) {
+      &::after {
+        content: "Habilita Javascript";
+      }
+    } */
+  }
+</style>
 
 <script src="../utils/lite-yt-embed.js"></script>

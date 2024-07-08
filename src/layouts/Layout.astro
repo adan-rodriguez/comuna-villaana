@@ -16,7 +16,7 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth scroll-m-64">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -69,23 +69,38 @@ const { title, description } = Astro.props;
         --shadow-black-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
           rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(0, 0, 0) 0px 10px 15px -3px,
           rgb(0, 0, 0) 0px 4px 6px -4px;
+        --text-shadow-black: 0px 0px 4px #000000;
 
         /* scrollbar-gutter: stable; */
+        scroll-behavior: smooth;
         scrollbar-color: rgb(55 65 81) rgb(231, 230, 228);
         scrollbar-width: thin;
       }
 
       body {
         font-family: "Gilroy-Regular", sans-serif;
+        background-image: url(/noise.webp);
+        background-size: 100px;
+        color: #000000;
+      }
+
+      main {
+        margin-inline: auto;
+        padding-inline: 1rem;
+        padding-bottom: 1rem;
+        min-height: 100dvh;
+
+        @media (width >= 768px) {
+          padding-inline: 1rem;
+        }
       }
     </style>
   </head>
-  <body
-    class="relative bg-[url(/noise.webp)] bg-[length:100px] text-black md:overflow-y-auto"
-  >
+  <body>
     <Header />
+    <slot name="hero-video" />
     <main
-      class={`container mx-auto px-4 md:px-8 pb-4 min-h-dvh ${Astro.url.pathname === "/" ? "mt-[100dvh]" : "mt-6"} `}
+      class={`container ${Astro.url.pathname === "/" ? "mt-[100dvh]" : "mt-6"}`}
     >
       <slot />
     </main>

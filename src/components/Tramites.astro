@@ -4,24 +4,13 @@ import { TRAMITES } from "@/utils/data.js";
 const { slice } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row md:flex-wrap gap-6 text-white">
+<div class="tramites__container">
   {
     TRAMITES.slice(0, slice).map((tramite) => (
-      <div class="flex relative overflow-hidden min-h-32 grow shadow-xl shadow-black active:translate-y-1 min-w-96 rounded-lg [background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))] group">
-        <img
-          src={`/${tramite.image.src}`}
-          alt={tramite.image.alt}
-          class="absolute w-full h-full object-cover -z-10 group-hover:scale-110 group-focus-within:scale-110 transition duration-300 md:grayscale md:group-hover:grayscale-0 md:group-focus-within:grayscale-0"
-        />
-        <a
-          href={tramite.link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="self-stretch flex justify-center items-center w-full px-4 py-2"
-        >
-          <h3 class="text-center text-balance font-gilroyEB text-xl">
-            {tramite.link.label}
-          </h3>
+      <div class="tramites__item">
+        <img src={`/${tramite.image.src}`} alt={tramite.image.alt} />
+        <a href={tramite.link.href} target="_blank" rel="noopener noreferrer">
+          <h3>{tramite.link.label}</h3>
         </a>
       </div>
     ))
@@ -29,7 +18,78 @@ const { slice } = Astro.props;
 </div>
 
 <style>
+  .tramites__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    color: white;
+
+    @media (width >= 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  .tramites__item {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 8rem;
+    min-width: 24rem;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    box-shadow: var(--shadow-black-lg);
+
+    &:active {
+      translate: 0 0.25rem;
+    }
+
+    &:is(:hover, :focus-within) {
+      img {
+        scale: 1.1;
+      }
+    }
+
+    @media (width >= 768px) {
+      &:is(:hover, :focus-within) {
+        img {
+          filter: grayscale(0);
+        }
+      }
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left top;
+    z-index: -10;
+    transition:
+      scale 0.3s,
+      filter 0.3s;
+
+    @media (width >= 768px) {
+      filter: grayscale(100%);
+    }
+  }
+
+  a {
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+
   h3 {
-    text-shadow: 0px 0px 4px #000000;
+    font-family: "Gilroy-ExtraBold", sanf-serif;
+    text-align: center;
+    text-wrap: balance;
+    font-size: 1.25rem;
+    text-shadow: var(--text-shadow-black);
   }
 </style>

@@ -40,3 +40,36 @@ export const TRAMITES = [
     },
   },
 ];
+
+export const SITIOSINTERES = [
+  {
+    image: {
+      src: "argentina-web.avif",
+      alt: "Home de Argentina.gob.ar",
+    },
+    link: {
+      href: "https://www.argentina.gob.ar",
+      label: "Argentina.gob.ar",
+    },
+  },
+  {
+    image: {
+      src: "santafe-web.avif",
+      alt: "Home del portal del Gobierno de Santa Fe",
+    },
+    link: {
+      href: "https://www.santafe.gob.ar",
+      label: "Gobierno de Santa Fe",
+    },
+  },
+  {
+    image: {
+      src: "anses-web.avif",
+      alt: "Home de la página de Anses",
+    },
+    link: {
+      href: "https://www.anses.gob.ar",
+      label: "Anses",
+    },
+  },
+];

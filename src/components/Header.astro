@@ -17,15 +17,15 @@ const menu = [
         ],
       },
       { text: "Historia", href: "/historia" },
-      { text: "La Forestal", href: "#" },
-      { text: "Instituciones", href: "#" },
+      // { text: "La Forestal", href: "#" },
+      // { text: "Instituciones", href: "#" },
     ],
   },
   {
     text: "Gobierno",
     links: [
       { text: "Autoridades", href: "/autoridades" },
-      { text: "Noticias", href: "#" },
+      // { text: "Noticias", href: "#" },
       { text: "Trámites", href: "/tramites" },
       { text: "Contacto", href: "/contacto" },
     ],
@@ -40,7 +40,7 @@ const menu = [
 ];
 ---
 
-<header>
+<header class={`${Astro.url.pathname === "/" ? "text-white" : "text-black"}`}>
   <div class="container">
     <a
       id="logo-link"
@@ -140,7 +140,12 @@ const menu = [
   });
 </script>
 
-<style is:global>
+<style
+  is:global
+  define:vars={{
+    bgColor: `${Astro.url.pathname === "/" ? "transparent" : "#ffffff80"}`,
+  }}
+>
   body:has(#menu.open) {
     & #hamburger-icon {
       display: none;
@@ -148,6 +153,14 @@ const menu = [
 
     & #close-menu-icon {
       display: block;
+    }
+
+    & #hero-video {
+      filter: blur(6px);
+    }
+
+    & #hero-links {
+      display: none;
     }
 
     @media (width < 768px) {
@@ -195,7 +208,6 @@ const menu = [
 
   #menu > ul > li li a:hover {
     @media (width >= 768px) {
-      background-color: color-mix(in srgb, rgb(231, 230, 228), var(--blue) 20%);
     }
   }
 
@@ -204,39 +216,43 @@ const menu = [
 
     @media (width >= 768px) {
       padding-left: 0;
-      background-color: color-mix(in srgb, rgb(231, 230, 228), var(--blue) 10%);
     }
   }
 
   #menu > ul > li > ul {
     @media (width >= 768px) {
       position: absolute;
-      border: 1px solid black;
+      border: 1px solid gray;
+      backdrop-filter: blur(6px);
       border-bottom: none;
       min-width: 16rem;
       max-width: 24rem;
       right: 0;
+      background-color: var(--bgColor);
     }
   }
 
   #menu > ul > li > ul ul {
     @media (width >= 768px) {
       position: absolute;
-      border: 1px solid black;
+      border: 1px solid gray;
+      backdrop-filter: blur(6px);
       border-bottom: none;
       min-width: 16rem;
       max-width: 24rem;
       top: -1px;
       transform: translateX(-100%);
+      background-color: var(--bgColor);
     }
   }
 </style>
 
 <style>
   header {
-    background-color: rgb(231, 230, 228);
     overflow-y: auto;
     scrollbar-width: thin;
+    position: relative;
+    z-index: 10;
 
     @media (width >= 768px) {
       overflow-y: visible;
@@ -266,7 +282,6 @@ const menu = [
 
   #menu {
     display: none;
-    z-index: 10;
     padding-block: 1rem;
     grid-column: 1/3;
 
@@ -278,6 +293,10 @@ const menu = [
       display: block;
       transform: translateY(6px);
       padding-block: 0;
+    }
+
+    @media (scripting: none) {
+      display: none;
     }
   }
 
@@ -299,6 +318,10 @@ const menu = [
     }
 
     @media (width >= 768px) {
+      display: none;
+    }
+
+    @media (scripting: none) {
       display: none;
     }
   }

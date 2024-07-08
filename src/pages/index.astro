@@ -6,25 +6,14 @@ import Tramites from "../components/Tramites.astro";
 import Layout from "../layouts/Layout.astro";
 import MiPueblo from "../components/MiPueblo.astro";
 import FormularioContacto from "../components/FormularioContacto.astro";
-import Heading2 from "../components/Heading2.astro";
+import HeroVideo from "@/components/HeroVideo.astro";
 ---
 
 <Layout
   title="Comuna de Villa Ana"
   description="Información sobre Villa Ana. Fotos, videos, historia y más. Información turística. Trámites y contactos."
 >
-  <div
-    class="absolute bg-black top-0 left-0 w-full h-dvh max-h-[1080px] object-cover -z-10"
-  >
-    <video
-      src="hero-video-phone.mp4"
-      autoplay
-      loop
-      muted
-      class="w-full h-full object-cover [mask-image:linear-gradient(to_top,black_0%,transparent_100%)]"
-    ></video>
-    <!-- <HeroLinks /> -->
-  </div>
+  <HeroVideo slot="hero-video" />
   <!-- <Slider /> -->
   <section>
     <div
@@ -44,7 +33,7 @@ import Heading2 from "../components/Heading2.astro";
       >
     </div>
   </section>
-  <section class="pt-20">
+  <section id="pueblo" class="pt-20">
     <h2
       class="font-gilroyB mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
     >
@@ -103,15 +92,19 @@ import Heading2 from "../components/Heading2.astro";
     >
       Sitios de interés
     </h2>
-    <SitiosDeInteres />
+    <SitiosDeInteres slice="2" />
     <div class="flex justify-end mt-8">
       <a href="/sitiosdeinteres" class="underline underline-offset-8"
         >Más sitios de interés</a
       >
     </div>
-    <section class="pt-20">
-      <Heading2 text="Envíanos un correo" />
-      <FormularioContacto />
-    </section>
+  </section>
+  <section id="contactanos" class="pt-20">
+    <h2
+      class="font-gilroyB mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+    >
+      Envíanos un correo
+    </h2>
+    <FormularioContacto />
   </section>
 </Layout>
