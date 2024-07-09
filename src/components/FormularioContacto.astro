@@ -55,6 +55,7 @@
     </div>
   </div>
   <button
+  type="submit"
     class="bg-white px-8 py-3 border rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
     >Enviar mensaje</button
   >
@@ -102,7 +103,7 @@
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
-        result.innerHTML = "Sending...";
+        result.innerHTML = "Enviando...";
 
         fetch("https://api.web3forms.com/submit", {
           method: "POST",
@@ -125,7 +126,7 @@
           })
           .catch((error) => {
             console.log(error);
-            result.innerHTML = "Something went wrong!";
+            result.innerHTML = "Ocurrió un error!";
           })
           .then(function () {
             form.reset();
