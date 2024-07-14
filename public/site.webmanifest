@@ -1,0 +1,35 @@
+{
+  "name": "Comuna de Villa Ana",
+  "short_name": "Villa Ana",
+  "description": "Información sobre Villa Ana. Fotos, videos, historia y más. Información turística. Trámites y contactos.",
+  "icons": [
+    {
+      "src": "/logo-192.avif",
+      "sizes": "192x192",
+      "type": "image/avif"
+    },
+    {
+      "src": "/logo-512.avif",
+      "sizes": "512x512",
+      "type": "image/avif"
+    }
+  ],
+  "theme_color": "#112886",
+  "background_color": "#112886",
+  "start_url": "/",
+  "display": "standalone",
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.avif",
+      "sizes": "1223x636",
+      "type": "image/avif",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-narrow.avif",
+      "sizes": "493x641",
+      "type": "image/avif",
+      "form_factor": "narrow"
+    }
+  ]
+}
