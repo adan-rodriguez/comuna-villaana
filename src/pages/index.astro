@@ -13,6 +13,34 @@ import HeroVideo from "@/components/HeroVideo.astro";
   title="Comuna de Villa Ana"
   description="Información sobre Villa Ana. Fotos, videos, historia y más. Información turística. Trámites y contactos."
 >
+  <Fragment slot="seo">
+    <!-- <meta
+    name="google-site-verification"
+    content="hXIhjWYsPdwJV_q2u8HScKlAfFDKpIXuom958hxhjNE"
+    /> -->
+    <!-- <link rel="manifest" href="/site.webmanifest" /> -->
+
+    <meta property="og:title" content="Comuna de Villa Ana" />
+    <meta
+      property="og:description"
+      content="Información sobre Villa Ana. Fotos, videos, historia y más. Información turística. Trámites y contactos."
+    />
+    <meta property="og:url" content="https://villaana.gob.ar" />
+    <meta property="og:site_name" content="Comuna de Villa Ana" />
+    <meta property="og:locale" content="es_LA" />
+    <meta property="og:image" content="https://villaana.gob.ar/logo.avif" />
+    <meta property="og:image:alt" content="Logo de la Comuna de Villa Ana" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Comuna de Villa Ana" />
+    <meta
+      name="twitter:description"
+      content="Información sobre Villa Ana. Fotos, videos, historia y más. Información turística. Trámites y contactos."
+    />
+    <meta name="twitter:image" content="https://villaana.gob.ar/logo.avif" />
+    <meta name="twitter:image:alt" content="Logo de la comuna de Villa Ana" />
+  </Fragment>
   <HeroVideo slot="hero-video" />
   <!-- <Slider /> -->
   <section>

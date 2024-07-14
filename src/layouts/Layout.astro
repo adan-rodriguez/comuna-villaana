@@ -24,6 +24,8 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <ViewTransitions />
+    <meta name="theme-color" content="red" />
+    <slot name="seo" />
     <style>
       @font-face {
         font-family: "Lush";
