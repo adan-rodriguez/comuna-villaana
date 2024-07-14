@@ -3,7 +3,66 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Se viene la Fiesta del Chivo" description="">
+  <Fragment slot="seo">
+    <meta property="og:title" content="Se viene la Fiesta del Chivo" />
+    <meta
+      property="og:description"
+      content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
+    dolorem eius quos cumque reiciendis molestiae odit nemo tempore quidem ipsum
+    in asperiores eum, voluptatum provident omnis at vitae eveniet incidunt."
+    />
+    <meta
+      property="og:url"
+      content="https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+    />
+    <meta property="og:site_name" content="Comuna de Villa Ana" />
+    <meta property="og:locale" content="es_LA" />
+    <meta
+      property="og:image"
+      content="https://www.malargueadiario.com/wp-content/uploads/2024/01/Fiesta-Nacional-del-Chivo-2-759x500.jpg"
+    />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:type" content="article" />
+
+    <meta property="article:published_time" content="2024-03-27T19:37-03:00" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Se viene la Fiesta del Chivo" />
+    <meta
+      name="twitter:description"
+      content="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
+    dolorem eius quos cumque reiciendis molestiae odit nemo tempore quidem ipsum
+    in asperiores eum, voluptatum provident omnis at vitae eveniet incidunt."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.malargueadiario.com/wp-content/uploads/2024/01/Fiesta-Nacional-del-Chivo-2-759x500.jpg"
+    />
+    <meta name="twitter:image:alt" content="" />
+  </Fragment>
   <h1>Se viene la fiesta del chivo</h1>
+  <div class="social">
+    <a
+      href="https://www.facebook.com/sharer/sharer.php?u=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+      target="_blank"
+      rel="noreferrer"
+      title="Compartir en Facebook"
+      ><img src="/facebook-logo.svg" alt="Logo de Facebook" loading="lazy" /></a
+    ><a
+      href="https://twitter.com/intent/tweet?text=Se viene la fiesta del chivo&url=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+      target="_blank"
+      rel="noreferrer"
+      title="Compartir en X"
+      ><img src="/x-logo.svg" alt="Logo de X" loading="lazy" /></a
+    ><a
+      href="https://api.whatsapp.com/send?text=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+      target="_blank"
+      rel="noreferrer"
+      title="Compartir en Whatsapp"
+      ><img src="/whatsapp-logo.svg" alt="Logo de Whatsapp" loading="lazy" /></a
+    >
+  </div>
+  <time datetime="2024-03-27T19:37-03:00">14 de julio de 2024 - 19:37</time>
   <p class="entrada">
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur
     dolorem eius quos cumque reiciendis molestiae odit nemo tempore quidem ipsum
@@ -56,6 +115,14 @@ import Layout from "../../layouts/Layout.astro";
   }
   .entrada {
     font-size: 1.25rem;
+  }
+  .social {
+    display: flex;
+    gap: 0.5rem;
+  }
+  a img {
+    width: 30px;
+    height: 30px;
   }
   img {
     width: 100%;
