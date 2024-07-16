@@ -6,10 +6,10 @@ export default {
       fontFamily: {
         brush: "Alex Brush, cursive",
         lush: "'Lush', cursive",
-        gilroyRI: "'Gilroy-Regular-Italic', cursive",
-        gilroyR: "'Gilroy-Regular', sanf-serif",
-        gilroyB: "'Gilroy-Bold', sanf-serif",
-        gilroyEB: "'Gilroy-ExtraBold', sanf-serif",
+        // gilroyRI: "'Gilroy-Regular-Italic', cursive",
+        // gilroyR: "'Gilroy-Regular', sanf-serif",
+        // gilroyB: "'Gilroy-Bold', sanf-serif",
+        // gilroyEB: "'Gilroy-ExtraBold', sanf-serif",
       },
       colors: {
         "custom-red": "#f12b42",

@@ -40,6 +40,7 @@ import Layout from "../../layouts/Layout.astro";
     />
     <meta name="twitter:image:alt" content="" />
   </Fragment>
+
   <article>
     <h1>Se viene la fiesta del chivo</h1>
     <div class="social">
@@ -70,6 +71,7 @@ import Layout from "../../layouts/Layout.astro";
           loading="lazy"
         /></a
       >
+      <p>Comparte la noticia</p>
     </div>
     <time datetime="2024-03-27T19:37-03:00">14 de julio de 2024 - 19:37</time>
     <p class="entrada">
@@ -111,6 +113,36 @@ import Layout from "../../layouts/Layout.astro";
       amet magni molestias, at reprehenderit unde et ea aspernatur illo aliquid,
       in sint! Minus nobis dolore quis enim atque?
     </p>
+    <div class="social bottom">
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+        target="_blank"
+        rel="noreferrer"
+        title="Compartir en Facebook"
+        ><img
+          src="/facebook-logo.svg"
+          alt="Logo de Facebook"
+          loading="lazy"
+        /></a
+      ><a
+        href="https://twitter.com/intent/tweet?text=Se viene la fiesta del chivo&url=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+        target="_blank"
+        rel="noreferrer"
+        title="Compartir en X"
+        ><img src="/x-logo.svg" alt="Logo de X" loading="lazy" /></a
+      ><a
+        href="https://api.whatsapp.com/send?text=https://villaana.gob.ar/noticias/se-viene-la-fiesta-del-chivo"
+        target="_blank"
+        rel="noreferrer"
+        title="Compartir en Whatsapp"
+        ><img
+          src="/whatsapp-logo.svg"
+          alt="Logo de Whatsapp"
+          loading="lazy"
+        /></a
+      >
+      <p>Comparte la noticia</p>
+    </div>
   </article>
 </Layout>
 
@@ -120,9 +152,53 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   h1 {
-    font-family: "Gilroy-Bold", sans-serif;
+    font-weight: 900;
     font-size: 2rem;
     text-wrap: balance;
+  }
+
+  .social {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 30px);
+    justify-items: center;
+    column-gap: 0.5rem;
+
+    &.bottom {
+      display: grid;
+      justify-content: center;
+      padding-block: 1rem;
+      border-block: 1px solid gray;
+      margin-top: 2rem;
+
+      p {
+        bottom: 0.25rem;
+      }
+    }
+
+    img {
+      width: 30px;
+      height: 30px;
+      transition: scale 0.3s;
+
+      &:hover {
+        scale: 1.05;
+      }
+    }
+
+    p {
+      grid-column: span 3;
+      text-transform: uppercase;
+      font-size: 0.5rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  time {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    margin-left: 1rem;
+    vertical-align: super;
   }
 
   p {
@@ -131,17 +207,7 @@ import Layout from "../../layouts/Layout.astro";
   }
 
   .entrada {
-    font-size: 1.25rem;
-  }
-
-  .social {
-    display: flex;
-    gap: 0.5rem;
-
-    img {
-      width: 30px;
-      height: 30px;
-    }
+    font-weight: 700;
   }
 
   img {

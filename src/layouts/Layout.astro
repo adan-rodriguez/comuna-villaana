@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 
-// import "@fontsource-variable/onest";
+import "@fontsource-variable/onest";
 // import "@fontsource/alex-brush";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -40,7 +40,7 @@ const { title, description } = Astro.props;
         font-display: swap;
       } */
 
-      @font-face {
+      /* @font-face {
         font-family: "Gilroy-Regular";
         src: url("/fonts/gilroy-regular.woff2") format("woff2");
         font-display: swap;
@@ -62,7 +62,7 @@ const { title, description } = Astro.props;
         font-family: "Gilroy-ExtraBold";
         src: url("/fonts/gilroy-extrabold.woff2") format("woff2");
         font-display: swap;
-      }
+      } */
 
       :root {
         --red: #f12b42;
@@ -81,7 +81,7 @@ const { title, description } = Astro.props;
       }
 
       body {
-        font-family: "Gilroy-Regular", sans-serif;
+        font-family: "Onest Variable", sans-serif;
         background-image: url(/noise.webp);
         background-size: 100px;
         color: #000000;

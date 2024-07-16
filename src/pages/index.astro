@@ -7,6 +7,7 @@ import Layout from "../layouts/Layout.astro";
 import MiPueblo from "../components/MiPueblo.astro";
 import FormularioContacto from "../components/FormularioContacto.astro";
 import HeroVideo from "@/components/HeroVideo.astro";
+import Noticias from "@/components/NoticiasList.astro";
 ---
 
 <Layout
@@ -49,20 +50,20 @@ import HeroVideo from "@/components/HeroVideo.astro";
       <a
         href="/turismo"
         class="self-stretch flex justify-center items-center w-full px-4 py-2"
-        ><h3
-          class="text-center text-balance font-gilroyEB text-3xl md:text-5xl [text-shadow:0px_0px_4px_#000000]"
+        ><h2
+          class="text-center text-balance font-black text-3xl [text-shadow:0px_0px_4px_#000000]"
         >
           <span class="uppercase">Visitá Villa Ana</span>
-          <span class="block font-gilroyR text-base"
+          <span class="block font-normal text-base opacity-90"
             >Mirá un poco de lo que vas a conocer</span
           >
-        </h3></a
+        </h2></a
       >
     </div>
   </section>
   <section id="pueblo" class="pt-20">
     <h2
-      class="font-gilroyB mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
+      class="font-bold mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
     >
       Mi pueblo
     </h2>
@@ -89,9 +90,20 @@ import HeroVideo from "@/components/HeroVideo.astro";
       </div>
     </div>
   </section>
+  <!-- <section class="pt-20">
+    <h2
+      class="font-bold mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+    >
+      Noticias
+    </h2>
+    <Noticias />
+    <div class="flex justify-end mt-8">
+      <a href="/noticias" class="underline underline-offset-8">Más noticias</a>
+    </div>
+  </section> -->
   <section id="tramites" class="pt-20">
     <h2
-      class="font-gilroyB mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+      class="font-bold mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
     >
       Trámites
     </h2>
@@ -102,7 +114,7 @@ import HeroVideo from "@/components/HeroVideo.astro";
   </section>
   <section id="contactosutiles" class="pt-20">
     <h2
-      class="font-gilroyB mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
+      class="font-bold mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat p-1"
     >
       Contactos útiles
     </h2>
@@ -115,7 +127,7 @@ import HeroVideo from "@/components/HeroVideo.astro";
   </section>
   <section id="sitiosdeinteres" class="pt-20">
     <h2
-      class="font-gilroyB mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
+      class="font-bold mb-12 text-3xl pb-1 bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat"
     >
       Sitios de interés
     </h2>
@@ -128,7 +140,7 @@ import HeroVideo from "@/components/HeroVideo.astro";
   </section>
   <section id="contactanos" class="pt-20">
     <h2
-      class="font-gilroyB mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
+      class="font-bold mb-12 text-3xl bg-[linear-gradient(to_right,var(--red),var(--green),var(--blue))] bg-[length:100%_4px] bg-left-bottom bg-no-repeat pb-1"
     >
       Envíanos un correo
     </h2>
