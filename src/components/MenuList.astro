@@ -12,12 +12,12 @@ const { items } = Astro.props;
     items.map((item) => (
       <li>
         {item.links ? (       
-            <button class={`dropdown-btn ${Astro.url.pathname === "/" ? "after:content-[url('/chevron-down-white.svg')]" : "after:content-[url('/chevron-down-black.svg')]"}`} aria-expanded="false" aria-controls={item.text.replace(/ /g, "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}>
+            <button class="dropdown-btn" aria-expanded="false" aria-controls={item.text.replace(/ /g, "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}>
               {item.text}
             </button>
             <Astro.self items={item.links} />
         ) : (
-          <a href={item.href} class="link">
+          <a href={item.href} class="menu-link">
             {item.text}
           </a>
         )}
@@ -124,7 +124,7 @@ const { items } = Astro.props;
     }
   }
   
-  .link {
+  .menu-link {
     display: block;
     border-bottom: 1px solid gray;
     padding: 1.25rem 1.5rem 0.25rem 0;

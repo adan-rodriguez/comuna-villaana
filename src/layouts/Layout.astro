@@ -97,6 +97,16 @@ const { title, description } = Astro.props;
           main {
             margin-top: calc(100dvh - 50px);
           }
+
+          .dropdown-btn::after {
+            content: url("/chevron-down-white.svg");
+          }
+        }
+
+        &:not(:has(.hero)) {
+          .dropdown-btn::after {
+            content: url("/chevron-down-black.svg");
+          }
         }
       }
 
@@ -220,7 +230,7 @@ const { title, description } = Astro.props;
                 }
               }
 
-              > li > a {
+              > li > .menu-link {
                 @media (width >= 768px) {
                   padding: 0 0 0.25rem 0;
                   border: none;
