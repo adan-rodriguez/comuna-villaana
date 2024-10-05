@@ -2,7 +2,7 @@
 import ArrowUpIcon from "./icons/ArrowUpIcon.astro";
 ---
 
-<button id="scroll-to-top" aria-label="Volver al inicio de la página">
+<button class="scroll-to-top" aria-label="Volver al inicio de la página">
   <script is:inline>
     if (document.body.scrollTop || document.documentElement.scrollTop > 20)
       document.currentScript.parentElement.classList.add("show");
@@ -13,7 +13,7 @@ import ArrowUpIcon from "./icons/ArrowUpIcon.astro";
 <script>
   document.addEventListener("astro:page-load", () => {
     let timeout = 0; // Identificador para clearTimeout
-    const $button = document.getElementById("scroll-to-top");
+    const $button = document.querySelector(".scroll-to-top");
 
     // Función para mostrar u ocultar el botón
     function toggleScrollToTop() {
@@ -41,7 +41,7 @@ import ArrowUpIcon from "./icons/ArrowUpIcon.astro";
 </script>
 
 <style>
-  #scroll-to-top {
+  .scroll-to-top {
     display: none;
     opacity: 0;
     position: fixed;

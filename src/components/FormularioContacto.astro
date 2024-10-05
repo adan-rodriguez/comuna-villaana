@@ -55,7 +55,7 @@
     </div>
   </div>
   <button
-  type="submit"
+    type="submit"
     class="bg-white px-8 py-3 border rounded-md outline-none focus:ring-4 border-slate-300 focus:border-slate-600 ring-slate-100"
     >Enviar mensaje</button
   >
@@ -86,8 +86,8 @@
   document.addEventListener(
     "astro:page-load",
     () => {
-      const form = document.getElementById("contact-form") as HTMLFormElement;
-      const result = document.getElementById("result");
+      const form = document.querySelector("#contact-form") as HTMLFormElement;
+      const result = document.querySelector("#result");
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();

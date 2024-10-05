@@ -101,9 +101,134 @@ const { title, description } = Astro.props;
       }
 
       main {
+        max-width: 1024px;
         margin-inline: auto;
         padding: 1rem;
         min-height: 100dvh;
+      }
+
+      .main-header {
+        position: relative;
+        z-index: 10;
+
+        .main-header-container {
+          max-width: 1024px;
+          margin-inline: auto;
+          padding: 1rem;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          align-content: flex-start;
+          align-items: center;
+
+          @media (width >= 768px) {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .logo-link {
+            justify-self: start;
+            transition: scale 0.3s;
+
+            &:is(:hover, :focus-visible) {
+              scale: 1.05;
+            }
+
+            .logo {
+              display: flex;
+              gap: 0.5rem;
+              align-items: center;
+
+              img {
+                width: 5rem;
+                aspect-ratio: 1;
+
+                @media (width >= 768px) {
+                  width: 6rem;
+                }
+              }
+
+              h1 {
+                display: flex;
+                flex-direction: column;
+
+                .comunade {
+                  text-transform: uppercase;
+                  font-size: 9px;
+
+                  @media (width >= 768px) {
+                    font-size: 10px;
+                  }
+                }
+
+                .villaana {
+                  font-family: "Lush", cursive;
+                  font-size: 32px;
+                  text-wrap: nowrap;
+                  line-height: 1;
+
+                  @media (width >=768px) {
+                    font-size: 2.25rem;
+                  }
+                }
+              }
+            }
+          }
+
+          .menu-btn {
+            justify-self: end;
+
+            @media (width >= 768px) {
+              display: none;
+            }
+
+            @media (scripting: none) {
+              display: none;
+            }
+          }
+
+          .menu {
+            display: none;
+
+            @media (width >= 768px) {
+              display: block;
+              transform: translateY(6px);
+              padding-block: 0;
+            }
+
+            @media (scripting: none) {
+              display: none;
+            }
+
+            > ul {
+              @media (width >= 768px) {
+                display: flex;
+                flex-direction: row;
+                gap: 1.5rem;
+              }
+
+              > li > .dropdown-btn {
+                @media (width >= 768px) {
+                  padding: 0 1.5rem 0.25rem 0;
+                  border: none;
+
+                  &::after {
+                    position: absolute;
+                    top: -3px;
+                    right: 0;
+                    scale: 0.75;
+                  }
+                }
+              }
+
+              > li > a {
+                @media (width >= 768px) {
+                  padding: 0 0 0.25rem 0;
+                  border: none;
+                }
+              }
+            }
+          }
+        }
       }
     </style>
     <slot name="critical-css" />
@@ -111,7 +236,7 @@ const { title, description } = Astro.props;
   <body>
     <Header />
     <slot name="hero" />
-    <main class={`container`}>
+    <main>
       <slot />
     </main>
     <Footer />

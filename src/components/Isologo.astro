@@ -2,43 +2,10 @@
 import Logo from "./Logo.astro";
 ---
 
-<div>
+<div class="logo">
   <Logo />
   <h1>
     <span class="comunade">Comuna de</span>
     <span class="villaana">Villa Ana</span>
   </h1>
 </div>
-
-<style>
-  div {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  h1 {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .comunade {
-    text-transform: uppercase;
-    font-size: 9px;
-
-    @media (width >= 768px) {
-      font-size: 10px;
-    }
-  }
-
-  .villaana {
-    font-family: "Lush", cursive;
-    font-size: 32px;
-    text-wrap: nowrap;
-    line-height: 1;
-
-    @media (width >=768px) {
-      font-size: 2.25rem;
-    }
-  }
-</style>
