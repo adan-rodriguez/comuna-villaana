@@ -6,8 +6,8 @@ import Tramites from "../components/Tramites.astro";
 import Layout from "../layouts/Layout.astro";
 import MiPueblo from "../components/MiPueblo.astro";
 import FormularioContacto from "../components/FormularioContacto.astro";
-import HeroVideo from "@/components/HeroVideo.astro";
-import Noticias from "@/components/NoticiasList.astro";
+import Hero from "@/components/Hero.astro";
+// import Noticias from "@/components/NoticiasList.astro";
 ---
 
 <Layout
@@ -41,7 +41,60 @@ import Noticias from "@/components/NoticiasList.astro";
     <meta name="twitter:image" content="https://villaana.gob.ar/logo.avif" />
     <meta name="twitter:image:alt" content="Logo de la comuna de Villa Ana" />
   </Fragment>
-  <HeroVideo slot="hero-video" />
+  <style is:inline slot="critical-css">
+    .hero {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100dvh;
+      max-height: 1080px;
+      background: #000;
+      z-index: 9;
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        mask-image: linear-gradient(to top, black 0%, transparent 100%);
+      }
+
+      .hero-links {
+        position: absolute;
+        inset: 0px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        color: white;
+
+        a {
+          font-family: "Lush", cursive;
+          font-size: 2.25rem;
+          position: relative;
+          text-shadow: 0px 0px 4px #000000;
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 0px;
+            height: 2px;
+            bottom: -0.25rem;
+            left: 0px;
+            background-color: var(--skyblue);
+            transition: width 150ms cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  </style>
+  <Hero slot="hero" />
   <!-- <Slider /> -->
   <section>
     <div

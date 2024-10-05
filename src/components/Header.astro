@@ -40,7 +40,7 @@ const menu = [
 ];
 ---
 
-<header class={`${Astro.url.pathname === "/" ? "text-white" : "text-black"}`}>
+<header>
   <div class="container">
     <a
       id="logo-link"
@@ -140,12 +140,7 @@ const menu = [
   });
 </script>
 
-<style
-  is:global
-  define:vars={{
-    bgColor: `${Astro.url.pathname === "/" ? "black" : "rgb(231,230,228)"}`,
-  }}
->
+<style is:global>
   body:has(#menu.open) {
     & #hamburger-icon {
       display: none;
@@ -228,7 +223,7 @@ const menu = [
       min-width: 16rem;
       max-width: 24rem;
       right: 0;
-      background-color: var(--bgColor);
+      background-color: var(--header-bg-color);
     }
   }
 
@@ -242,7 +237,7 @@ const menu = [
       max-width: 24rem;
       top: -1px;
       transform: translateX(-100%);
-      background-color: var(--bgColor);
+      background-color: var(--header-bg-color);
     }
   }
 </style>

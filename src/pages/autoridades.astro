@@ -12,12 +12,12 @@ import Layout from "../layouts/Layout.astro";
     >
       Autoridades
     </h1>
-    <figure>
+    <figure class="text-center">
       <figcaption>Catalino Comán - Presidente comunal</figcaption>
       <img
         src="/catalino-coman.avif"
         alt="Foto de Catalino Comán, presidente de la Comuna de Villa Ana"
-        class="block aspect-square w-full object-cover max-w-sm shadow-xl shadow-black rounded"
+        class="block mx-auto aspect-square w-full object-cover max-w-sm shadow-xl shadow-black rounded"
       />
     </figure>
     <div class="table-container">
@@ -96,31 +96,39 @@ import Layout from "../layouts/Layout.astro";
   table {
     margin-top: 1rem;
     margin-inline: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     font-size: 0.75rem;
+    color: white;
 
     @media (width >= 640px) {
       font-size: 1rem;
     }
 
+    caption {
+      color: black;
+    }
+
     & th,
     & td {
-      border: 1px solid black;
+      /* border: 1px solid black; */
       padding: 0.5rem;
+      white-space: nowrap;
     }
 
     thead {
-      background-color: gray;
+      background-image: linear-gradient(to right, black, gray, black);
     }
 
     tbody {
       tr {
         background-color: #ff6a0036;
+        background-image: linear-gradient(to right, black, #ff6a00, black);
       }
 
       tr.ja {
         background-color: #0000ff26;
-        border-spacing: 5px;
+        background-image: linear-gradient(to right, black, #0000ff, black);
+        /* border-spacing: 5px; */
       }
     }
   }
