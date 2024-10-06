@@ -135,55 +135,6 @@ const { title, description } = Astro.props;
             justify-content: space-between;
           }
 
-          .logo-link {
-            justify-self: start;
-            transition: scale 0.3s;
-
-            &:is(:hover, :focus-visible) {
-              scale: 1.05;
-            }
-
-            .logo {
-              display: flex;
-              gap: 0.5rem;
-              align-items: center;
-
-              img {
-                width: 5rem;
-                aspect-ratio: 1;
-
-                @media (width >= 768px) {
-                  width: 6rem;
-                }
-              }
-
-              h1 {
-                display: flex;
-                flex-direction: column;
-
-                .comunade {
-                  text-transform: uppercase;
-                  font-size: 9px;
-
-                  @media (width >= 768px) {
-                    font-size: 10px;
-                  }
-                }
-
-                .villaana {
-                  font-family: "Lush", cursive;
-                  font-size: 32px;
-                  text-wrap: nowrap;
-                  line-height: 1;
-
-                  @media (width >=768px) {
-                    font-size: 2.25rem;
-                  }
-                }
-              }
-            }
-          }
-
           .menu-btn {
             justify-self: end;
 
@@ -235,6 +186,55 @@ const { title, description } = Astro.props;
                   padding: 0 0 0.25rem 0;
                   border: none;
                 }
+              }
+            }
+          }
+        }
+      }
+
+      .logo-link {
+        justify-self: start;
+        transition: scale 0.3s;
+
+        &:is(:hover, :focus-visible) {
+          scale: 1.05;
+        }
+
+        .logo {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+
+          img {
+            width: 5rem;
+            aspect-ratio: 1;
+
+            @media (width >= 768px) {
+              width: 6rem;
+            }
+          }
+
+          h1 {
+            display: flex;
+            flex-direction: column;
+
+            .comunade {
+              text-transform: uppercase;
+              font-size: 9px;
+
+              @media (width >= 768px) {
+                font-size: 10px;
+              }
+            }
+
+            .villaana {
+              font-family: "Lush", cursive;
+              font-size: 32px;
+              text-wrap: nowrap;
+              line-height: 1;
+
+              @media (width >=768px) {
+                font-size: 2.25rem;
               }
             }
           }
