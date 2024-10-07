@@ -18,8 +18,12 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 
   /* Verificar la id del token */
   try {
+    console.log(idToken);
+    
     await auth.verifyIdToken(idToken);
   } catch (error) {
+    console.log(error);
+    
     return new Response(
       "Token invalido",
       { status: 401 }
