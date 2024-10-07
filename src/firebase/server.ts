@@ -15,6 +15,8 @@ const serviceAccount = {
   client_x509_cert_url: import.meta.env.FIREBASE_CLIENT_CERT_URL,
   universe_domain: "googleapis.com"
 };
+console.log(serviceAccount);
+
 
 const initApp = () => {
   // // si Firebase es el hosting
