@@ -1,0 +1,179 @@
+---
+export const prerender = false;
+
+import DashboardLayout from "../_DashboardLayout.astro";
+import { app } from "@/firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import { getAuth } from "firebase-admin/auth";
+
+const auth = getAuth(app);
+
+if (!Astro.cookies.has("__session")) {
+  return Astro.redirect("/login");
+}
+const sessionCookie = Astro.cookies.get("__session").value;
+const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+const user = await auth.getUser(decodedCookie.uid);
+
+if (!user) {
+  return Astro.redirect("/login");
+}
+
+interface News {
+  title: string;
+  lead: string;
+  imageUrl: string;
+  alt: string;
+  body: string;
+}
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+
+const db = getFirestore(app);
+const newsRef = db.collection("news");
+const newsSnapshot = await newsRef.doc(id).get();
+
+if (!newsSnapshot.exists) {
+  return Astro.redirect("/404");
+}
+
+const news = newsSnapshot.data() as News;
+---
+
+<DashboardLayout>
+  <h1>Editar {news.title}</h1>
+  <form class="article-form">
+    <label>
+      <span>Título</span>
+      <input name="title" required value={news.title} />
+    </label>
+    <label>
+      <span>Entrada</span>
+      <textarea name="lead" required>{news.lead}</textarea>
+    </label>
+    <div>
+      <span>Imagen actual</span>
+      <img src={news.imageUrl} alt={news.alt} width="200" />
+    </div>
+    <label>
+      <span>Imagen</span>
+      <input type="file" name="image" />
+    </label>
+    <label>
+      <span>Alt</span>
+      <input name="alt" required value={news.alt} />
+    </label>
+    <div class="editor-container">
+      <div id="editor"></div>
+    </div>
+    <button type="submit">Editar</button>
+  </form>
+  <button type="button" id="delete-document">Eliminar</button>
+</DashboardLayout>
+
+<script define:vars={{ id, news }} type="module">
+  import "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js";
+
+  const $form = document.querySelector(".article-form");
+  console.log($form);
+
+  const options = {
+    modules: {
+      toolbar: [
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }],
+        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+        ["bold", "italic", "underline", "strike"],
+        ["blockquote", "code-block"],
+        ["link", "image", "video", "formula"],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+        [{ script: "sub" }, { script: "super" }],
+        [{ indent: "-1" }, { indent: "+1" }],
+        [{ direction: "rtl" }],
+        [{ color: [] }, { background: [] }],
+        [{ align: [] }],
+        ["clean"],
+      ],
+    },
+    placeholder: "Escribe el cuerpo de la noticia aquí...",
+    theme: "snow",
+  };
+  const quill = new Quill("#editor", options);
+  quill.clipboard.dangerouslyPasteHTML(news.body);
+
+  $form.addEventListener("submit", async (e) => {
+    console.log("sub");
+
+    e.preventDefault();
+    const formData = new FormData($form);
+    formData.append("body", quill.getSemanticHTML());
+
+    const response = await fetch(`/api/news/${id}`, {
+      method: "PUT",
+      body: formData,
+    });
+
+    if (response.redirected) {
+      window.location.assign(response.url);
+    }
+  });
+
+  const deleteButton = document.getElementById("delete-document");
+
+  deleteButton.addEventListener("click", async () => {
+    const response = await fetch(`/api/news/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.redirected) {
+      window.location.assign(response.url);
+    }
+  });
+</script>
+
+<style>
+  @import url("https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css");
+
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    max-width: 65ch;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      textarea {
+        padding: 0.5rem;
+        resize: none;
+      }
+    }
+  }
+
+  .editor-container {
+    background-color: red;
+  }
+
+  #editor {
+    height: calc(100dvh - 2rem);
+    scrollbar-width: thin;
+  }
+
+  .preview-container {
+    background-color: blue;
+    margin-top: 1rem;
+  }
+</style>

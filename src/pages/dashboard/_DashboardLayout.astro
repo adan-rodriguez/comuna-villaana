@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import ButtonUp from "@/components/ButtonUp.astro";
@@ -12,7 +11,6 @@ import ButtonUp from "@/components/ButtonUp.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/avif" href="/logo.avif" />
     <title>Panel de control - Comuna de Villa Ana</title>
-    <ViewTransitions />
     <meta name="theme-color" content="#112886" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" as="image" type="image/avif" href="/logo.avif" />
@@ -247,7 +245,6 @@ import ButtonUp from "@/components/ButtonUp.astro";
         </div>
         <slot />
       </div>
-      <slot />
     </main>
     <Footer />
     <ButtonUp />
