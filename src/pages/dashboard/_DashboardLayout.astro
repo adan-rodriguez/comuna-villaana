@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import ButtonUp from "@/components/ButtonUp.astro";
@@ -11,8 +12,7 @@ import ButtonUp from "@/components/ButtonUp.astro";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/avif" href="/logo.avif" />
     <title>Panel de control - Comuna de Villa Ana</title>
-    <meta name="theme-color" content="#112886" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <ViewTransitions />
     <link rel="preload" as="image" type="image/avif" href="/logo.avif" />
     <link
       rel="preload"
@@ -234,17 +234,18 @@ import ButtonUp from "@/components/ButtonUp.astro";
     <Header />
     <main>
       <!-- <h1>Bienvenido {user.displayName}</h1> -->
-      <p>Nos alegra verte aquí</p>
+      <div class="dashboard">
+        <div class="left">
+          <a href="/dashboard/nuevo">nuevo</a>
+          <a href="/dashboard/editar">editar</a>
+        </div>
+        <div class="right">
+          <slot />
+        </div>
+      </div>
       <form action="/api/auth/logout">
         <button type="submit">Cerrar sesión</button>
       </form>
-      <div class="dashboard">
-        <div class="left">
-          <a href="/dashboard/nuevo">nue</a>
-          <a href="/dashboard/editar">edi</a>
-        </div>
-        <slot />
-      </div>
     </main>
     <Footer />
     <ButtonUp />
@@ -261,10 +262,55 @@ import ButtonUp from "@/components/ButtonUp.astro";
     width: 40px;
     border: 1px solid black;
   }
+
+  .right {
+    flex: 1;
+  }
 </style>
 
 <style is:global>
   p {
     text-wrap: pretty;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 65ch;
+    border: 1px solid var(--blue);
+    border-radius: 4px;
+    padding: 2rem 1rem;
+
+    h1 {
+      font-weight: bold;
+    }
+
+    label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+
+      textarea {
+        padding: 0.5rem;
+        resize: none;
+        border-radius: 4px;
+      }
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border: 1px solid var(--blue);
+    }
   }
 </style>

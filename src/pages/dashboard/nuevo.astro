@@ -21,35 +21,33 @@ if (!user) {
 ---
 
 <DashboardLayout>
-  <div>
+  <form class="article-form">
     <h1>Nueva noticia</h1>
-    <form class="article-form">
-      <label>
-        <span>Título</span>
-        <input name="title" required />
-      </label>
-      <label>
-        <span>Entrada</span>
-        <textarea name="lead" required></textarea>
-      </label>
-      <label>
-        <span>Imagen</span>
-        <input type="file" name="image" required />
-      </label>
-      <label>
-        <span>Alt</span>
-        <input name="alt" required />
-      </label>
-      <div class="editor-container">
-        <div id="editor"></div>
-      </div>
-      <button type="submit">Enviar</button>
-    </form>
-
-    <div class="preview-container">
-      <iframe class="preview"></iframe>
+    <label>
+      <span>Título</span>
+      <input name="title" required />
+    </label>
+    <label>
+      <span>Entrada</span>
+      <textarea name="lead" required></textarea>
+    </label>
+    <label>
+      <span>Imagen</span>
+      <input type="file" name="image" required />
+    </label>
+    <label>
+      <span>Alt</span>
+      <input name="alt" required />
+    </label>
+    <div class="editor-container">
+      <div id="editor"></div>
     </div>
-  </div>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <!-- <div class="preview-container">
+      <iframe class="preview"></iframe>
+    </div> -->
 </DashboardLayout>
 
 <!-- <script is:inline src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"
@@ -156,30 +154,6 @@ if (!user) {
 
 <style>
   @import url("https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css");
-
-  h1 {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-
-  form {
-    max-width: 65ch;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    label {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      textarea {
-        padding: 0.5rem;
-        resize: none;
-      }
-    }
-  }
 
   .editor-container {
     background-color: red;

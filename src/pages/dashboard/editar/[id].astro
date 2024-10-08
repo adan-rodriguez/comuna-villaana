@@ -45,8 +45,8 @@ const news = newsSnapshot.data() as News;
 ---
 
 <DashboardLayout>
-  <h1>Editar {news.title}</h1>
   <form class="article-form">
+    <h1>Editar {news.title}</h1>
     <label>
       <span>Título</span>
       <input name="title" required value={news.title} />
@@ -71,8 +71,8 @@ const news = newsSnapshot.data() as News;
       <div id="editor"></div>
     </div>
     <button type="submit">Editar</button>
+    <button type="button" id="delete-document">Eliminar</button>
   </form>
-  <button type="button" id="delete-document">Eliminar</button>
 </DashboardLayout>
 
 <script define:vars={{ id, news }} type="module">
@@ -138,30 +138,6 @@ const news = newsSnapshot.data() as News;
 
 <style>
   @import url("https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css");
-
-  h1 {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-
-  form {
-    max-width: 65ch;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-
-    label {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      textarea {
-        padding: 0.5rem;
-        resize: none;
-      }
-    }
-  }
 
   .editor-container {
     background-color: red;
