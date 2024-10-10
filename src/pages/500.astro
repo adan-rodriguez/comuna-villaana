@@ -1,0 +1,12 @@
+---
+import MinimalLayout from "@/layouts/MinimalLayout.astro";
+
+interface Props {
+  error: unknown;
+}
+const { error } = Astro.props;
+---
+
+<MinimalLayout title="Error">
+  <div>{error instanceof Error ? error.message : "Unknown error"}</div>
+</MinimalLayout>

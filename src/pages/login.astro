@@ -3,7 +3,7 @@ export const prerender = false;
 
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
-import Layout from "@/layouts/Layout.astro";
+import MinimalLayout from "@/layouts/MinimalLayout.astro";
 
 /* Verificar si el usuario está autenticado */
 const auth = getAuth(app);
@@ -16,10 +16,7 @@ if (Astro.cookies.has("__session")) {
 }
 ---
 
-<Layout
-  title="Login - Comuna de Villa Ana"
-  description="Login - Comuna de Villa Ana"
->
+<MinimalLayout title="Login - Comuna de Villa Ana">
   <form action="/api/auth/login" method="post" class="login-form">
     <h1>Iniciar sesión</h1>
     <label>
@@ -32,7 +29,7 @@ if (Astro.cookies.has("__session")) {
     </label>
     <button type="submit">Iniciar sesión</button>
   </form>
-</Layout>
+</MinimalLayout>
 
 <script>
   import {

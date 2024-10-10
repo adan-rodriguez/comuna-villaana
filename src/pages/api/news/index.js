@@ -53,13 +53,40 @@ export const POST = async ({ request, redirect }) => {
     // Obtener la URL pública de la imagen subida
     const imageUrl = `https://storage.googleapis.com/${bucket.name}/images/${imageName}`;
 
-    const newsRef = db.collection("news");
-    await newsRef.add({
+    // Generar el slug del título quitando caracteres especiales
+    const slugify = (text) =>
+      text
+        .toString()
+        .normalize("NFD") // Normaliza a descomposición de caracteres
+        .replace(/[\u0300-\u036f]/g, "") // Elimina los acentos
+        .replace(/[^a-zA-Z0-9\s]/g, "") // Elimina caracteres especiales
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-"); // Reemplaza espacios con guiones
+
+    const titleSlug = slugify(title);
+
+    // Formatear la fecha actual como DD-MM-YY
+    const today = new Date();
+    const formattedDate = today
+      .toLocaleDateString("es-AR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+      })
+      .replace(/\//g, "-");
+
+    // Concatenar el título y la fecha para formar el ID
+    const customId = `${titleSlug}-${formattedDate}`;
+
+    const newsRef = db.collection("news").doc(customId); // Usar el ID personalizado
+    await newsRef.set({
       title,
       lead,
       imageUrl,
       alt,
       body,
+      createdAt: today,
     });
 
     // Elimina el archivo temporal del servidor
