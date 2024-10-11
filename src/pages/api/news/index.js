@@ -16,7 +16,6 @@ export const POST = async ({ request, redirect }) => {
   const image = formData.get("image");
   const alt = formData.get("alt")?.toString();
   const body = formData.get("body")?.toString();
-  console.log({ title, lead, image, alt, body });
 
   if (!title || !lead || !image || !alt || !body) {
     return new Response("Faltan campos obligatorios", {

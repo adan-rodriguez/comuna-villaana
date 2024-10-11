@@ -46,7 +46,7 @@ const news = newsSnapshot.data() as News;
 
 <DashboardLayout>
   <form class="article-form">
-    <h1>Editar {news.title}</h1>
+    <h1>Editar noticia</h1>
     <label>
       <span>Título</span>
       <input name="title" required value={news.title} />
@@ -79,12 +79,11 @@ const news = newsSnapshot.data() as News;
   import "https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js";
 
   const $form = document.querySelector(".article-form");
-  console.log($form);
 
   const options = {
     modules: {
       toolbar: [
-        [{ font: [] }],
+        // [{ font: [] }],
         [{ size: ["small", false, "large", "huge"] }],
         [{ header: [1, 2, 3, 4, 5, 6, false] }],
         ["bold", "italic", "underline", "strike"],
@@ -107,8 +106,6 @@ const news = newsSnapshot.data() as News;
   quill.clipboard.dangerouslyPasteHTML(news.body);
 
   $form.addEventListener("submit", async (e) => {
-    console.log("sub");
-
     e.preventDefault();
     const formData = new FormData($form);
     formData.append("body", quill.getSemanticHTML());
@@ -139,11 +136,71 @@ const news = newsSnapshot.data() as News;
 <style>
   @import url("https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css");
 
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 71ch;
+    border: 2px solid;
+    border-color: white black black white;
+    border-radius: 4px;
+    padding: 2rem 1rem;
+
+    h1 {
+      font-weight: bold;
+    }
+
+    label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 4px;
+
+        &[name="title"] {
+          font-weight: bold;
+          font-size: 1.75rem;
+        }
+      }
+
+      textarea {
+        padding: 0.5rem;
+        resize: none;
+        border-radius: 4px;
+        field-sizing: content;
+
+        &[name="lead"] {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border: 2px solid;
+      border-color: white black black white;
+
+      &:active {
+        border-color: black white white black;
+        translate: 0 3px;
+      }
+    }
+  }
+
   .editor-container {
-    background-color: red;
+    background-color: Canvas;
   }
 
   #editor {
+    font-family: "Onest Variable", sans-serif;
+    font-size: 16px;
     height: calc(100dvh - 2rem);
     scrollbar-width: thin;
   }

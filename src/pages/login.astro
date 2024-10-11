@@ -4,6 +4,7 @@ export const prerender = false;
 import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import MinimalLayout from "@/layouts/MinimalLayout.astro";
+import Spinner from "@/components/Spinner.astro";
 
 /* Verificar si el usuario está autenticado */
 const auth = getAuth(app);
@@ -17,17 +18,18 @@ if (Astro.cookies.has("__session")) {
 ---
 
 <MinimalLayout title="Login - Comuna de Villa Ana">
-  <form action="/api/auth/login" method="post" class="login-form">
-    <h1>Iniciar sesión</h1>
+  <form class="login-form">
     <label>
       <span> Correo electrónico </span>
-      <input type="email" name="email" />
+      <input type="email" name="email" required />
     </label>
     <label>
       <span> Contraseña </span>
-      <input type="password" name="password" />
+      <input type="password" name="password" required />
     </label>
-    <button type="submit">Iniciar sesión</button>
+    <button type="submit"
+      >Iniciar sesión <span class="spinner"><Spinner /></span></button
+    >
   </form>
 </MinimalLayout>
 
@@ -39,20 +41,25 @@ if (Astro.cookies.has("__session")) {
   } from "firebase/auth";
   import { app } from "../firebase/client";
 
+  const $form = document.querySelector("form") as HTMLFormElement;
+  const $spinner = document.querySelector(".spinner");
+
   const auth = getAuth(app);
   // Esto evitará que el navegador almacene los datos de sesión
   auth.setPersistence(inMemoryPersistence);
 
-  const form = document.querySelector("form") as HTMLFormElement;
-  form.addEventListener("submit", async (e) => {
+  $form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const formData = new FormData(form);
+    $spinner.classList.add("show");
+    const formData = new FormData($form);
     const email = formData.get("email")?.toString();
     const password = formData.get("password")?.toString();
 
     if (!email || !password) {
+      $spinner.classList.remove("show");
       return;
     }
+
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -74,6 +81,60 @@ if (Astro.cookies.has("__session")) {
 
 <style>
   .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 65ch;
+    border-radius: 4px;
+    padding: 2rem 1rem;
     margin-inline: auto;
+    /* box-shadow: 2px 2px 4px black; */
+    border: 2px solid;
+    border-color: white black black white;
+
+    label {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 4px;
+      }
+
+      textarea {
+        padding: 0.5rem;
+        resize: none;
+        border-radius: 4px;
+      }
+    }
+
+    button {
+      display: inline-block;
+      padding: 0.5rem 2rem;
+      border-radius: 4px;
+      position: relative;
+      border: 2px solid;
+      border-color: white black black white;
+
+      &:active {
+        border-color: black white white black;
+        translate: 0 3px;
+      }
+
+      .spinner {
+        display: none;
+        position: absolute;
+        right: 0.25rem;
+
+        &.show {
+          display: inline;
+        }
+      }
+    }
   }
 </style>

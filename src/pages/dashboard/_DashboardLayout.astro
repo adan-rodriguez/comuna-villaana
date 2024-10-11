@@ -1,20 +1,23 @@
 ---
+import EditIcon from "@/components/icons/EditIcon.astro";
+import LogoutIcon from "@/components/icons/LogoutIcon.astro";
+import PlusIcon from "@/components/icons/PlusIcon.astro";
 import MinimalLayout from "@/layouts/MinimalLayout.astro";
 ---
 
 <MinimalLayout title="Dashboard">
   <div class="dashboard">
     <div class="left">
-      <a href="/dashboard/nuevo">nuevo</a>
-      <a href="/dashboard/editar">editar</a>
+      <a href="/dashboard/nuevo"><PlusIcon /></a>
+      <a href="/dashboard/editar"><EditIcon /></a>
+      <form action="/api/auth/logout">
+        <button type="submit"><LogoutIcon /></button>
+      </form>
     </div>
     <div class="right">
       <slot />
     </div>
   </div>
-  <form action="/api/auth/logout">
-    <button type="submit">Cerrar sesión</button>
-  </form>
 </MinimalLayout>
 
 <style>
@@ -25,7 +28,31 @@ import MinimalLayout from "@/layouts/MinimalLayout.astro";
 
   .left {
     width: 40px;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.15rem;
+
+    > * {
+      aspect-ratio: 1;
+      display: grid;
+      place-content: center;
+      border-radius: 4px;
+      border: 2px solid;
+      border-color: white black black white;
+
+      &:active {
+        border-color: black white white black;
+        translate: 0 3px;
+      }
+    }
+
+    form {
+      button {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
 
   .right {
