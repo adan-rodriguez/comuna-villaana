@@ -7,8 +7,10 @@ const { slice } = Astro.props;
 <div class="sitiosinteres__container">
   {
     SITIOSINTERES.slice(0, slice).map((sitio) => (
-      <div class="sitiosinteres__item">
-        <img src={`/${sitio.image.src}`} alt={sitio.image.alt} />
+      <div
+        style={`background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/${sitio.image.src})`}
+        class="sitiosinteres__item"
+      >
         <a href={sitio.link.href} target="_blank" rel="noopener noreferrer">
           <h3>{sitio.link.label}</h3>
         </a>
@@ -38,28 +40,21 @@ const { slice } = Astro.props;
     min-height: 8rem;
     min-width: 24rem;
     border-radius: 0.5rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    border-radius: 0.5rem;
+    background-size: 100%;
+    background-position: top;
     box-shadow: var(--shadow-black-lg);
+    transition:
+      translate 0.3s,
+      background-size 0.3s;
 
     &:active {
       translate: 0 0.25rem;
     }
 
     &:is(:hover, :focus-within) {
-      img {
-        scale: 1.1;
-      }
+      background-size: 110%;
     }
-  }
-
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left top;
-    z-index: -10;
-    transition: scale 0.3s;
   }
 
   a {
