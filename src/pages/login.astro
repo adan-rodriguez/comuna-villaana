@@ -28,7 +28,7 @@ if (Astro.cookies.has("__session")) {
       <input type="password" name="password" required />
     </label>
     <button type="submit"
-      >Iniciar sesión <span class="spinner"><Spinner /></span></button
+      >Iniciar sesión <Spinner class="login-spinner" /></button
     >
   </form>
 </MinimalLayout>
@@ -42,7 +42,7 @@ if (Astro.cookies.has("__session")) {
   import { app } from "../firebase/client";
 
   const $form = document.querySelector("form") as HTMLFormElement;
-  const $spinner = document.querySelector(".spinner");
+  const $spinner = document.querySelector(".login-spinner");
 
   const auth = getAuth(app);
   // Esto evitará que el navegador almacene los datos de sesión
@@ -126,7 +126,7 @@ if (Astro.cookies.has("__session")) {
         translate: 0 3px;
       }
 
-      .spinner {
+      .login-spinner {
         display: none;
         position: absolute;
         right: 0.25rem;

@@ -25,7 +25,7 @@ if (!user) {
     <h1>Nueva noticia</h1>
     <label>
       <span>Título</span>
-      <input name="title" required />
+      <textarea name="title" required></textarea>
     </label>
     <label>
       <span>Entrada</span>
@@ -44,11 +44,11 @@ if (!user) {
     </div>
     <button type="submit">Enviar</button>
   </form>
+</DashboardLayout>
 
-  <!-- <div class="preview-container">
+<!-- <div class="preview-container">
       <iframe class="preview"></iframe>
     </div> -->
-</DashboardLayout>
 
 <!-- <script is:inline src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"
 ></script> -->
@@ -187,6 +187,16 @@ if (!user) {
         resize: none;
         border-radius: 4px;
       }
+    }
+
+    textarea[name="title"] {
+      font-weight: bold;
+      font-size: 1.75rem;
+    }
+
+    textarea[name="lead"] {
+      font-size: 1.25rem;
+      min-height: 10rem;
     }
 
     button {

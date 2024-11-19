@@ -2,60 +2,88 @@
 import EditIcon from "@/components/icons/EditIcon.astro";
 import LogoutIcon from "@/components/icons/LogoutIcon.astro";
 import PlusIcon from "@/components/icons/PlusIcon.astro";
+import Spinner from "@/components/Spinner.astro";
 import MinimalLayout from "@/layouts/MinimalLayout.astro";
 ---
 
 <MinimalLayout title="Dashboard">
   <div class="dashboard">
     <div class="left">
-      <a href="/dashboard/nuevo"><PlusIcon /></a>
-      <a href="/dashboard/editar"><EditIcon /></a>
-      <form action="/api/auth/logout">
-        <button type="submit"><LogoutIcon /></button>
-      </form>
+      <a href="/dashboard/nuevo" title="Nueva noticia"><PlusIcon /></a>
+      <a href="/dashboard/editar" title="Editar/borrar noticias"><EditIcon /></a
+      >
+      <button class="logout-btn" title="Cerrar sesión" type="submit"
+        ><LogoutIcon class="logout-icon" />
+        <Spinner class="logout-spinner" />
+      </button>
     </div>
     <div class="right">
       <slot />
     </div>
   </div>
+
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const $logoutBtn = document.querySelector(".dashboard .left .logout-btn");
+
+      $logoutBtn.addEventListener("click", async () => {
+        const response = await fetch("/api/auth/logout");
+
+        $logoutBtn.classList.add("loading");
+
+        if (response.redirected) {
+          window.location.assign(response.url);
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .dashboard {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .left {
+      width: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.15rem;
+
+      > * {
+        aspect-ratio: 1;
+        display: grid;
+        place-content: center;
+        border-radius: 4px;
+        border: 2px solid;
+        border-color: white black black white;
+
+        &:active {
+          border-color: black white white black;
+          translate: 0 3px;
+        }
+      }
+
+      .logout-btn {
+        .logout-spinner {
+          display: none;
+        }
+
+        &.loading {
+          .logout-icon {
+            display: none;
+          }
+
+          .logout-spinner {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+    }
+  </style>
 </MinimalLayout>
-
-<style>
-  .dashboard {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .left {
-    width: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding: 0.15rem;
-
-    > * {
-      aspect-ratio: 1;
-      display: grid;
-      place-content: center;
-      border-radius: 4px;
-      border: 2px solid;
-      border-color: white black black white;
-
-      &:active {
-        border-color: black white white black;
-        translate: 0 3px;
-      }
-    }
-
-    form {
-      button {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  .right {
-    flex: 1;
-  }
-</style>

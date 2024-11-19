@@ -1,4 +1,8 @@
-<div role="status">
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div class={className} {...rest} role="status">
   <svg
     aria-hidden="true"
     class="text-gray-200 animate-spin dark:text-gray-600 fill-white"

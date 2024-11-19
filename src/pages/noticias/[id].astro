@@ -59,7 +59,7 @@ const readableTime = new Intl.DateTimeFormat("es-AR", options).format(date);
 const { origin, pathname } = Astro.url;
 ---
 
-<Layout title={id} description={id}>
+<Layout title={title} description={lead}>
   <Fragment slot="seo">
     <meta property="og:title" content={title} />
     <meta property="og:description" content={lead} />

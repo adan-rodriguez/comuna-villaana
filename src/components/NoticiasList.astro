@@ -56,17 +56,25 @@ const newsList = news.map((newsItem) => {
 
 <section>
   {
-    newsList.map((newsItem) => (
-      <article>
-        <a href={`/noticias/${newsItem.id}`}>
-          <figure>
-            <img src={newsItem.imageUrl} alt={newsItem.alt} loading="lazy" />
-          </figure>
-          <time datetime={newsItem.publishedTime}>{newsItem.readableTime}</time>
-          <h3>{newsItem.title}</h3>
-        </a>
-      </article>
-    ))
+    newsList.length === 0
+      ? "No hay noticias"
+      : newsList.map((newsItem) => (
+          <article>
+            <a href={`/noticias/${newsItem.id}`}>
+              <figure>
+                <img
+                  src={newsItem.imageUrl}
+                  alt={newsItem.alt}
+                  loading="lazy"
+                />
+              </figure>
+              <time datetime={newsItem.publishedTime}>
+                {newsItem.readableTime}
+              </time>
+              <h3>{newsItem.title}</h3>
+            </a>
+          </article>
+        ))
   }
 </section>
 
