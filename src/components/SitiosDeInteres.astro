@@ -38,7 +38,6 @@ const { slice } = Astro.props;
     position: relative;
     overflow: hidden;
     min-height: 8rem;
-    min-width: 24rem;
     border-radius: 0.5rem;
     border-radius: 0.5rem;
     background-size: 100%;
@@ -54,6 +53,10 @@ const { slice } = Astro.props;
 
     &:is(:hover, :focus-within) {
       background-size: 110%;
+    }
+
+    @media (width >= 768px) {
+      min-width: 24rem;
     }
   }
 
